@@ -28,7 +28,7 @@ local function template(title, body)
       h.header {class="row",
         h.a{class="logo",{"Ústřední knihovna PedF UK"}},
       },
-      h.header {class="row",
+      h.header {
         -- h.a{class="logo",h.div{"Ústřední knihovna PedF UK"}},
       -- h.menu{
         menuitem("Služby knihovny","sluzby.html"),
@@ -38,10 +38,11 @@ local function template(title, body)
         menuitem("Napiště nám", "knihovna.html"),
       -- }},
       },
-      h.div{class="row", h.div {class="col-sm-12 col-md-10 col-md-offset-1",
+      -- h.div{class="row", h.div {class="col-sm-12 col-md-10 col-md-offset-1",
+      h.div{class="card", h.section {class="section ",
     (body)
     }},
-    h.footer{class="row"}
+    h.footer{}
       }
   }
   ))

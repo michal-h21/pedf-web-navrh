@@ -95,10 +95,32 @@ local function template(title, body)
     },
     h.body{
       class="container",
-      -- h.header {-- nepoužívat row class="row",
-      --   h.a{class="logo",{"{LOGO}"},
-      --   h.span{"Ústřední knihovna PedF UK"}},
-      -- },
+      row{-- nepoužívat row class="row",
+      medium(8, 
+      {
+        h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
+        h.a{
+          class="logo",
+          href="/",
+          h.div{"Ústřední"},
+          h.div{"KNIHOVNA"},
+          h.div{"PedF UK"}
+        }
+      }),
+      medium(4,{
+        h.form{method="get", id="duckduckgo-search", action="http://duckduckgo.com/", 
+          h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
+          h.input{type="hidden", name="k8" , value="#444444"},
+          h.input{type="hidden", name="k9" , value="#D51920"},
+          h.input{type="hidden", name="kt" , value="h"},
+          h.input{type="text", name="q" , maxlength="255", placeholder="Hledat na webu knihovny"},
+          h.input{type="submit", style="visibility: hidden;"}
+        }
+
+        -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",
+        -- style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;"}
+      })
+    },
       h.header {
         -- h.a{class="logo",h.div{"Ústřední knihovna PedF UK"}},
         -- h.menu{

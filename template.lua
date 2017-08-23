@@ -76,6 +76,9 @@ local function provozni_doba(data)
 end
 
 
+local function boxik(title, content)
+  return medium(3,card {h.h3 {title}, {content} })
+end
 
 -- function column
 local function template(title, body)
@@ -98,14 +101,15 @@ local function template(title, body)
       row{-- nepoužívat row class="row",
       medium(8, 
       {
-        h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
-        h.a{
-          class="logo",
-          href="/",
-          h.div{"Ústřední"},
-          h.div{"KNIHOVNA"},
-          h.div{"PedF UK"}
-        }
+        -- h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
+        h.a{href="http://knihovna.pedf.cuni.cz", h.img{style="height:90%;",src="img/logo.svg"}},
+        -- h.a{
+        --   class="logo",
+        --   href="/",
+        --   h.div{"Ústřední"},
+        --   h.div{"KNIHOVNA"},
+        --   h.div{"PedF UK"}
+        -- }
       }),
       medium(4,{
         h.form{method="get", id="duckduckgo-search", action="http://duckduckgo.com/", 
@@ -168,6 +172,18 @@ local function template(title, body)
       }},
       card {div {"Ankety"}}
     })
+    },
+    row{
+     boxik("Studenti se specifickými potřebami"),
+     boxik("EIZ pro PedF"),
+     boxik("Oborové EIZ"),
+     boxik("Periodika"), 
+     boxik("Návody"),
+     boxik("Řády a ceníky"),
+     boxik("Kontakty"),
+     boxik("Facebook"),
+     boxik("Galerie knihovny"),
+     boxik("Formuláře")
     },
 
 

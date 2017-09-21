@@ -43,6 +43,14 @@ local function card(content)
   return div {class="card fluid", section {class = "section", content}}
 end
 
+local function tab(name, label, content, checked)
+  return {h.input{type="radio", name="tab-group", id=name,checked=checked, ["aria-hidden"] = true},
+  h.label {["for"] = name, ["aria-hidden"]=true, label},
+  div{content}
+  }
+end
+
+
 
 local function actuality(title, date, content)
   return section{ 
@@ -51,12 +59,20 @@ local function actuality(title, date, content)
     content
   }
 end
+
+local function obalky(isbn)
+  return h.img{style = "height:9rem;display:inline;", src='https://www.obalkyknih.cz/api/cover?isbn=' .. isbn}
+end
+
+local function progress(percent)
+  return h.progress{value = percent, max=1000}
+end
    
 local function provozni_doba(data) 
   local t = {}
-  local function tbl(data)
-      local tble = {}--h.table {}
-      for _, obdobi in ipairs(data) do
+  local function tbl(jednotka)
+      local tble = {h.caption{jednotka.name}}--h.table {}
+      for _, obdobi in ipairs(jednotka.data) do
         local row = h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
         -- h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
         table.insert(tble, row)
@@ -65,9 +81,10 @@ local function provozni_doba(data)
   end
   local function jednotky(data) 
     for _, jednotka in ipairs(data) do
-      table.insert(t, h.h3 {jednotka.name})
+      -- table.insert(t, h.h3 {jednotka.name})
       -- h.h3 {jednotka.name}
-      table.insert(t, h.table {tbl(jednotka.data)})
+      -- table.insert(jednotka.data, 1, h.caption {jednotka.name})
+      table.insert(t, h.table {tbl(jednotka)})
       -- table.insert(t, tble)
     end
     return t
@@ -90,8 +107,8 @@ local function template(title, body)
       h.title{(title)},
       -- tohle změnit, použít lokální verzi
       -- h.link{rel="stylesheet", type="text/css", href="media.css"},
-      h.link{rel="stylesheet", type="text/css",
-      href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
+      -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
+      h.link{rel="stylesheet", type="text/css", href="mini-knihovna.css"},
       h.link{rel="stylesheet", type="text/css", href="style.css"},
       -- h.link{rel="stylesheet", type="text/css", href="src/responsive-nav.css"},
       -- h.script{type="text/javascript", src="responsive-nav.js",},
@@ -99,7 +116,7 @@ local function template(title, body)
     h.body{
       class="container",
       row{-- nepoužívat row class="row",
-      medium(8, 
+      medium(9, 
       {
         -- h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
         h.a{href="http://knihovna.pedf.cuni.cz", h.img{style="height:90%;",src="img/logo.svg"}},
@@ -111,14 +128,14 @@ local function template(title, body)
         --   h.div{"PedF UK"}
         -- }
       }),
-      medium(4,{
+      medium(3,{
         h.form{method="get", id="duckduckgo-search", action="http://duckduckgo.com/", 
           h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
           h.input{type="hidden", name="k8" , value="#444444"},
           h.input{type="hidden", name="k9" , value="#D51920"},
           h.input{type="hidden", name="kt" , value="h"},
-          h.input{type="text", name="q" , maxlength="255", placeholder="Hledat na webu knihovny"},
-          h.input{type="submit", style="visibility: hidden;"}
+          h.input{type="search", name="q" , maxlength="255", placeholder="Hledat na webu knihovny"},
+          h.input{type="submit",class="small", value="&#x2315;"} --style="visibility: hidden;"}
         }
 
         -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",
@@ -138,19 +155,69 @@ local function template(title, body)
         menuitem("Poprvé v knihovně", "bibliografie.html"),
         menuitem("Návrh na doplnění fondu","dokumenty.html"),
         menuitem("Napiště nám", "knihovna.html"),
+        h.span{ a{href="en/index.html","&#x1F1EC;&#x1F1E7;"}} -- odkaz na anglickou verzi stránek
         -- }},
       },
       row{
         medium(9,{
+          row{
         card {
           h.h2{ "Aktuality"},
           actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
           actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme všechny uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
-        },
+        }},
         row {
-           medium(9, {card {p{"Vyhledávací boxy"}}}),
-           medium(3, {card {p{"Obálky knih"}}})
-         }
+           -- medium(9, {card {p{"Vyhledávací boxy"}}}),
+           medium(9, card{ div{class="tabs", 
+            tab("aleph", "Katalog",  h.form{action="https://ckis.cuni.cz/F/", method="get", target="_blank", 
+            h.input{  name="local_base", value="pedfr", type="hidden"},
+            h.input {name="func", value="find-e" ,type="hidden"},
+            row{
+              h.label {"Klíčová slova:", h.input {name="request", type="search"}},
+              h.label {"Vyhledat v: ", h.select {
+                name="find_scan_code",
+                h.option{value="FIND_WRD", selected="selected", "Všechna pole"},
+                h.option {value="FIND_WTI", "Název"},
+                h.option {value="SCAN_TIT", "První slovo z názvu"},
+                h.option {value="FIND_WAU", "Autor"},
+                h.option {value="SCAN_AUT", "Autorský rejstřík"},
+                h.option {value="FIND_WKW", "Předmět"},
+                h.option {value="SCAN_SUB", "Předmětový rejstřík"},
+                h.option {value="FIND_ISN", "ISBN/ISSN"},
+              }
+              }}
+          },"selected"),
+            tab("ukaz", "Ukaž", 
+            h.form{ id="ebscohostCustomSearchBox", action="", onsubmit="return ebscoHostSearchGo(this);", method="post",
+            h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
+            h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&site=eds-live&scope=site&type=0&custid=s1240919&groupid=main&profid=eds&mode=bool&lang=cs&authtype=ip,guest"},
+            h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
+            h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
+            h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
+            h.label{"Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}}
+          }
+            ),
+            tab("e-casopisy", "E-časopisy", p{"Elektronické časopisy"})
+          }}),
+           medium(3, {card {h.h2{"Obálky knih"},
+           row{
+           obalky "978-80-7422-500-0",
+           -- obalky "80-85368-18-8", 
+           -- obalky "978-80-7294-458-3"
+         }}})
+         },
+    row{
+     boxik("Studenti se specifickými potřebami"),
+     boxik("EIZ pro PedF"),
+     boxik("Oborové EIZ"),
+     boxik("Periodika"), 
+     boxik("Návody"),
+     boxik("Řády a ceníky"),
+     boxik("Kontakty"),
+     boxik("Facebook"),
+     boxik("Galerie knihovny"),
+     boxik("Formuláře")
+    },
       })
         ,
       medium(3,{ 
@@ -170,20 +237,15 @@ local function template(title, body)
           }
         }
       }},
-      card {div {"Ankety"}}
+      card {h.h2 {"Ankety"}, 
+      p {"Nějaká otázka. Trochu delší text"},
+      h.ol{
+        h.li{"první možnost", progress(300)},
+        h.li{"druhá možnost", progress(400)}, 
+        h.li {"třetí možnost",progress(300)}
+      }
+      }
     })
-    },
-    row{
-     boxik("Studenti se specifickými potřebami"),
-     boxik("EIZ pro PedF"),
-     boxik("Oborové EIZ"),
-     boxik("Periodika"), 
-     boxik("Návody"),
-     boxik("Řády a ceníky"),
-     boxik("Kontakty"),
-     boxik("Facebook"),
-     boxik("Galerie knihovny"),
-     boxik("Formuláře")
     },
 
 
@@ -193,6 +255,7 @@ local function template(title, body)
     -- }},
     h.footer{},
     -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
+    h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true}
   },
 }
 ))

@@ -1,0 +1,14 @@
+/* tricks from https://madebymike.com.au/writing/precise-control-responsive-typography/*/
+:root { font-size: 14px;  /* default below 600px */ }
+@media (min-width: 933px){
+    :root {
+          font-size: 1.5vw;
+              }
+}
+@media (min-width: 1200px){
+    :root {
+          font-size: 18px;
+              }
+}
+
+body.container{padding-top:1rem;}

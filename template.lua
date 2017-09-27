@@ -106,10 +106,10 @@ local function template(title, body)
       h.meta{name="viewport", content="width=device-width, initial-scale=1"},
       h.title{(title)},
       -- tohle změnit, použít lokální verzi
-      -- h.link{rel="stylesheet", type="text/css", href="media.css"},
       -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
       h.link{rel="stylesheet", type="text/css", href="mini-knihovna.css"},
       h.link{rel="stylesheet", type="text/css", href="style.css"},
+      h.link{rel="stylesheet", type="text/css", href="media.css"},
       -- h.link{rel="stylesheet", type="text/css", href="src/responsive-nav.css"},
       -- h.script{type="text/javascript", src="responsive-nav.js",},
     },

@@ -14,6 +14,7 @@ local merge = require("lettersmith.table_utils").merge
 local sitemap = require "sitemap"
 local prov_doba = require "prov_doba"
 local templates = require("templates")
+local base_template = require "templates.base"
 
 
 
@@ -61,6 +62,11 @@ local add_defaults = make_transformer(function(doc)
   return doc
 end)
 
+-- aplikovat h5tk templates
+local apply_template = make_transformer(function(doc)
+  local rendered = base_template(doc)
+  return merge(doc, {contents = rendered})
+end)
 
 
 local add_sitemap = make_transformer(function(doc)
@@ -88,55 +94,56 @@ local sitemap_to_portal = function(name)
 end
 
 local builder = comp(
-  lettersmith.docs
+lettersmith.docs
 )
 
 -- use templates on html files
 local html_builder = comp(
-  render_mustache("tpl/",templates),
-  add_defaults,
-  html_filter,
-  not_diplomky,
-  lettersmith.docs
+apply_template,
+-- render_mustache("tpl/",templates),
+add_defaults,
+html_filter,
+not_diplomky,
+lettersmith.docs
 )
 
 -- don't use templates and anything fancy on css files
 local css_builder = comp(
-  css_filter,
-  lettersmith.docs
+css_filter,
+lettersmith.docs
 )
 
 local rss_gen = comp(
-  rss.generate_rss("feed.rss","http://knihovna.pedf.cuni.cz", "Knihovna PedF UK", ""),
-  lettersmith.docs
+rss.generate_rss("feed.rss","http://knihovna.pedf.cuni.cz", "Knihovna PedF UK", ""),
+lettersmith.docs
 )
 
 
 local index_gen = comp(
-  render_mustache("tpl/",templates),
-  -- render_page,
-  add_sitemap,
-  index("index.html"),
-  lettersmith.docs
+render_mustache("tpl/",templates),
+-- render_page,
+add_sitemap,
+index("index.html"),
+lettersmith.docs
 )
 
 local archive_gen = comp(
-  render_mustache("tpl/", templates),
-  add_sitemap,
-  archiv("archiv.html"),
-  lettersmith.docs
+render_mustache("tpl/", templates),
+add_sitemap,
+archiv("archiv.html"),
+lettersmith.docs
 )
 
 local katalog_portal = comp(
-  render_mustache("tpl/",templates),
-  sitemap_to_portal)
+render_mustache("tpl/",templates),
+sitemap_to_portal)
 
 -- Build files, writing them to "www" folder
 local dipl_builder = comp(
-  render_mustache("tpl/",templates),
-  add_defaults,
-  html_filter,
-  lettersmith.docs
+render_mustache("tpl/",templates),
+add_defaults,
+html_filter,
+lettersmith.docs
 )
 
 

@@ -8,8 +8,8 @@ local filter  = transducers.filter
 local lazy = require "lettersmith.lazy"
 local transform = lazy.transform
 local transformer = lazy.transformer
-local index = require("index").index
-local archiv = require("archivaktual").index
+-- local index = require("index").index
+-- local archiv = require("archivaktual").index
 local merge = require("lettersmith.table_utils").merge
 local sitemap = require "sitemap"
 local prov_doba = require "prov_doba"
@@ -119,32 +119,32 @@ lettersmith.docs
 )
 
 
-local index_gen = comp(
-render_mustache("tpl/",templates),
--- render_page,
-add_sitemap,
-index("index.html"),
-lettersmith.docs
-)
+-- local index_gen = comp(
+-- render_mustache("tpl/",templates),
+-- -- render_page,
+-- add_sitemap,
+-- index("index.html"),
+-- lettersmith.docs
+-- )
 
-local archive_gen = comp(
-render_mustache("tpl/", templates),
-add_sitemap,
-archiv("archiv.html"),
-lettersmith.docs
-)
+-- local archive_gen = comp(
+-- render_mustache("tpl/", templates),
+-- add_sitemap,
+-- archiv("archiv.html"),
+-- lettersmith.docs
+-- )
 
-local katalog_portal = comp(
-render_mustache("tpl/",templates),
-sitemap_to_portal)
+-- local katalog_portal = comp(
+-- render_mustache("tpl/",templates),
+-- sitemap_to_portal)
 
--- Build files, writing them to "www" folder
-local dipl_builder = comp(
-render_mustache("tpl/",templates),
-add_defaults,
-html_filter,
-lettersmith.docs
-)
+-- -- Build files, writing them to "www" folder
+-- local dipl_builder = comp(
+-- render_mustache("tpl/",templates),
+-- add_defaults,
+-- html_filter,
+-- lettersmith.docs
+-- )
 
 
 local commands = {
@@ -163,12 +163,12 @@ if commands[argument] == nil then
   "www", 
   builder(paths), 
   html_builder(paths),
-  css_builder(paths), 
-  rss_gen(aktuality),
-  archive_gen(aktuality),
-  index_gen(aktuality),
-  katalog_portal("Katalogy a databáze"),
-  katalog_portal("Služby")
+  css_builder(paths)
+  -- rss_gen(aktuality),
+  -- archive_gen(aktuality),
+  -- index_gen(aktuality),
+  -- katalog_portal("Katalogy a databáze"),
+  -- katalog_portal("Služby")
   )
   print "Použili jsme defaultní nastavení"
   print "Použij texlua web.lua prikaz pro alternativní nastavení"

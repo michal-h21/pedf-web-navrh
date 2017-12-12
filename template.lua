@@ -150,8 +150,8 @@ local function template(title, body)
         -- class="row",
         h.span {class="logo", "{Logo}"},
         menuitem("Služby knihovny","sluzby.html"),
-        menuitem("Evidence publikací", "biblio"),
-        menuitem("Závěrečné práce a citace", "katalogy.html"),
+        menuitem("Evidence publikací", "biblio.html"),
+        menuitem("Závěrečné práce a citace", "kvalifikacni_prace.htm"),
         menuitem("Poprvé v knihovně", "bibliografie.html"),
         menuitem("Návrh na doplnění fondu","dokumenty.html"),
         menuitem("Napiště nám", "knihovna.html"),
@@ -164,7 +164,7 @@ local function template(title, body)
         card {
           h.h2{ "Aktuality"},
           actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
-          actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme všechny uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
+          actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme <b>všechny</b> uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
         }},
         row {
            -- medium(9, {card {p{"Vyhledávací boxy"}}}),

@@ -160,9 +160,9 @@ local function template(data)
         h.span{ a{href="en/index.html","&#x1F1EC;&#x1F1E7;"}} -- odkaz na anglickou verzi stránek
         -- }},
       },
-      row{
-        data.contents
-    },
+      -- row{
+        data.contents,
+    -- },
 
 
     -- h.div{class="row", h.div {class="col-sm-12 col-md-10 col-md-offset-1",

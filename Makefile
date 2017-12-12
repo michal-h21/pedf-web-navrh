@@ -15,9 +15,10 @@ mini-knihovna.css: mini.css/src/flavors/mini-knihovna.scss
 
 generate:
 	texlua web.lua
+	cp index.html www
 	cp mini-knihovna.css media.css style.css www
 	mkdir www/img
-	cp img/logo.svg www/img/
+	cp img/logo.svg img/gb.svg www/img/
 
 upload:
 	scp mini-knihovna.css style.css index.html beta:/var/www/html/navrh/

@@ -95,6 +95,7 @@ end
 
 local function mainmenu(menuitems)
   local t = {}
+  local menuitems = menuitems or {}
   for _, item in ipairs(menuitems) do
     table.insert(t, menuitem(item.title, item.href))
   end

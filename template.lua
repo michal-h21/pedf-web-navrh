@@ -149,7 +149,7 @@ local function template(title, body)
         -- h.ul{
         -- class="row",
         h.span {class="logo", "{Logo}"},
-        menuitem("Služby knihovny","sluzby.html"),
+        menuitem("Služby knihovny","sluzby.htm"),
         menuitem("Evidence publikací", "biblio.html"),
         menuitem("Závěrečné práce a citace", "kvalifikacni_prace.htm"),
         menuitem("Poprvé v knihovně", "bibliografie.html"),

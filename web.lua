@@ -9,18 +9,22 @@ local lazy = require "lettersmith.lazy"
 local transform = lazy.transform
 local transformer = lazy.transformer
 -- local index = require("index").index
+local newindex_template = require("newindex").template
 -- local archiv = require("archivaktual").index
 local merge = require("lettersmith.table_utils").merge
 local sitemap = require "sitemap"
+local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
 local menuitem = function(title, href) return {title = title, href= href} end
 local mainmenu = {
-        menuitem("Služby knihovny","sluzby.htm"),
-        menuitem("Evidence publikací", "biblio.html"),
-        menuitem("Závěrečné práce a citace", "kvalifikacni_prace.htm"),
-        menuitem("Průvodce knihovnou", "pruvodce.html"),
-        menuitem("Návrh na doplnění fondu","e-formulare.htm"),
-        menuitem("Napiště nám", "kontaktni_adresa.htm"),
-        }
+  menuitem("Služby knihovny","sluzby.htm"),
+  menuitem("Evidence publikací", "biblio.html"),
+  menuitem("Závěrečné práce a citace", "kvalifikacni_prace.htm"),
+  menuitem("Průvodce knihovnou", "pruvodce.html"),
+  menuitem("Návrh na doplnění fondu","e-formulare.htm"),
+  menuitem("Napiště nám", "kontaktni_adresa.htm"),
+}
+
+
 local prov_doba = require "prov_doba"
 local templates = require("templates")
 local base_template = require "templates.base"
@@ -45,7 +49,7 @@ local make_filter = function(reg)
     local fn = doc.relative_filepath
     return fn:match(reg)
   end
- ))
+  ))
 end
 
 local html_filter = make_filter("htm[l]?$")
@@ -53,9 +57,9 @@ local html_filter = make_filter("htm[l]?$")
 local css_filter =  make_filter("css$")
 
 local not_diplomky =   transformer(filter(function(doc)
-    local fn = doc.relative_filepath
-    return not fn:match("diplomky/")
-  end))
+  local fn = doc.relative_filepath
+  return not fn:match("diplomky/")
+end))
 
 
 local add_defaults = make_transformer(function(doc)
@@ -78,6 +82,11 @@ local apply_template = make_transformer(function(doc)
   return merge(doc, {contents = rendered})
 end)
 
+local apply_newindex = make_transformer(function(doc)
+  doc.menuitems = mainmenu
+  local rendered = newindex_template(doc)
+  return merge(doc, {contents = rendered})
+end)
 
 local add_sitemap = make_transformer(function(doc)
   doc.sitemap=sitemap
@@ -129,13 +138,27 @@ lettersmith.docs
 )
 
 
--- local index_gen = comp(
+local newindex = function(filepath)
+  -- local take_news = comp(take(5), map(get_news_item))
+  return function(iter, ...)
+    -- local items = into(take_news, iter, ...)
+    local items = {}
+    -- local date = items[1].date
+    local title = "Knihovna PedF UK"
+    print("mainmenu", mainmenu)
+    return wrap_in_iter { title=title, menuitems =mainmenu, date = date, items = items, relative_filepath = filepath}
+  end
+end
+local index_gen = comp(
+-- apply_template,
 -- render_mustache("tpl/",templates),
--- -- render_page,
+-- render_page,
 -- add_sitemap,
--- index("index.html"),
--- lettersmith.docs
--- )
+apply_newindex,
+newindex("index.html"),
+add_defaults,
+lettersmith.docs
+)
 
 -- local archive_gen = comp(
 -- render_mustache("tpl/", templates),
@@ -173,7 +196,8 @@ if commands[argument] == nil then
   "www", 
   builder(paths), 
   html_builder(paths),
-  css_builder(paths)
+  css_builder(paths),
+  index_gen(paths)
   -- rss_gen(aktuality),
   -- archive_gen(aktuality),
   -- index_gen(aktuality),

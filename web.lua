@@ -12,6 +12,15 @@ local transformer = lazy.transformer
 -- local archiv = require("archivaktual").index
 local merge = require("lettersmith.table_utils").merge
 local sitemap = require "sitemap"
+local menuitem = function(title, href) return {title = title, href= href} end
+local mainmenu = {
+        menuitem("Služby knihovny","sluzby.htm"),
+        menuitem("Evidence publikací", "biblio.html"),
+        menuitem("Závěrečné práce a citace", "kvalifikacni_prace.htm"),
+        menuitem("Průvodce knihovnou", "pruvodce.html"),
+        menuitem("Návrh na doplnění fondu","e-formulare.htm"),
+        menuitem("Napiště nám", "kontaktni_adresa.htm"),
+        }
 local prov_doba = require "prov_doba"
 local templates = require("templates")
 local base_template = require "templates.base"
@@ -58,6 +67,7 @@ local add_defaults = make_transformer(function(doc)
     table.insert(doc.styles,"css/design.css")
   end
   doc.sitemap = sitemap
+  doc.menuitems = mainmenu
   doc.prov_doba = prov_doba
   return doc
 end)

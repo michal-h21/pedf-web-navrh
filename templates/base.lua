@@ -93,6 +93,15 @@ local function provozni_doba(data)
   return jednotky(data)
 end
 
+local function mainmenu(menuitems)
+  local t = {}
+  for _, item in ipairs(menuitems) do
+    table.insert(t, menuitem(item.title, item.href))
+  end
+  return t
+end
+
+
 
 local function boxik(title, content)
   return medium(3,card {h.h3 {title}, {content} })
@@ -121,7 +130,7 @@ local function template(data)
       medium(9, 
       {
         -- h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
-        h.a{href="http://knihovna.pedf.cuni.cz", h.img{style="height:90%;",src="img/logo.svg"}},
+        h.a{href="index.html", h.img{style="height:90%;",src="img/logo.svg"}},
         -- h.a{
         --   class="logo",
         --   href="/",
@@ -151,13 +160,8 @@ local function template(data)
         -- h.ul{
         -- class="row",
         h.span {class="logo", "{Logo}"},
-        menuitem("Služby knihovny","sluzby.html"),
-        menuitem("Evidence publikací", "biblio.html"),
-        menuitem("Závěrečné práce a citace", "kvalifikacni_prace.htm"),
-        menuitem("Poprvé v knihovně", "bibliografie.html"),
-        menuitem("Návrh na doplnění fondu","dokumenty.html"),
-        menuitem("Napiště nám", "knihovna.html"),
-        h.span{ a{href="en/index.html","&#x1F1EC;&#x1F1E7;"}} -- odkaz na anglickou verzi stránek
+        mainmenu(data.menuitems),
+        h.span{ a{href="en/index.html",h.img{src="img/gb.svg", alt="en", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
         -- }},
       },
       -- row{

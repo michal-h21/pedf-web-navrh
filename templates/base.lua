@@ -106,7 +106,7 @@ end
 
 local function boxik(title, href)
   -- return medium(3,card {h.h3 {title}, {content} })
-  return medium(3, h.a {href=href, title})
+  return medium(2, h.a {href=href, title})
 end
 
 -- function column
@@ -178,7 +178,15 @@ local function template(data)
     h.footer{
       row{
         boxik("EIZ pro PedF", "eiz.htm"),
-        boxik('Časopisy', "periodika.htm")
+        boxik('Časopisy', "periodika.htm"),
+        boxik("Studenti se speciálními potřebami", "handi.htm"),
+        boxik("Návody", "navody.html"),
+        boxik("O knihovně", "informace.htm"),
+        -- boxik("Řády a ceníky", 
+        boxik("Facebook", "http://www.facebook.com/pages/%C3%9Ast%C5%99edn%C3%AD-knihovna-Pedagogick%C3%A9-fakulty-Univerzity-Karlovy/119305204810664"),
+        boxik("Pracoviště a zaměstnanci", "adresar.htm"),
+        boxik("Formuláře", "e-formulare.htm")
+
     }
     },
     -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}

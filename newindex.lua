@@ -150,18 +150,18 @@ local function template(doc )
         -- obalky "978-80-7294-458-3"
       }}})
     },
-    row{
-      boxik("Studenti se specifickými potřebami"),
-      boxik("EIZ pro PedF"),
-      boxik("Oborové EIZ"),
-      boxik("Periodika"), 
-      boxik("Návody"),
-      boxik("Řády a ceníky"),
-      boxik("Kontakty"),
-      boxik("Facebook"),
-      boxik("Galerie knihovny"),
-      boxik("Formuláře")
-    },
+    -- row{
+    --   boxik("Studenti se specifickými potřebami"),
+    --   boxik("EIZ pro PedF"),
+    --   boxik("Oborové EIZ"),
+    --   boxik("Periodika"), 
+    --   boxik("Návody"),
+    --   boxik("Řády a ceníky"),
+    --   boxik("Kontakty"),
+    --   boxik("Facebook"),
+    --   boxik("Galerie knihovny"),
+    --   boxik("Formuláře")
+    -- },
   })
   ,
   medium(3,
@@ -199,7 +199,6 @@ local function template(doc )
 -- h.div{class="card", h.section {class="section ",
 -- (body)
 -- }},
-h.footer{},
 -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
 h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true}
 }

@@ -104,8 +104,9 @@ end
 
 
 
-local function boxik(title, content)
-  return medium(3,card {h.h3 {title}, {content} })
+local function boxik(title, href)
+  -- return medium(3,card {h.h3 {title}, {content} })
+  return medium(3, h.a {href=href, title})
 end
 
 -- function column
@@ -174,9 +175,14 @@ local function template(data)
     -- h.div{class="card", h.section {class="section ",
     -- (body)
     -- }},
-    h.footer{},
+    h.footer{
+      row{
+        boxik("EIZ pro PedF", "eiz.htm"),
+        boxik('Časopisy', "periodika.htm")
+    }
+    },
     -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
-    h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true}
+    -- h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true}
   },
 }
 ))

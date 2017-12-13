@@ -21,7 +21,8 @@ generate:
 	cp img/logo.svg img/gb.svg www/img/
 
 upload:
-	scp mini-knihovna.css style.css index.html beta:/var/www/html/navrh/
-	scp img/*.* beta:/var/www/html/navrh/img/
+	cd www && rsync -avz . beta:/var/www/html/navrh/
+	# scp mini-knihovna.css style.css index.html beta:/var/www/html/navrh/
+	# scp img/*.* beta:/var/www/html/navrh/img/
 	
 

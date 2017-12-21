@@ -148,12 +148,12 @@ local function template(title, body)
         -- h.nav{class="nav-collapse",
         -- h.ul{
         -- class="row",
-        h.span {class="logo", "{Logo}"},
-        menuitem("Služby knihovny","sluzby.htm"),
+        h.span {class="logo", "&nbsp;"},
+        menuitem("Služby","sluzby.htm"),
         menuitem("Evidence publikací", "biblio.html"),
-        menuitem("Závěrečné práce a citace", "kvalifikacni_prace.htm"),
-        menuitem("Poprvé v knihovně", "bibliografie.html"),
-        menuitem("Návrh na doplnění fondu","dokumenty.html"),
+        menuitem("Závěrečné práce", "kvalifikacni_prace.htm"),
+        menuitem("Průvodce", "bibliografie.html"),
+        menuitem("Koupit knihy","e-formulare.html"),
         menuitem("Napiště nám", "knihovna.html"),
         h.span{ a{href="en/index.html","&#x1F1EC;&#x1F1E7;"}} -- odkaz na anglickou verzi stránek
         -- }},

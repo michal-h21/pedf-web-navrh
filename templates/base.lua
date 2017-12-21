@@ -161,7 +161,7 @@ local function template(data)
         -- h.nav{class="nav-collapse",
         -- h.ul{
         -- class="row",
-        h.span {class="logo", "{Logo}"},
+        h.span {class="logo", "&nbsp;"},
         mainmenu(data.menuitems),
         h.span{ a{href="en/index.html",h.img{src="img/gb.svg", alt="en", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
         -- }},

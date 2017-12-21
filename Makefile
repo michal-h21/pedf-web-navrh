@@ -1,7 +1,7 @@
 
 .Phony: upload generate
 
-all: style.css index.html mini-knihovna.css upload generate 
+all: style.css index.html mini-knihovna.css generate upload 
 
 style.css: style.lua
 	lua style.lua > style.css

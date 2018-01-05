@@ -16,12 +16,13 @@ local sitemap = require "sitemap"
 local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
 local menuitem = function(title, href) return {title = title, href= href} end
 local mainmenu = {
+  menuitem("Domů","index.html"),
   menuitem("Služby","sluzby.htm"),
   menuitem("Evidence publikací", "biblio.html"),
   menuitem("Závěrečné práce", "kvalifikacni_prace.htm"),
-  menuitem("Průvodce", "pruvodce.html"),
+  -- menuitem("Průvodce", "pruvodce.html"),
   menuitem("Nákup publikací","e-formulare.htm"),
-  menuitem("Napiště nám", "kontaktni_adresa.htm"),
+  menuitem("O knihovně", "informace.htm"),
 }
 
 

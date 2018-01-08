@@ -6,14 +6,20 @@ local map = transducers.map
 local reduce = transducers.reduce
 local filter  = transducers.filter
 local lazy = require "lettersmith.lazy"
+local take = transducers.take
+local into = transducers.into
 local transform = lazy.transform
+local archiv = require "archivaktual".index
 local transformer = lazy.transformer
 -- local index = require("index").index
 local newindex_template = require("newindex").template
 -- local archiv = require("archivaktual").index
 local merge = require("lettersmith.table_utils").merge
+local docs = require("lettersmith.docs_utils")
+local derive_date = docs.derive_date
 local sitemap = require "sitemap"
 local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
+local discount = require "discount"
 local menuitem = function(title, href) return {title = title, href= href} end
 local mainmenu = {
   menuitem("Domů","index.html"),
@@ -21,7 +27,7 @@ local mainmenu = {
   menuitem("Evidence publikací", "biblio.html"),
   menuitem("Závěrečné práce", "kvalifikacni_prace.htm"),
   -- menuitem("Průvodce", "pruvodce.html"),
-  menuitem("Nákup publikací","e-formulare.htm"),
+  menuitem("Nákup publikací","objednavani_liter.htm"),
   menuitem("O knihovně", "informace.htm"),
 }
 
@@ -139,11 +145,25 @@ lettersmith.docs
 )
 
 
+-- local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
+local get_news_item = function(doc)
+  local title = doc.title
+  local contents = discount(doc.contents)
+  local date = derive_date(doc)
+  local date_table = {}
+  date:gsub("(....)-(..)-(..)", function(year, month, day)
+    date_table = {year = tonumber(year), month = tonumber(month), day=tonumber(day)}
+  end)
+  date = os.time(date_table)
+  date = os.date("%d.%m.%Y", date)
+  return {akt_title = title, contents = contents, date = date}
+end
+
 local newindex = function(filepath)
-  -- local take_news = comp(take(5), map(get_news_item))
+  local take_news = comp(take(3), map(get_news_item))
   return function(iter, ...)
-    -- local items = into(take_news, iter, ...)
-    local items = {}
+    local items = into(take_news, iter, ...)
+    -- local items = {}
     -- local date = items[1].date
     local title = "Knihovna PedF UK"
     print("mainmenu", mainmenu)
@@ -161,12 +181,12 @@ add_defaults,
 lettersmith.docs
 )
 
--- local archive_gen = comp(
--- render_mustache("tpl/", templates),
--- add_sitemap,
--- archiv("archiv.html"),
--- lettersmith.docs
--- )
+local archive_gen = comp(
+render_mustache("tpl/", templates),
+add_sitemap,
+archiv("archiv.html"),
+lettersmith.docs
+)
 
 -- local katalog_portal = comp(
 -- render_mustache("tpl/",templates),
@@ -198,9 +218,10 @@ if commands[argument] == nil then
   builder(paths), 
   html_builder(paths),
   css_builder(paths),
-  index_gen(paths)
-  -- rss_gen(aktuality),
-  -- archive_gen(aktuality),
+  -- index_gen(paths),
+  index_gen(aktuality),
+  rss_gen(aktuality)
+  -- archive_gen(aktuality)
   -- index_gen(aktuality),
   -- katalog_portal("Katalogy a databáze"),
   -- katalog_portal("Služby")

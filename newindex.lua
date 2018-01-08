@@ -94,8 +94,20 @@ local function provozni_doba(data)
 end
 
 
+
 local function boxik(title, content)
   return medium(3,card {h.h3 {title}, {content} })
+end
+
+local function print_actual(items)
+  local t = {}
+  for i, item in ipairs(items) do
+   table.insert(t, h.h3{item.date  .. " – " ..item.akt_title})
+   -- table.insert(t, h.p{h.small {item.date}})
+   table.insert(t, item.contents)
+   if i < #items then table.insert(t, h.hr{}) end
+  end
+  return t
 end
 
 -- function column
@@ -106,9 +118,10 @@ local function template(doc )
       medium(9,{
         row{
           card {
-            h.h2{ "Aktuality"},
-            actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
-            actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme <b>všechny</b> uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
+            h.h2{ "Aktuality", " (", h.a {href="archiv.html", "archiv"}, ")"  },
+            print_actual(doc.items),
+            -- actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
+            -- actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme <b>všechny</b> uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
           }},
           row {
             -- medium(9, {card {p{"Vyhledávací boxy"}}}),
@@ -153,6 +166,7 @@ local function template(doc )
     -- row{
     --   boxik("Studenti se specifickými potřebami"),
     --   boxik("EIZ pro PedF"),
+    --   k
     --   boxik("Oborové EIZ"),
     --   boxik("Periodika"), 
     --   boxik("Návody"),

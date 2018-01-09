@@ -1,6 +1,7 @@
 
 local h5tk = require "h5tk"
 local css = require "css"
+local building_blocks = require "lib.building_blocks"
 
 local h = h5tk.init(true)
 
@@ -11,87 +12,20 @@ local menuitem = function(title, href)
   return h.a{href=href, class="button", title}
 end
 
-local function ipsum()
-  return h.p {[[ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis semper tellus. Nulla mollis orci ante, eget pulvinar dolor semper ut. Nunc aliquam quis elit sed ultricies. Aenean vulputate commodo lobortis. Donec ac urna augue. Maecenas a nunc a risus commodo tincidunt a a dui. Pellentesque pellentesque leo in arcu placerat vulputate. Nulla lobortis velit metus.]]},
-  h.p {[[Duis eu pulvinar lectus. Phasellus congue ipsum vitae molestie tincidunt. Nam ante velit, tincidunt sit amet enim id, tempor ultricies libero. Donec eget nisi vel metus maximus accumsan sit amet id lacus. In hac habitasse platea dictumst. Donec enim sem, tincidunt quis magna et, consectetur faucibus justo. Donec laoreet nunc vel mi hendrerit elementum. Suspendisse fringilla metus tempor, eleifend dui sed, rutrum sapien. Fusce at aliquam magna, et laoreet turpis. Nulla ullamcorper ex vitae placerat suscipit. In lobortis eget est ac malesuada. Aenean mattis ante quam, nec ornare mi porta non. Pellentesque sed neque non ligula aliquam congue. Donec viverra efficitur velit at suscipit. Quisque maximus odio id bibendum vehicula. ]]}
-end
 
+local row = building_blocks.row
 
-local function row(content)
-  return h.div{class="row", content}
-end
+-- local class = building_blocks.class
 
-local class = function(tab)
-  if type(tab) == "table" then
-    return table.concat(tab, " ")
-  end
-  return tab
-end
+-- local column = building_blocks.column
 
--- don't use column directly
-local function column(typ, content)
-  local typ = typ or "col-med"
-  return div{ class=class{"col-sm-12", typ}, content }
-end
+local medium = building_blocks.medium
 
--- use
-local function medium(width, content)
-  local width = width or 6
-  return column("col-md-" .. width, content)
-end
+-- local card = building_blocks.card
 
-local function card(content)
-  return div {class="card fluid", section {class = "section", content}}
-end
+-- local tab = building_blocks.tab
+-- local boxik = building_blocks.boxik
 
-local function tab(name, label, content, checked)
-  return {h.input{type="radio", name="tab-group", id=name,checked=checked, ["aria-hidden"] = true},
-  h.label {["for"] = name, ["aria-hidden"]=true, label},
-  div{content}
-  }
-end
-
-
-
-local function actuality(title, date, content)
-  return section{ 
-    class="section dark",
-    h.h3 { date .. "  – "..title},
-    content
-  }
-end
-
-local function obalky(isbn)
-  return h.img{style = "height:9rem;display:inline;", src='https://www.obalkyknih.cz/api/cover?isbn=' .. isbn}
-end
-
-local function progress(percent)
-  return h.progress{value = percent, max=1000}
-end
-   
-local function provozni_doba(data) 
-  local t = {}
-  local function tbl(jednotka)
-      local tble = {h.caption{jednotka.name}}--h.table {}
-      for _, obdobi in ipairs(jednotka.data) do
-        local row = h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
-        -- h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
-        table.insert(tble, row)
-      end
-      return tble
-  end
-  local function jednotky(data) 
-    for _, jednotka in ipairs(data) do
-      -- table.insert(t, h.h3 {jednotka.name})
-      -- h.h3 {jednotka.name}
-      -- table.insert(jednotka.data, 1, h.caption {jednotka.name})
-      table.insert(t, h.table {tbl(jednotka)})
-      -- table.insert(t, tble)
-    end
-    return t
-  end
-  return jednotky(data)
-end
 
 local function mainmenu(menuitems)
   local t = {}
@@ -130,7 +64,10 @@ local function template(data)
       <link rel="manifest" href="/manifest.json">
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
       <meta name="theme-color" content="#ffffff">
+      <link rel="stylesheet" type="text/css" href="/css/fa-svg-with-js.css" />
+      <script defer src="/js/fontawesome-all.min.js"></script>
       ]]
+
       -- h.link{rel="stylesheet", type="text/css", href="src/responsive-nav.css"},
       -- h.script{type="text/javascript", src="responsive-nav.js",},
     },
@@ -185,15 +122,15 @@ local function template(data)
     -- }},
     h.footer{
       row{
-        boxik("EIZ pro PedF", "eiz.htm"),
-        boxik('Časopisy', "periodika.htm"),
-        boxik("Studenti se speciálními potřebami", "handi.htm"),
-        boxik("Návody", "navody.html"),
-        boxik("O knihovně", "informace.htm"),
-        -- boxik("Řády a ceníky", 
-        boxik("Facebook", "http://www.facebook.com/pages/%C3%9Ast%C5%99edn%C3%AD-knihovna-Pedagogick%C3%A9-fakulty-Univerzity-Karlovy/119305204810664"),
-        boxik("Pracoviště a zaměstnanci", "adresar.htm"),
-        boxik("Formuláře", "e-formulare.htm")
+        -- boxik("EIZ pro PedF", "eiz.htm"),
+        -- boxik('Časopisy', "periodika.htm"),
+        -- boxik("Studenti se speciálními potřebami", "handi.htm"),
+        -- boxik("Návody", "navody.html"),
+        -- boxik("O knihovně", "informace.htm"),
+        -- -- boxik("Řády a ceníky", 
+        -- boxik("Facebook", "http://www.facebook.com/pages/%C3%9Ast%C5%99edn%C3%AD-knihovna-Pedagogick%C3%A9-fakulty-Univerzity-Karlovy/119305204810664"),
+        -- boxik("Pracoviště a zaměstnanci", "adresar.htm"),
+        -- boxik("Formuláře", "e-formulare.htm")
 
     }
     },

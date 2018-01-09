@@ -45,7 +45,7 @@ end
 local function provozni_doba(data)
   local t = {}
   local function tbl(jednotka)
-      local tble = {h.caption{jednotka.name}}--h.table {}
+      local tble = {h.h2{jednotka.name}}--h.table {}
       for _, obdobi in ipairs(jednotka.data) do
         local curr_row = h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
         -- h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
@@ -85,7 +85,8 @@ local function template(doc )
           }},
           row {
             -- medium(9, {card {p{"Vyhledávací boxy"}}}),
-            medium(9, card{ div{class="tabs", 
+            -- medium(9, card{ div{class="tabs", 
+            card{ div{class="tabs", 
             tab("aleph", "Katalog",  h.form{action="https://ckis.cuni.cz/F/", method="get", target="_blank", 
             h.input{  name="local_base", value="pedfr", type="hidden"},
             h.input {name="func", value="find-e" ,type="hidden"},
@@ -115,15 +116,7 @@ local function template(doc )
         }
         ),
         tab("e-casopisy", "E-časopisy", p{"Elektronické časopisy"})
-      }}),
-      medium(3, {card {h.h2{"Obálky knih"},
-      row{
-        obalky "978-80-7422-500-0",
-        -- obalky "80-85368-18-8", 
-        -- obalky "978-80-7294-458-3"
-      },
-      div{a{href="/nove_knihy/index.html", "Nové knihy"}}
-    }})
+      }},
     },
     -- row{
     --   boxik("Studenti se specifickými potřebami"),
@@ -142,7 +135,7 @@ local function template(doc )
   ,
   medium(3,
   { 
-    card{h.h2{"Provozní doba"}, provozni_doba{
+    card{ provozni_doba{
       {
         name = "Výpůjční protokol",
         data = {
@@ -157,16 +150,31 @@ local function template(doc )
           {day = "Pá", time = "8.00–16.00"}
         }
       }
+    }, div{ a {href="provozni_doba.htm", "Více"}}},
+    {card {row { 
+        div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> 221 900 148'},
+      div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}}
+    },
+    row{
+      h.a {href="https://www.facebook.com/knihovnapedfpraha", '<i class="fab fa-facebook-square" aria-hidden="true"></i> knihovnapedfpraha'}
+    }} 
+    },
+      {card {h.h2{ a{href="/nove_knihy/index.html", "Nové knihy"}},
+      row{
+        obalky "978-80-7422-500-0",
+        -- obalky "80-85368-18-8", 
+        -- obalky "978-80-7294-458-3"
+      },
     }},
-    card {
-      h.h2 {"Ankety"}, 
-      p {"Nějaká otázka. Trochu delší text"},
-      h.ol{
-        h.li{"první možnost", progress(300)},
-        h.li{"druhá možnost", progress(400)}, 
-        h.li {"třetí možnost",progress(300)}
-      }
-    }
+    -- card {
+    --   h.h2 {"Ankety"}, 
+    --   p {"Nějaká otázka. Trochu delší text"},
+    --   h.ol{
+    --     h.li{"první možnost", progress(300)},
+    --     h.li{"druhá možnost", progress(400)}, 
+    --     h.li {"třetí možnost",progress(300)}
+    --   }
+    -- }
   })
 },
 

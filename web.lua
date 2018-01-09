@@ -12,9 +12,9 @@ local rss = require "atom"
 local sitemap = require "sitemap"
 local discount = require "discount"
 local archiv = require "archivaktual".index
-local newindex_template = require "newindex".template
+local newindex_template = require "templates.newindex".template
 local prov_doba = require "prov_doba"
-local templates = require("templates")
+-- local templates = require("templates")
 local base_template = require "templates.base"
 
 -- lettersmith utils

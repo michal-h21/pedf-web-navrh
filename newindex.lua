@@ -1,64 +1,37 @@
 local h5tk = require "h5tk"
-local css = require "css"
+-- local css = require "css"
 local base_template = require "templates.base"
+local building_blocks = require "lib.building_blocks"
 
 local h = h5tk.init(true)
 
 local a, p, div, header, section = h.a, h.p, h.div, h.header, h.section
 
-local menuitem = function(title, href)
-  -- return h.menuitem{class="button", h.a{src=href, title}}
-  return h.a{href=href, class="button", title}
-end
 
-local function ipsum()
-  return h.p {[[ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis semper tellus. Nulla mollis orci ante, eget pulvinar dolor semper ut. Nunc aliquam quis elit sed ultricies. Aenean vulputate commodo lobortis. Donec ac urna augue. Maecenas a nunc a risus commodo tincidunt a a dui. Pellentesque pellentesque leo in arcu placerat vulputate. Nulla lobortis velit metus.]]},
-  h.p {[[Duis eu pulvinar lectus. Phasellus congue ipsum vitae molestie tincidunt. Nam ante velit, tincidunt sit amet enim id, tempor ultricies libero. Donec eget nisi vel metus maximus accumsan sit amet id lacus. In hac habitasse platea dictumst. Donec enim sem, tincidunt quis magna et, consectetur faucibus justo. Donec laoreet nunc vel mi hendrerit elementum. Suspendisse fringilla metus tempor, eleifend dui sed, rutrum sapien. Fusce at aliquam magna, et laoreet turpis. Nulla ullamcorper ex vitae placerat suscipit. In lobortis eget est ac malesuada. Aenean mattis ante quam, nec ornare mi porta non. Pellentesque sed neque non ligula aliquam congue. Donec viverra efficitur velit at suscipit. Quisque maximus odio id bibendum vehicula. ]]}
-end
+local row = building_blocks.row
+
+-- local class = building_blocks.class
+
+-- local column = building_blocks.column
+
+local medium = building_blocks.medium
+
+local card = building_blocks.card
+
+local tab = building_blocks.tab
+local boxik = building_blocks.boxik
 
 
-local function row(content)
-  return h.div{class="row", content}
-end
 
-local class = function(tab)
-  if type(tab) == "table" then
-    return table.concat(tab, " ")
+local function print_actual(items)
+  local t = {}
+  for i, item in ipairs(items) do
+   table.insert(t, h.h3{item.date  .. " – " ..item.akt_title})
+   -- table.insert(t, h.p{h.small {item.date}})
+   table.insert(t, item.contents)
+   if i < #items then table.insert(t, h.hr{}) end
   end
-  return tab
-end
-
--- don't use column directly
-local function column(typ, content)
-  local typ = typ or "col-med"
-  return div{ class=class{"col-sm-12", typ}, content }
-end
-
--- use
-local function medium(width, content)
-  local width = width or 6
-  return column("col-md-" .. width, content)
-end
-
-local function card(content)
-  return div {class="card fluid", section {class = "section", content}}
-end
-
-local function tab(name, label, content, checked)
-  return {h.input{type="radio", name="tab-group", id=name,checked=checked, ["aria-hidden"] = true},
-  h.label {["for"] = name, ["aria-hidden"]=true, label},
-  div{content}
-  }
-end
-
-
-
-local function actuality(title, date, content)
-  return section{ 
-    class="section dark",
-    h.h3 { date .. "  – "..title},
-    content
-  }
+  return t
 end
 
 local function obalky(isbn)
@@ -68,20 +41,20 @@ end
 local function progress(percent)
   return h.progress{value = percent, max=1000}
 end
-   
-local function provozni_doba(data) 
+
+local function provozni_doba(data)
   local t = {}
   local function tbl(jednotka)
       local tble = {h.caption{jednotka.name}}--h.table {}
       for _, obdobi in ipairs(jednotka.data) do
-        local row = h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
+        local curr_row = h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
         -- h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
-        table.insert(tble, row)
+        table.insert(tble, curr_row)
       end
       return tble
   end
-  local function jednotky(data) 
-    for _, jednotka in ipairs(data) do
+  local function jednotky(idata)
+    for _, jednotka in ipairs(idata) do
       -- table.insert(t, h.h3 {jednotka.name})
       -- h.h3 {jednotka.name}
       -- table.insert(jednotka.data, 1, h.caption {jednotka.name})
@@ -95,20 +68,7 @@ end
 
 
 
-local function boxik(title, content)
-  return medium(3,card {h.h3 {title}, {content} })
-end
 
-local function print_actual(items)
-  local t = {}
-  for i, item in ipairs(items) do
-   table.insert(t, h.h3{item.date  .. " – " ..item.akt_title})
-   -- table.insert(t, h.p{h.small {item.date}})
-   table.insert(t, item.contents)
-   if i < #items then table.insert(t, h.hr{}) end
-  end
-  return t
-end
 
 -- function column
 local function template(doc )
@@ -161,7 +121,9 @@ local function template(doc )
         obalky "978-80-7422-500-0",
         -- obalky "80-85368-18-8", 
         -- obalky "978-80-7294-458-3"
-      }}})
+      },
+      div{a{href="/nove_knihy/index.html", "Nové knihy"}}
+    }})
     },
     -- row{
     --   boxik("Studenti se specifickými potřebami"),

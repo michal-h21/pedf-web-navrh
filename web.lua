@@ -1,30 +1,44 @@
 package.path = "?.lua;lib/?.lua;"..package.path
 local lettersmith = require("lettersmith")
 local transducers = require "lettersmith.transducers"
+local lazy = require "lettersmith.lazy"
+local merge = require("lettersmith.table_utils").merge
+local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
+local docs = require("lettersmith.docs_utils")
+
+local render_mustache = require("lettersmith.mustache").choose_mustache
+
 local rss = require "atom"
+local sitemap = require "sitemap"
+local discount = require "discount"
+local archiv = require "archivaktual".index
+local newindex_template = require "newindex".template
+local prov_doba = require "prov_doba"
+local templates = require("templates")
+local base_template = require "templates.base"
+
+-- lettersmith utils
 local map = transducers.map
 local reduce = transducers.reduce
 local filter  = transducers.filter
-local lazy = require "lettersmith.lazy"
 local take = transducers.take
 local into = transducers.into
+local comp = transducers.comp
 local transform = lazy.transform
-local archiv = require "archivaktual".index
 local transformer = lazy.transformer
 -- local index = require("index").index
-local newindex_template = require("newindex").template
 -- local archiv = require("archivaktual").index
-local merge = require("lettersmith.table_utils").merge
-local docs = require("lettersmith.docs_utils")
 local derive_date = docs.derive_date
-local sitemap = require "sitemap"
-local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
-local discount = require "discount"
+
+
 local menuitem = function(title, href) return {title = title, href= href} end
+
 local mainmenu = {
   menuitem("Domů","index.html"),
   menuitem("Služby","sluzby.htm"),
-  menuitem("Evidence publikací", "biblio.html"),
+  menuitem("Publikační činnost", "biblio.html"),
+  menuitem("Časopisy", "periodika.htm"),
+  menuitem("Elektronické zdroje", "eiz.htm"),
   menuitem("Závěrečné práce", "kvalifikacni_prace.htm"),
   -- menuitem("Průvodce", "pruvodce.html"),
   menuitem("Nákup publikací","objednavani_liter.htm"),
@@ -32,9 +46,6 @@ local mainmenu = {
 }
 
 
-local prov_doba = require "prov_doba"
-local templates = require("templates")
-local base_template = require "templates.base"
 
 
 
@@ -43,9 +54,6 @@ local base_template = require "templates.base"
 local paths = lettersmith.paths("html")
 local aktuality = lettersmith.paths("html/aktuality")
 -- local diplomka_path = lettersmith.paths("diplomky")
-local comp = require("lettersmith.transducers").comp
-
-local render_mustache = require("lettersmith.mustache").choose_mustache
 
 local make_transformer = function(fn)
   return transformer(map(fn))

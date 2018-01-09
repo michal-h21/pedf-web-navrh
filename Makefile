@@ -6,8 +6,8 @@ all: style.css index.html mini-knihovna.css generate upload
 style.css: style.lua
 	lua style.lua > style.css
 
-index.html: template.lua
-	lua template.lua > index.html
+# index.html: template.lua
+	# lua template.lua > index.html
 
 
 mini-knihovna.css: mini.css/src/flavors/mini-knihovna.scss

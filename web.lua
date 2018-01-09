@@ -193,9 +193,20 @@ add_defaults,
 lettersmith.docs
 )
 
+archiv_items = make_transformer(function(doc)
+  local t = {}
+  for _, item in ipairs(doc.items) do
+    t[#t+1] = "<div>" ..item.date .. "</div>"
+  end
+  doc.contents = table.concat(t)
+  return doc
+end)
+-- return {template = template}
+
 local archive_gen = comp(
 -- render_mustache("tpl/", templates),
 apply_template,
+archiv_items,
 add_defaults,
 add_sitemap,
 archiv("archiv.html"),

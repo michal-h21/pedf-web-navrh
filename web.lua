@@ -31,6 +31,9 @@ local transformer = lazy.transformer
 local derive_date = docs.derive_date
 
 
+local building_blocks = require "building_blocks"
+local card = building_blocks.card
+
 local menuitem = function(title, href) return {title = title, href= href} end
 
 local mainmenu = {
@@ -93,6 +96,7 @@ end)
 
 -- aplikovat h5tk templates
 local apply_template = make_transformer(function(doc)
+  doc.contents = card {doc.contents}
   local rendered = base_template(doc)
   return merge(doc, {contents = rendered})
 end)
@@ -190,7 +194,9 @@ lettersmith.docs
 )
 
 local archive_gen = comp(
-render_mustache("tpl/", templates),
+-- render_mustache("tpl/", templates),
+apply_template,
+add_defaults,
 add_sitemap,
 archiv("archiv.html"),
 lettersmith.docs
@@ -228,8 +234,8 @@ if commands[argument] == nil then
   css_builder(paths),
   -- index_gen(paths),
   index_gen(aktuality),
-  rss_gen(aktuality)
-  -- archive_gen(aktuality)
+  rss_gen(aktuality),
+  archive_gen(aktuality)
   -- index_gen(aktuality),
   -- katalog_portal("Katalogy a databáze"),
   -- katalog_portal("Služby")

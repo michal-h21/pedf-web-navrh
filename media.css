@@ -13,4 +13,7 @@
 
 body.container{padding-top:1rem;}
 
+/* html.wf-active {font-family:"Fira Sans";} */
+html.wf-active body *{font-family:"Fira Sans";}
+
 /* section.section h2{text-align:center;} */

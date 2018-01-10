@@ -54,6 +54,7 @@ local function template(data)
       h.title{(data.title)},
       -- tohle změnit, použít lokální verzi
       -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
+      '<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">',
       h.link{rel="stylesheet", type="text/css", href="mini-knihovna.css"},
       h.link{rel="stylesheet", type="text/css", href="style.css"},
       h.link{rel="stylesheet", type="text/css", href="media.css"},
@@ -66,6 +67,14 @@ local function template(data)
       <meta name="theme-color" content="#ffffff">
       <link rel="stylesheet" type="text/css" href="/css/fa-svg-with-js.css" />
       <script defer src="/js/fontawesome-all.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+      <script>
+        WebFont.load({
+          custom: {
+            families: ['Fira Sans']
+          }
+        });
+        </script>
       ]]
 
       -- h.link{rel="stylesheet", type="text/css", href="src/responsive-nav.css"},
@@ -93,7 +102,7 @@ local function template(data)
           h.input{type="hidden", name="k9" , value="#D51920"},
           h.input{type="hidden", name="kt" , value="h"},
           h.input{type="search", name="q" , maxlength="255", placeholder="Hledat na webu knihovny"},
-          h.input{type="submit",class="small", value="&#x2315;"} --style="visibility: hidden;"}
+          h.input{type="submit",class="small", value="Hledat"} --style="visibility: hidden;"}
         }
 
         -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",
@@ -108,7 +117,7 @@ local function template(data)
         -- class="row",
         h.span {class="logo", "&nbsp;"},
         mainmenu(data.menuitems),
-        h.span{ a{href="en/index.html",h.img{src="img/gb.svg", alt="en", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
+        h.span{ a{href="en/index.html",h.img{src="img/gb.svg", alt="English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
         -- }},
       },
       -- row{

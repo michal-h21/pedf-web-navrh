@@ -12,7 +12,7 @@ local row = building_blocks.row
 
 -- local class = building_blocks.class
 
--- local column = building_blocks.column
+local column = building_blocks.column
 
 local medium = building_blocks.medium
 
@@ -86,7 +86,7 @@ local function template(doc )
           row {
             -- medium(9, {card {p{"Vyhledávací boxy"}}}),
             -- medium(9, card{ div{class="tabs", 
-            card{ div{class="tabs", 
+            medium(12, card{ div{class="tabs", 
             tab("aleph", "Katalog",  h.form{action="https://ckis.cuni.cz/F/", method="get", target="_blank", 
             h.input{  name="local_base", value="pedfr", type="hidden"},
             h.input {name="func", value="find-e" ,type="hidden"},
@@ -102,8 +102,10 @@ local function template(doc )
                 h.option {value="FIND_WKW", "Předmět"},
                 h.option {value="SCAN_SUB", "Předmětový rejstřík"},
                 h.option {value="FIND_ISN", "ISBN/ISSN"},
-              }
-            }}
+              },
+              h.input{type="submit", value="hledat"}
+            }},
+            h.div{class="bottom", "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='bjednavani_liter.htm'>nákup</a>"}
           },"selected"),
           tab("ukaz", "Ukaž", 
           h.form{ id="ebscohostCustomSearchBox", action="", onsubmit="return ebscoHostSearchGo(this);", method="post",
@@ -112,11 +114,12 @@ local function template(doc )
           h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
           h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
           h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
-          h.label{"Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}}
+          h.label{"Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
+          h.input{type="submit", value="hledat"}
         }
         ),
-        tab("e-casopisy", "E-časopisy", p{"Elektronické časopisy"})
-      }},
+        tab("e-casopisy", "E-časopisy", p{"Elektronické časopisy a nějaký delší text, aha, to se přizpůsobuje "})
+      }}),
     },
     -- row{
     --   boxik("Studenti se specifickými potřebami"),

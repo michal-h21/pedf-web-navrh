@@ -78,7 +78,7 @@ local function template(doc )
       medium(9,{
         row{
           card {
-            h.h2{ "Aktuality", " (", h.a {href="archiv.html", "archiv"}, ")"  },
+            h.h2{ "Aktuality", ' (<a href="archiv.html">archiv</a>)'  },
             print_actual(doc.items),
             -- actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
             -- actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme <b>všechny</b> uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
@@ -118,7 +118,23 @@ local function template(doc )
           h.input{type="submit", value="hledat"}
         }
         ),
-        tab("e-casopisy", "E-časopisy", p{"Elektronické časopisy a nějaký delší text, aha, to se přizpůsobuje "})
+        tab("e-casopisy", "E-časopisy", [[
+  <form method="get" action="http://sfx.is.cuni.cz/sfxlcl3/az/ukall" target="_blank">
+
+    <input name="param_perform_value" value="searchTitle" type="hidden">
+    <input name="param_jumpToPage_value" value="" type="hidden">
+    <input name="param_type_value" value="textSearch" type="hidden">
+    <input name="param_chinese_checkbox_active" value="1" type="hidden">
+    <input name="param_chinese_checkbox_value" id="param_chinese_checkbox_value1" value="0" type="hidden">
+
+      <label class="i_text">
+        <span>Slova z názvu</span>
+        <input name="param_pattern_value" id="param_pattern_value1" type="search">
+      </label>
+      <input class="i_btn" value="hledat" type="submit">
+  </form>
+        ]]
+        )
       }}),
     },
     -- row{
@@ -159,7 +175,7 @@ local function template(doc )
       div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}}
     },
     row{
-      h.a {href="https://www.facebook.com/knihovnapedfpraha", '<i class="fab fa-facebook-square" aria-hidden="true"></i> knihovnapedfpraha'}
+      h.a {href="https://www.facebook.com/knihovnapedfpraha", '<i class="fab fa-facebook-square" aria-hidden="true"></i>'}, '&nbsp;',a{href="https://www.facebook.com/knihovnapedfpraha",'knihovnapedfpraha'}
     }} 
     },
       {card {h.h2{ a{href="/nove_knihy/index.html", "Nové knihy"}},

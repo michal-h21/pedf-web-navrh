@@ -2,6 +2,7 @@
 local h5tk = require "h5tk"
 local css = require "css"
 local building_blocks = require "lib.building_blocks"
+local translator = require "lib.translator"
 
 local h = h5tk.init(true)
 
@@ -45,6 +46,8 @@ end
 
 -- function column
 local function template(data)
+  local strings = data.strings
+  local T = translator.get_translator(strings)
   
   return "<!DOCTYPE html>\n" .. (h.emit(
   h.html{
@@ -101,7 +104,7 @@ local function template(data)
           h.input{type="hidden", name="k8" , value="#444444"},
           h.input{type="hidden", name="k9" , value="#D51920"},
           h.input{type="hidden", name="kt" , value="h"},
-          h.input{type="search", name="q" , maxlength="255", placeholder="Hledat na webu knihovny"},
+          h.input{type="search", name="q" , maxlength="255", placeholder=T "Hledat na webu knihovny"},
           h.input{type="submit",class="small", value="Hledat"} --style="visibility: hidden;"}
         }
 

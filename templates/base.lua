@@ -117,7 +117,7 @@ local function template(data)
         -- class="row",
         h.span {class="logo", "&nbsp;"},
         mainmenu(data.menuitems),
-        h.span{ a{href="en/index.html",h.img{src="img/gb.svg", alt="English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
+        h.span{ a{href="index-en.html",h.img{src="img/gb.svg", alt="English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
         -- }},
       },
       -- row{
@@ -131,6 +131,17 @@ local function template(data)
     -- }},
     h.footer{
       row{
+        medium(4, div{
+          p{"Knihovna PedF UK. Magdaleny Rettigové 4, 116&#8239;39&nbsp;Praha&nbsp;1"},
+          p{"© Univerzita Karlova"},
+
+        }),
+        medium(4, div {
+          div{a {href="https://www.facebook.com/knihovnapedfpraha", "Facebook"}}
+        }),
+        medium(4, div {
+          p{"<a href='mailto:michal.hoftich@pedf.cuni.cz'>Webmaster</a>"}
+        })
         -- boxik("EIZ pro PedF", "eiz.htm"),
         -- boxik('Časopisy', "periodika.htm"),
         -- boxik("Studenti se speciálními potřebami", "handi.htm"),

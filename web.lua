@@ -50,6 +50,11 @@ local mainmenu = {
 
 
 
+local engmenu = {
+  menuitem("Home", "index-en.html"),
+  menuitem("Services", "services.html"),
+  menuitem("Contact us", "contact-en.html")
+}
 
 
 
@@ -88,8 +93,12 @@ local add_defaults = make_transformer(function(doc)
     table.insert(doc.styles,"css/scale.css")
     table.insert(doc.styles,"css/design.css")
   end
+  if doc.lang == "eng" then
+    doc.menuitems = engmenu
+  else
+    doc.menuitems = mainmenu
+  end
   doc.sitemap = sitemap
-  doc.menuitems = mainmenu
   doc.prov_doba = prov_doba
   return doc
 end)
@@ -102,7 +111,7 @@ local apply_template = make_transformer(function(doc)
 end)
 
 local apply_newindex = make_transformer(function(doc)
-  doc.menuitems = mainmenu
+  -- doc.menuitems = mainmenu
   local rendered = newindex_template(doc)
   return merge(doc, {contents = rendered})
 end)
@@ -171,15 +180,16 @@ local get_news_item = function(doc)
   return {akt_title = title, contents = contents, date = date}
 end
 
-local newindex = function(filepath)
+local newindex = function(filepath,menu, languagestrings)
   local take_news = comp(take(3), map(get_news_item))
   return function(iter, ...)
     local items = into(take_news, iter, ...)
     -- local items = {}
     -- local date = items[1].date
     local title = "Knihovna PedF UK"
-    print("mainmenu", mainmenu)
-    return wrap_in_iter { title=title, menuitems =mainmenu, date = date, items = items, relative_filepath = filepath}
+    print("mainmenu", menu)
+    local languagestrings = languagestrings or {}
+    return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, languagestrings}
   end
 end
 local index_gen = comp(
@@ -188,11 +198,21 @@ local index_gen = comp(
 -- render_page,
 -- add_sitemap,
 apply_newindex,
-newindex("index.html"),
+newindex("index.html",mainmenu),
 add_defaults,
 lettersmith.docs
 )
 
+local index_en_gen = comp(
+-- apply_template,
+-- render_mustache("tpl/",templates),
+-- render_page,
+-- add_sitemap,
+apply_newindex,
+newindex("index-en.html",engmenu),
+add_defaults,
+lettersmith.docs
+)
 archiv_items = make_transformer(function(doc)
   local t = {}
   for _, item in ipairs(doc.items) do
@@ -245,6 +265,7 @@ if commands[argument] == nil then
   css_builder(paths),
   -- index_gen(paths),
   index_gen(aktuality),
+  index_en_gen(aktuality),
   rss_gen(aktuality),
   archive_gen(aktuality)
   -- index_gen(aktuality),

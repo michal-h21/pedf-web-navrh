@@ -50,12 +50,14 @@ local mainmenu = {
 
 
 
+-- english version
 local engmenu = {
   menuitem("Home", "index-en.html"),
   menuitem("Services", "services.html"),
   menuitem("Contact us", "contact-en.html")
 }
 
+local engstrings = require "trans/eng"
 
 
 -- Get paths from "raw" folder
@@ -95,6 +97,7 @@ local add_defaults = make_transformer(function(doc)
   end
   if doc.lang == "eng" then
     doc.menuitems = engmenu
+    doc.strings = engstrings
   else
     doc.menuitems = mainmenu
   end
@@ -188,8 +191,8 @@ local newindex = function(filepath,menu, languagestrings)
     -- local date = items[1].date
     local title = "Knihovna PedF UK"
     print("mainmenu", menu)
-    local languagestrings = languagestrings or {}
-    return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, languagestrings}
+    -- local languagestrings = languagestrings or {}
+    return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, strings = languagestrings or {}}
   end
 end
 local index_gen = comp(
@@ -209,7 +212,7 @@ local index_en_gen = comp(
 -- render_page,
 -- add_sitemap,
 apply_newindex,
-newindex("index-en.html",engmenu),
+newindex("index-en.html",engmenu,engstrings),
 add_defaults,
 lettersmith.docs
 )

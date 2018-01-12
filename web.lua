@@ -141,46 +141,24 @@ local function get_lang_func(lang)
   return lang_func
 end
 
-local sitemap_to_portal = function(name)
-  local function match(doc)
-    if doc.name == name then
-      local filepath =  doc.url
-      doc.relative_filepath = filepath
-      doc.template = "portal.tpl"
-      doc.styles =  {"css/scale.css","css/design.css"}
-      print("Make portal", name, filepath)
-      doc.portal = doc
-      doc.sitemap = sitemap
-      return doc
-    else
-      return false
-    end
-  end
-  return transform(filter(match), ipairs(sitemap))
-end
 
 local builder = comp(
-lettersmith.docs
+  lettersmith.docs
 )
 
--- use templates on html files
-local html_builder = comp(
-apply_template,
--- render_mustache("tpl/",templates),
-add_defaults,
-html_filter,
-only_root,
-lettersmith.docs
-)
-local html_en_builder = comp(
-apply_template,
--- render_mustache("tpl/",templates),
-add_defaults,
-set_english,
-html_filter,
--- not_diplomky,
-lettersmith.docs
-)
+-- builder for common html pages
+local function html_builder(lang)
+  local lang_func = get_lang_func(lang)
+  return comp(
+    apply_template,
+    add_defaults,
+    lang_func,
+    html_filter,
+    only_root,
+    lettersmith.docs
+  )
+end
+
 
 -- don't use templates and anything fancy on css files
 local css_builder = comp(
@@ -188,10 +166,13 @@ css_filter,
 lettersmith.docs
 )
 
-local rss_gen = comp(
-rss.generate_rss("feed.rss","http://knihovna.pedf.cuni.cz", "Knihovna PedF UK", ""),
-lettersmith.docs
-)
+-- local rss_gen = comp(
+local function rss_gen(page, title)
+  return comp(
+  rss.generate_rss(page,"http://knihovna.pedf.cuni.cz",title, ""),
+  lettersmith.docs
+  )
+end
 
 
 -- local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
@@ -220,7 +201,8 @@ local newindex = function(filepath,menu, languagestrings)
     return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, strings = languagestrings or {}}
   end
 end
--- local index_gen = comp(
+
+-- create index page for given language
 local function index_gen(page, lang)
   local lang_func = get_lang_func(lang)
   local menu = mainmenu
@@ -238,60 +220,28 @@ local function index_gen(page, lang)
   )
 end
 
-local index_en_gen = comp(
--- apply_template,
--- render_mustache("tpl/",templates),
--- render_page,
--- add_sitemap,
-apply_newindex,
-newindex("index-en.html",engmenu,engstrings),
-set_english,
-add_defaults,
-lettersmith.docs
-)
+
 local archiv_items = make_transformer(function(doc)
   doc.contents = print_actual(doc.items)
   return doc
 end)
--- return {template = template}
 
 
--- local archive_gen = comp(
 local archive_gen = function(page, lang)
   local lang_func = get_lang_func(lang)
   return comp(
-  -- render_mustache("tpl/", templates),
   apply_template,
   archiv_items,
   add_defaults,
   lang_func,
   add_sitemap,
-  -- archiv("archiv.html"),
   archiv(page),
   lettersmith.docs
 )
 end
 
--- local katalog_portal = comp(
--- render_mustache("tpl/",templates),
--- sitemap_to_portal)
-
--- -- Build files, writing them to "www" folder
--- local dipl_builder = comp(
--- render_mustache("tpl/",templates),
--- add_defaults,
--- html_filter,
--- lettersmith.docs
--- )
-
 
 local commands = {
-  diplomky = function()
-    print "Tak co?"
-    lettersmith.build(
-    "www/diplomky",
-    dipl_builder(diplomka_path))
-  end
 }
 
 local argument = arg[1]
@@ -300,13 +250,14 @@ if commands[argument] == nil then
   lettersmith.build(
   "www", 
   builder(paths), 
-  html_builder(paths),
-  html_en_builder(en_path),
+  html_builder()(paths),
+  html_builder("eng")(en_path),
   css_builder(paths),
   index_gen("index-en.html", "eng")(en_aktuality),
+  rss_gen("feed-en.rss",  "Library of Faculty of Education")(en_aktuality),
   archive_gen("archive-en.html","eng")(en_aktuality),
   index_gen("index.html")(aktuality),
-  rss_gen(aktuality),
+  rss_gen("feed.rss",  "Knihovna PedF UK")(aktuality),
   archive_gen("archiv.htm")(aktuality)
   -- index_gen(aktuality),
   -- katalog_portal("Katalogy a databáze"),

@@ -178,6 +178,8 @@ end
 -- local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
 local get_news_item = function(doc)
   local title = doc.title
+  local img = doc.img
+  local alt = doc.alt or ""
   local contents = discount(doc.contents)
   local date = derive_date(doc)
   local date_table = {}
@@ -186,7 +188,7 @@ local get_news_item = function(doc)
   end)
   date = os.time(date_table)
   date = os.date("%d.%m.%Y", date)
-  return {akt_title = title, contents = contents, date = date}
+  return {akt_title = title, contents = contents, date = date, img = img, alt = alt}
 end
 
 local newindex = function(filepath,menu, languagestrings)
@@ -258,7 +260,7 @@ if commands[argument] == nil then
   archive_gen("archive-en.html","eng")(en_aktuality),
   index_gen("index.html")(aktuality),
   rss_gen("feed.rss",  "Knihovna PedF UK")(aktuality),
-  archive_gen("archiv.htm")(aktuality)
+  archive_gen("archiv.html")(aktuality)
   -- index_gen(aktuality),
   -- katalog_portal("Katalogy a databáze"),
   -- katalog_portal("Služby")

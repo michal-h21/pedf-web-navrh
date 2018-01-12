@@ -27,7 +27,8 @@ local index = function(filepath)
   local take_news = comp(take(5000), map(get_news_item))
   return function(iter, ...)
     local items = into(take_news, iter, ...)
-    local date = items[1].date
+    local first = items[1] or {date = ""}
+    local date = first.date
     local title = "Knihovna PedF UK"
     return wrap_in_iter {template = "index.tpl", title=title, date = date, items = items, relative_filepath = filepath}
   end

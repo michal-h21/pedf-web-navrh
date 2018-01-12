@@ -49,9 +49,15 @@ function building_blocks.print_actual(items)
   local t = {}
   for i, item in ipairs(items) do
     local akt_title = item.akt_title or ""
-   table.insert(t, h.h3{item.date  .. " – " ..akt_title})
+    local alt = item.alt
+    local img = h.img {src = item.img or "/android-chrome-192x192.png", class="aktual-img",alt = alt,  title = alt}
+   table.insert(t, building_blocks.row {
+    building_blocks.medium(2, img),
+    building_blocks.medium(10, h.div{h.h3{item.date  .. " – " ..akt_title},item.contents}
+    )
+  })
    -- table.insert(t, h.p{h.small {item.date}})
-   table.insert(t, item.contents)
+   -- table.insert(t, item.contents)
    if i < #items then table.insert(t, h.hr{}) end
   end
   return t

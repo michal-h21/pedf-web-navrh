@@ -98,7 +98,7 @@ local function template(doc )
               },
               h.input{type="submit", value=T "hledat"}
             }},
-            h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='bjednavani_liter.htm'>nákup</a>"}
+            h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='bjednavani_liter.htm'>nákup</a>."}
           },"selected"),
           tab("ukaz", T "Ukaž", 
           h.form{ id="ebscohostCustomSearchBox", action="", onsubmit="return ebscoHostSearchGo(this);", method="post",
@@ -124,7 +124,7 @@ local function template(doc )
         <span>Slova z názvu</span>
         <input name="param_pattern_value" id="param_pattern_value1" type="search">
       </label>
-      <input class="i_btn" value="hledat" type="submit">
+      <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
   </form>
         ]]
         )
@@ -162,7 +162,7 @@ local function template(doc )
           {day = "Pá", time = "8.00–16.00"}
         }
       }
-    }, div{ a {href=T "provozni_doba.htm", T "Někdy máme také zavřeno"}}},
+    }, div{ a {href=T "provozni_doba.htm", T "Někdy máme také zavřeno."}}},
     {card {row { 
       div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> 221 900 148'},
       div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},

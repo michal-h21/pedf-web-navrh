@@ -58,6 +58,7 @@ local function template(data)
       -- tohle změnit, použít lokální verzi
       -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
       '<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">',
+     h.link {rel="alternate",  type="application/rss+xml", href= T "feed.rss"},
       h.link{rel="stylesheet", type="text/css", href="mini-knihovna.css"},
       h.link{rel="stylesheet", type="text/css", href="style.css"},
       h.link{rel="stylesheet", type="text/css", href="media.css"},
@@ -105,7 +106,7 @@ local function template(data)
           h.input{type="hidden", name="k9" , value="#D51920"},
           h.input{type="hidden", name="kt" , value="h"},
           h.input{type="search", name="q" , maxlength="255", placeholder=T "Hledat na webu knihovny"},
-          h.input{type="submit",class="small", value="Hledat"} --style="visibility: hidden;"}
+          h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
         }
 
         -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",
@@ -135,12 +136,14 @@ local function template(data)
     h.footer{
       row{
         medium(4, div{
-          p{"Knihovna PedF UK. Magdaleny Rettigové 4, 116&#8239;39&nbsp;Praha&nbsp;1"},
+          p{"Knihovna PedF UK, Magdaleny Rettigové 4, 116&#8239;39&nbsp;Praha&nbsp;1"},
           p{"© Univerzita Karlova"},
 
         }),
         medium(4, div {
           div{a {href="https://www.facebook.com/knihovnapedfpraha", "Facebook"}}
+          ,div{a {href=T "feed.rss", "RSS"}}
+
         }),
         medium(4, div {
           p{"<a href='mailto:michal.hoftich@pedf.cuni.cz'>Webmaster</a>"}

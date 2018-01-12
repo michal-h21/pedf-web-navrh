@@ -22,18 +22,8 @@ local tab = building_blocks.tab
 local boxik = building_blocks.boxik
 local translator = require "lib.translator"
 
+local print_actual = building_blocks.print_actual
 
-
-local function print_actual(items)
-  local t = {}
-  for i, item in ipairs(items) do
-   table.insert(t, h.h3{item.date  .. " – " ..item.akt_title})
-   -- table.insert(t, h.p{h.small {item.date}})
-   table.insert(t, item.contents)
-   if i < #items then table.insert(t, h.hr{}) end
-  end
-  return t
-end
 
 local function obalky(isbn)
   return h.img{style = "height:9rem;display:inline;", src='https://www.obalkyknih.cz/api/cover?isbn=' .. isbn}

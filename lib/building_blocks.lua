@@ -44,4 +44,16 @@ end
 function building_blocks.boxik(title, content)
   return building_blocks.medium(3,card {h.h3 {title}, {content} })
 end
+
+function building_blocks.print_actual(items)
+  local t = {}
+  for i, item in ipairs(items) do
+    local akt_title = item.akt_title or ""
+   table.insert(t, h.h3{item.date  .. " – " ..akt_title})
+   -- table.insert(t, h.p{h.small {item.date}})
+   table.insert(t, item.contents)
+   if i < #items then table.insert(t, h.hr{}) end
+  end
+  return t
+end
 return building_blocks

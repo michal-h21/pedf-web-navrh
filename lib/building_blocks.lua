@@ -53,7 +53,7 @@ function building_blocks.print_actual(items)
     local src = item.img
     if not src then
       src = "/img/default.jpg"
-      alt = "Foto: Kiberly Farmer/Unsplash"
+      alt = "Foto: Kimberly Farmer/Unsplash"
     end
     local img = h.img {src = src, class="aktual-img",alt = alt,  title = alt}
    table.insert(t, building_blocks.row {

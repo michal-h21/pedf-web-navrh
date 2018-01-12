@@ -26,7 +26,7 @@ local print_actual = building_blocks.print_actual
 
 
 local function obalky(isbn)
-  return h.img{style = "height:9rem;display:inline;", src='https://www.obalkyknih.cz/api/cover?isbn=' .. isbn}
+  return h.img{style = "height:9rem;display:inline;", src='/img/obalky/' .. isbn .. ".jpg"}
 end
 
 local function progress(percent)
@@ -71,7 +71,7 @@ local function template(doc )
       medium(9,{
         row{
           card {
-            h.h2{ T "Aktuality", ' (<a href="archiv.html">archiv</a>)'  },
+            h.h2{ T "Aktuality", T ' (<a href="archiv.html">archiv</a>)'  },
             print_actual(doc.items),
             -- actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
             -- actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme <b>všechny</b> uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
@@ -80,27 +80,27 @@ local function template(doc )
             -- medium(9, {card {p{"Vyhledávací boxy"}}}),
             -- medium(9, card{ div{class="tabs", 
             medium(12, card{ div{class="tabs", 
-            tab("aleph", "Katalog",  h.form{action="https://ckis.cuni.cz/F/", method="get", target="_blank", 
+            tab("aleph", T "Katalog",  h.form{action=T "https://ckis.cuni.cz/F/", method="get", target="_blank", 
             h.input{  name="local_base", value="pedfr", type="hidden"},
             h.input {name="func", value="find-e" ,type="hidden"},
             row{
-              h.label {"Klíčová slova:", h.input {name="request", type="search"}},
-              h.label {"Vyhledat v: ", h.select {
+              h.label {T "Klíčová slova:", h.input {name="request", type="search"}},
+              h.label {T "Vyhledat v: ", h.select {
                 name="find_scan_code",
-                h.option{value="FIND_WRD", selected="selected", "Všechna pole"},
-                h.option {value="FIND_WTI", "Název"},
-                h.option {value="SCAN_TIT", "První slovo z názvu"},
-                h.option {value="FIND_WAU", "Autor"},
-                h.option {value="SCAN_AUT", "Autorský rejstřík"},
-                h.option {value="FIND_WKW", "Předmět"},
-                h.option {value="SCAN_SUB", "Předmětový rejstřík"},
-                h.option {value="FIND_ISN", "ISBN/ISSN"},
+                h.option{value="FIND_WRD", selected="selected", T "Všechna pole"},
+                h.option {value="FIND_WTI", T "Název"},
+                h.option {value="SCAN_TIT", T "První slovo z názvu"},
+                h.option {value="FIND_WAU", T "Autor"},
+                h.option {value="SCAN_AUT", T "Autorský rejstřík"},
+                h.option {value="FIND_WKW", T "Předmět"},
+                h.option {value="SCAN_SUB", T "Předmětový rejstřík"},
+                h.option {value="FIND_ISN", T "ISBN/ISSN"},
               },
-              h.input{type="submit", value="hledat"}
+              h.input{type="submit", value=T "hledat"}
             }},
-            h.div{class="bottom", "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='bjednavani_liter.htm'>nákup</a>"}
+            h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='bjednavani_liter.htm'>nákup</a>"}
           },"selected"),
-          tab("ukaz", "Ukaž", 
+          tab("ukaz", T "Ukaž", 
           h.form{ id="ebscohostCustomSearchBox", action="", onsubmit="return ebscoHostSearchGo(this);", method="post",
           h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
           h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&site=eds-live&scope=site&type=0&custid=s1240919&groupid=main&profid=eds&mode=bool&lang=cs&authtype=ip,guest"},
@@ -108,10 +108,10 @@ local function template(doc )
           h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
           h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
           h.label{"Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
-          h.input{type="submit", value="hledat"}
+          h.input{type="submit", value=T "hledat"}
         }
         ),
-        tab("e-casopisy", "E-časopisy", [[
+        tab("e-casopisy", T "E-časopisy", [[
   <form method="get" action="http://sfx.is.cuni.cz/sfxlcl3/az/ukall" target="_blank">
 
     <input name="param_perform_value" value="searchTitle" type="hidden">
@@ -162,16 +162,16 @@ local function template(doc )
           {day = "Pá", time = "8.00–16.00"}
         }
       }
-    }, div{ a {href="provozni_doba.htm", "Více"}}},
+    }, div{ a {href=T "provozni_doba.htm", T "Někdy máme také zavřeno"}}},
     {card {row { 
-        div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> 221 900 148'},
-      div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}}
-    },
-    row{
-      h.a {href="https://www.facebook.com/knihovnapedfpraha", '<i class="fab fa-facebook-square" aria-hidden="true"></i>'}, '&nbsp;',a{href="https://www.facebook.com/knihovnapedfpraha",'knihovnapedfpraha'}
+      div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> 221 900 148'},
+      div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},
+    -- },
+    -- row{
+      div {'<a href="https://www.facebook.com/knihovnapedfpraha"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>',a{href="https://www.facebook.com/knihovnapedfpraha",'knihovnapedfpraha'}}
     }} 
     },
-      {card {h.h2{ a{href="/nove_knihy/index.html", "Nové knihy"}},
+      {card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
       row{
         obalky "978-80-7422-500-0",
         -- obalky "80-85368-18-8", 

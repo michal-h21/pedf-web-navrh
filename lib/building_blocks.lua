@@ -50,7 +50,12 @@ function building_blocks.print_actual(items)
   for i, item in ipairs(items) do
     local akt_title = item.akt_title or ""
     local alt = item.alt
-    local img = h.img {src = item.img or "/android-chrome-192x192.png", class="aktual-img",alt = alt,  title = alt}
+    local src = item.img
+    if not src then
+      src = "/img/default.jpg"
+      alt = "Foto: Kiberly Farmer/Unsplash"
+    end
+    local img = h.img {src = src, class="aktual-img",alt = alt,  title = alt}
    table.insert(t, building_blocks.row {
     building_blocks.medium(2, img),
     building_blocks.medium(10, h.div{h.h3{item.date  .. " – " ..akt_title},item.contents}

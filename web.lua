@@ -6,7 +6,7 @@ local merge = require("lettersmith.table_utils").merge
 local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
 local docs = require("lettersmith.docs_utils")
 
-local render_mustache = require("lettersmith.mustache").choose_mustache
+-- local render_mustache = require("lettersmith.mustache").choose_mustache
 
 local rss = require "atom"
 local sitemap = require "sitemap"
@@ -33,6 +33,7 @@ local derive_date = docs.derive_date
 
 local building_blocks = require "building_blocks"
 local card = building_blocks.card
+local print_actual = building_blocks.print_actual
 
 local menuitem = function(title, href) return {title = title, href= href} end
 
@@ -57,12 +58,14 @@ local engmenu = {
   menuitem("Contact us", "contact-en.html")
 }
 
-local engstrings = require "trans/eng"
+local engstrings = require "trans.eng"
 
 
 -- Get paths from "raw" folder
 local paths = lettersmith.paths("html")
+local en_path = lettersmith.paths("html/en")
 local aktuality = lettersmith.paths("html/aktuality")
+local en_aktuality = lettersmith.paths("html/en/aktuality")
 -- local diplomka_path = lettersmith.paths("diplomky")
 
 local make_transformer = function(fn)
@@ -81,9 +84,9 @@ local html_filter = make_filter("htm[l]?$")
 
 local css_filter =  make_filter("css$")
 
-local not_diplomky =   transformer(filter(function(doc)
+local only_root =   transformer(filter(function(doc)
   local fn = doc.relative_filepath
-  return not fn:match("diplomky/")
+  return not fn:match("^diplomky/") and not fn:match("^en/")
 end))
 
 
@@ -125,6 +128,19 @@ local add_sitemap = make_transformer(function(doc)
   return doc
 end)
 
+local set_english = make_transformer(function(doc)
+  doc.lang = "eng"
+  return doc
+end)
+
+local function get_lang_func(lang)
+  local lang_func = make_transformer(function(doc) return doc end)
+  if lang == "eng" then 
+    lang_func = set_english
+  end
+  return lang_func
+end
+
 local sitemap_to_portal = function(name)
   local function match(doc)
     if doc.name == name then
@@ -153,7 +169,16 @@ apply_template,
 -- render_mustache("tpl/",templates),
 add_defaults,
 html_filter,
-not_diplomky,
+only_root,
+lettersmith.docs
+)
+local html_en_builder = comp(
+apply_template,
+-- render_mustache("tpl/",templates),
+add_defaults,
+set_english,
+html_filter,
+-- not_diplomky,
 lettersmith.docs
 )
 
@@ -195,16 +220,23 @@ local newindex = function(filepath,menu, languagestrings)
     return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, strings = languagestrings or {}}
   end
 end
-local index_gen = comp(
--- apply_template,
--- render_mustache("tpl/",templates),
--- render_page,
--- add_sitemap,
-apply_newindex,
-newindex("index.html",mainmenu),
-add_defaults,
-lettersmith.docs
-)
+-- local index_gen = comp(
+local function index_gen(page, lang)
+  local lang_func = get_lang_func(lang)
+  local menu = mainmenu
+  local strings = {} -- don't use translation strings by default
+  if lang == "eng" then
+    menu = engmenu
+    strings = engstrings
+  end
+  return comp(
+    apply_newindex,
+    newindex(page,menu, strings),
+    add_defaults,
+    lang_func,
+    lettersmith.docs
+  )
+end
 
 local index_en_gen = comp(
 -- apply_template,
@@ -213,28 +245,32 @@ local index_en_gen = comp(
 -- add_sitemap,
 apply_newindex,
 newindex("index-en.html",engmenu,engstrings),
+set_english,
 add_defaults,
 lettersmith.docs
 )
-archiv_items = make_transformer(function(doc)
-  local t = {}
-  for _, item in ipairs(doc.items) do
-    t[#t+1] = "<div>" ..item.date .. "</div>"
-  end
-  doc.contents = table.concat(t)
+local archiv_items = make_transformer(function(doc)
+  doc.contents = print_actual(doc.items)
   return doc
 end)
 -- return {template = template}
 
-local archive_gen = comp(
--- render_mustache("tpl/", templates),
-apply_template,
-archiv_items,
-add_defaults,
-add_sitemap,
-archiv("archiv.html"),
-lettersmith.docs
+
+-- local archive_gen = comp(
+local archive_gen = function(page, lang)
+  local lang_func = get_lang_func(lang)
+  return comp(
+  -- render_mustache("tpl/", templates),
+  apply_template,
+  archiv_items,
+  add_defaults,
+  lang_func,
+  add_sitemap,
+  -- archiv("archiv.html"),
+  archiv(page),
+  lettersmith.docs
 )
+end
 
 -- local katalog_portal = comp(
 -- render_mustache("tpl/",templates),
@@ -265,12 +301,13 @@ if commands[argument] == nil then
   "www", 
   builder(paths), 
   html_builder(paths),
+  html_en_builder(en_path),
   css_builder(paths),
-  -- index_gen(paths),
-  index_gen(aktuality),
-  index_en_gen(aktuality),
+  index_gen("index-en.html", "eng")(en_aktuality),
+  archive_gen("archive-en.html","eng")(en_aktuality),
+  index_gen("index.html")(aktuality),
   rss_gen(aktuality),
-  archive_gen(aktuality)
+  archive_gen("archiv.htm")(aktuality)
   -- index_gen(aktuality),
   -- katalog_portal("Katalogy a databáze"),
   -- katalog_portal("Služby")

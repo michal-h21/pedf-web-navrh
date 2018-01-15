@@ -411,11 +411,11 @@ $card-section-padding1-padding:  0.75rem;          // Padding for card section p
 $tab-container-name:            'tabs';            // Class name for the tabs' container
 $tab-container-box-shadow:      none;              // Box shadow for the tabs' container
 // $tab-label-back-color:          #e6e6e6;           // Background color for tabs' labels
-$tab-label-back-color:          black;           // Background color for tabs' labels
+$tab-label-back-color:          #333333;           // Background color for tabs' labels
 // $tab-label-fore-color:          $fore-color;       // Text color for tabs' labels
 $tab-label-fore-color:          #fafafa;       // Text color for tabs' labels
 // $tab-label-selected-back-color: #eeeeee;           // Background color for open tab's label
-$tab-label-selected-back-color: #333333;           // Background color for open tab's label
+$tab-label-selected-back-color: black;           // Background color for open tab's label
 $tab-label-selected-fore-color: #fafafa;       // Text color for open tab's label
 // $tab-label-selected-fore-color: $fore-color;       // Text color for open tab's label
 $tab-label-hover-opacity:       0.8;               // Opacity of the tab's label on hover

@@ -204,6 +204,18 @@ local newindex = function(filepath,menu, languagestrings)
   end
 end
 
+-- filtrovat aktuality a skrýt ty, které mají nastavené hide datum
+-- to by mělo být ve tvaru rok-měsíc-den
+local filter_aktual =   transformer(filter(function(doc)
+  local today = os.time()
+  -- nastavit dost vysoké výchozí datum, abysme neskrývali novinky, co skrýt nechceme
+  local hide_date = doc.hide or "2099-12-31"
+  -- print(hide_date)
+  local year, month, day = hide_date:match("(%d+)%-(%d+)%-(%d+)")
+  local hide = os.time{year = year, month=month, day=day}
+  return hide > today
+end))
+
 -- create index page for given language
 local function index_gen(page, lang)
   local lang_func = get_lang_func(lang)
@@ -218,6 +230,7 @@ local function index_gen(page, lang)
     newindex(page,menu, strings),
     add_defaults,
     lang_func,
+    filter_aktual,
     lettersmith.docs
   )
 end

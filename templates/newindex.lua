@@ -33,6 +33,16 @@ local function progress(percent)
   return h.progress{value = percent, max=1000}
 end
 
+local function print_obalky(obalky_tbl)
+  local t = {}
+  for _, obalka in ipairs(obalky_tbl or {}) do
+    table.insert(t, obalky(obalky.file))
+  end
+  -- return t
+  return {p{"obalek: " .. tostring(obalky_tbl)}}
+end
+
+
 local function provozni_doba(data)
   local t = {}
   local function tbl(jednotka)
@@ -172,11 +182,11 @@ local function template(doc )
     }} 
     },
       {card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
-      row{
-        obalky "978-80-7422-500-0",
-        -- obalky "80-85368-18-8", 
-        -- obalky "978-80-7294-458-3"
-      },
+      row( print_obalky(doc.obalky)
+      -- obalky "978-80-7422-500-0",
+      -- obalky "80-85368-18-8", 
+      -- obalky "978-80-7294-458-3"
+      ),
     }},
     -- card {
     --   h.h2 {"Ankety"}, 

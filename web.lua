@@ -26,6 +26,9 @@ local into = transducers.into
 local comp = transducers.comp
 local transform = lazy.transform
 local transformer = lazy.transformer
+
+local file_utils = require "lettersmith.file_utils"
+local walk_file_paths = file_utils.walk_file_paths
 -- local index = require("index").index
 -- local archiv = require("archivaktual").index
 local derive_date = docs.derive_date
@@ -216,6 +219,30 @@ local filter_aktual =   transformer(filter(function(doc)
   return hide > today
 end))
 
+local function new_books(path)
+  local t = {}
+  for image in walk_file_paths(path) do
+    table.insert(t,image)
+  end
+  -- seřadit soubory od nejnovějších
+  table.sort(t, function(a,b) return a > b end)
+  -- stačí nanejvýš 10 obálek
+  local obalky = {}
+  for i=1,10 do
+    local current = t[i]
+    if not current then break end
+    local isbn = current:match("%d+%-%d+%-%d+%-(.+)")
+    table.insert(obalky, {file = current, isbn = isbn})
+  end
+  return make_transformer(function(doc)
+    doc.obalky = obalky
+    for _, x in ipairs(obalky) do
+      print("obalka", x)
+    end
+    return doc
+  end)
+end
+
 -- create index page for given language
 local function index_gen(page, lang)
   local lang_func = get_lang_func(lang)
@@ -229,6 +256,7 @@ local function index_gen(page, lang)
     apply_newindex,
     newindex(page,menu, strings),
     add_defaults,
+    new_books "data/obalky/",
     lang_func,
     filter_aktual,
     lettersmith.docs

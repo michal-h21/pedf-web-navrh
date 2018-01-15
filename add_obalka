@@ -1,0 +1,11 @@
+#/usr/bin/env bash
+img=$1
+isbn="$2"
+
+DATE=`date +%Y-%m-%d`
+imgname="data/obalky/$DATE-$isbn.jpg"
+
+echo convert to $imgname
+convert -auto-orient -resize 162x162 $img $imgname
+scp $imgname beta:/var/www/html/img/obalky/
+

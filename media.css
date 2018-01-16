@@ -35,4 +35,11 @@ footer a, footer a:visited{
   /* text-decoration:none; */
 }
 
+
+.tabs form{
+  background-color:#ebe5d3;
+}
+
+.archiv-link{float:right;}
+
 /* section.section h2{text-align:center;} */

@@ -18,7 +18,7 @@ return {
  ,["Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='bjednavani_liter.htm'>nákup</a>."]="&nbsp;"
  ,["Ukaž"]="Ukaž"
  ,["E-časopisy"]="E-journals"
- ,["Někdy máme také zavřeno"]="Closing days"
+ ,[ "Plánované uzavření knihovny"]="Closing days"
  ,["Nové knihy"]="New books"
  ,["feed.rss"] = "feed-en.rss"
  }

@@ -18,7 +18,7 @@ generate:
 	# cp index.html www
 	cp mini-knihovna.css media.css style.css www
 	mkdir www/img
-	cp img/logo.svg img/gb.svg www/img/
+	cp img/*.svg www/img/
 
 upload:
 	cd www && rsync -avz . beta:/var/www/html/navrh/

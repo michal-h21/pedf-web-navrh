@@ -135,8 +135,7 @@ local function template(doc )
         <input name="param_pattern_value" id="param_pattern_value1" type="search">
       </label>
       <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
-  </form>
-        ]]
+        ]] .. '<p>' .. T("Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>.") .. "</p> </form>"
         )
       }}),
     },

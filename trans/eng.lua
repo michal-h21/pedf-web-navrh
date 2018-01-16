@@ -21,4 +21,9 @@ return {
  ,[ "Plánované uzavření knihovny"]="Closing days"
  ,["Nové knihy"]="New books"
  ,["feed.rss"] = "feed-en.rss"
+ ,[ "img/logo.svg"] =  "img/logo-eng.svg"
+ ,[ "index-en.html"] =  "index.html"
+ ,[ "img/gb.svg"] =  "img/cz.svg"
+ ,[ "English version"] = "Česká verze"
+ ,[ "Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>."] = ""
  }

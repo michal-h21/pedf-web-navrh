@@ -6,7 +6,7 @@ img.aktual-img{ display:none;}
   img.aktual-img{
     display:block;
     margin-top:1rem;
-    width:100%;
+    width:86%;
   }
 }
 @media (min-width: 933px){

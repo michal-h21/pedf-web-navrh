@@ -172,7 +172,7 @@ local function template(doc )
           {day = "Pá", time = "8.00–16.00"}
         }
       }
-    }, div{ a {href=T "provozni_doba.htm", T "Někdy máme také zavřeno."}}},
+    }, div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
     {card {row { 
       div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> 221 900 148'},
       div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},

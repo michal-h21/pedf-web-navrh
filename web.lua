@@ -97,6 +97,7 @@ local add_defaults = make_transformer(function(doc)
   print("Zpracovavam", doc.relative_filepath)
   doc.template = doc.template or "blog.tpl"
   doc.styles = doc.styles or {}
+  doc.obalky_dir = "data/obalky/"
   if doc.design ~=false then
     table.insert(doc.styles,"css/scale.css")
     table.insert(doc.styles,"css/design.css")
@@ -177,6 +178,25 @@ local function rss_gen(page, title)
   )
 end
 
+local function get_new_books(path, number)
+  local t = {}
+  for image in walk_file_paths(path) do
+    table.insert(t,image)
+  end
+  -- seřadit soubory od nejnovějších
+  table.sort(t, function(a,b) return a > b end)
+  -- stačí nanejvýš 10 obálek
+  local obalky = {}
+  for i=1,number do
+    local current = t[i]
+    if not current then break end
+    current = current:match("([^%/]+)$")
+    local isbn = current:match("%d+%-%d+%-%d+%-(.+)")
+    table.insert(obalky, {file = current, isbn = isbn})
+  end
+  return obalky
+end
+
 
 -- local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
 local get_news_item = function(doc)
@@ -202,8 +222,9 @@ local newindex = function(filepath,menu, languagestrings)
     -- local date = items[1].date
     local title = "Knihovna PedF UK"
     print("mainmenu", menu)
+    local obalky = get_new_books("data/obalky", 10)
     -- local languagestrings = languagestrings or {}
-    return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, strings = languagestrings or {}}
+    return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, obalky = obalky, strings = languagestrings or {}}
   end
 end
 
@@ -219,30 +240,6 @@ local filter_aktual =   transformer(filter(function(doc)
   return hide > today
 end))
 
-local function new_books(path)
-  local t = {}
-  for image in walk_file_paths(path) do
-    table.insert(t,image)
-  end
-  -- seřadit soubory od nejnovějších
-  table.sort(t, function(a,b) return a > b end)
-  -- stačí nanejvýš 10 obálek
-  local obalky = {}
-  for i=1,10 do
-    local current = t[i]
-    if not current then break end
-    local isbn = current:match("%d+%-%d+%-%d+%-(.+)")
-    table.insert(obalky, {file = current, isbn = isbn})
-  end
-  return make_transformer(function(doc)
-    doc.obalky = obalky
-    for _, x in ipairs(obalky) do
-      print("obalka", x)
-    end
-    return doc
-  end)
-end
-
 -- create index page for given language
 local function index_gen(page, lang)
   local lang_func = get_lang_func(lang)
@@ -253,13 +250,12 @@ local function index_gen(page, lang)
     strings = engstrings
   end
   return comp(
-    apply_newindex,
-    newindex(page,menu, strings),
-    add_defaults,
-    new_books "data/obalky/",
-    lang_func,
-    filter_aktual,
-    lettersmith.docs
+  apply_newindex,
+  newindex(page,menu, strings),
+  add_defaults,
+  lang_func,
+  filter_aktual,
+  lettersmith.docs
   )
 end
 
@@ -280,7 +276,7 @@ local archive_gen = function(page, lang)
   add_sitemap,
   archiv(page),
   lettersmith.docs
-)
+  )
 end
 
 

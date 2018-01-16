@@ -26,7 +26,7 @@ local print_actual = building_blocks.print_actual
 
 
 local function obalky(isbn)
-  return h.img{style = "height:9rem;display:inline;", src='/img/obalky/' .. isbn .. ".jpg"}
+  return h.div {h.img{style = "height:9rem;display:inline;", src='/img/obalky/' .. isbn }}
 end
 
 local function progress(percent)
@@ -36,10 +36,10 @@ end
 local function print_obalky(obalky_tbl)
   local t = {}
   for _, obalka in ipairs(obalky_tbl or {}) do
-    table.insert(t, obalky(obalky.file))
+    table.insert(t, obalky(obalka.file))
   end
-  -- return t
-  return {p{"obalek: " .. tostring(obalky_tbl)}}
+  return t
+  -- return {p{"obalek: " .. #obalky_tbl}}
 end
 
 
@@ -181,7 +181,7 @@ local function template(doc )
     }} 
     },
       {card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
-      row( print_obalky(doc.obalky)
+      row( div{ class="my-slider",  print_obalky(doc.obalky)}
       -- obalky "978-80-7422-500-0",
       -- obalky "80-85368-18-8", 
       -- obalky "978-80-7294-458-3"
@@ -205,7 +205,22 @@ local function template(doc )
 -- (body)
 -- }},
 -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
-h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true}
+h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true} 
+,h.script{type="text/javascript", [[
+  var slider = tns({
+    container: '.my-slider',
+    items: 3,
+    slideBy: 'page',
+    controls:false,
+    nav: false,
+    speed: 50,
+    autoplay: true,
+    autoplayHoverPause: true,
+    autoplayTimeout: 1500,
+    autoplayButtonOutput: false,
+    mouseDrag: true,
+  });
+  ]]}
 }
 -- local doc = {}
 doc.contents = contents

@@ -34,8 +34,13 @@ local walk_file_paths = file_utils.walk_file_paths
 local derive_date = docs.derive_date
 
 
+local h5tk = require "h5tk"
+local h = h5tk.init()
+
 local building_blocks = require "building_blocks"
 local card = building_blocks.card
+local medium = building_blocks.medium
+local row = building_blocks.row
 local print_actual = building_blocks.print_actual
 
 local menuitem = function(title, href) return {title = title, href= href} end
@@ -115,7 +120,15 @@ end)
 
 -- aplikovat h5tk templates
 local apply_template = make_transformer(function(doc)
-  doc.contents = card {doc.contents}
+  local doc_card =card {doc.contents}
+  if doc.img then
+    doc.contents = row {
+      medium(8, doc_card),
+      medium(4, h.div{ class="page-img", h.img{src = doc.img, alt=doc.alt, title=doc.alt}})
+    }
+  else
+    doc.contents = doc_card
+  end
   local rendered = base_template(doc)
   return merge(doc, {contents = rendered})
 end)

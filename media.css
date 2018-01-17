@@ -35,13 +35,8 @@ footer a, footer a:visited{
   /* text-decoration:none; */
 }
 
-
-.tabs form{
-  /* background-color:#ebe5d3; */
-  /* background-color:#FF8700; */
-}
-
-/* a,a:visited {color: #FF8700;} */
+div.page-img {margin-top:.5rem;}
+div.page-img img{width:100%;}
 
 .archiv-link{float:right;}
 

@@ -26,4 +26,10 @@ return {
  ,[ "img/gb.svg"] =  "img/cz.svg"
  ,[ "English version"] = "Česká verze"
  ,[ "Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>."] = ""
+ ,["Studovna"] = "Studyroom"
+ ,["Výpůjční protokol"] = "Library"
+ ,["Po"] = "Mo"
+ ,["Út–pá"] = "Tue-Fri"
+ ,["Po–čt"] = "Mo-Thu"
+ ,["Pá"] = "Fri"
  }

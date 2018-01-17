@@ -43,27 +43,32 @@ local function print_obalky(obalky_tbl)
 end
 
 
-local function provozni_doba(data)
+local function provozni_doba(data, T)
   local t = {}
   local function tbl(jednotka)
-      local tble = {h.h2{jednotka.name}}--h.table {}
+      local tbl = h.h2{T (jednotka.name)}--h.table {}
+      local tble = {}
+
+
       for _, obdobi in ipairs(jednotka.data) do
-        local curr_row = h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
+        local curr_row = h.tr { h.td { T(obdobi.day)}, h.td {T(obdobi.time)}}
         -- h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
         table.insert(tble, curr_row)
       end
-      return tble
+      return {tbl,h.table{tble}}
   end
   local function jednotky(idata)
-    for _, jednotka in ipairs(idata) do
+    for _, jednotka in ipairs(idata.children) do
       -- table.insert(t, h.h3 {jednotka.name})
       -- h.h3 {jednotka.name}
       -- table.insert(jednotka.data, 1, h.caption {jednotka.name})
-      table.insert(t, h.table {tbl(jednotka)})
+      table.insert(t, tbl(jednotka))
       -- table.insert(t, tble)
     end
     return t
   end
+  print(data)
+  for k,v in pairs(data) do print("xxx",k,v) end
   return jednotky(data)
 end
 
@@ -156,22 +161,22 @@ local function template(doc )
   ,
   medium(3,
   { 
-    card{ provozni_doba{
-      {
-        name = "Výpůjční protokol",
-        data = {
-          {day="Po", time = "8.00–16.00"},
-          {day = "Út–Pá", time = "8.00–17.00"}
-        }
-      },
-      {
-        name = "Studovna",
-        data = {
-          {day = "Po–Čt", time = "8.00–18.00"},
-          {day = "Pá", time = "8.00–16.00"}
-        }
-      }
-    }, div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
+    card{ provozni_doba( doc.prov_doba, T
+    -- {
+    --   name = "Výpůjční protokol",
+    --   data = {
+    --     {day="Po", time = "8.00–16.00"},
+    --     {day = "Út–Pá", time = "8.00–17.00"}
+    --   }
+    -- },
+    -- {
+    --   name = "Studovna",
+    --   data = {
+    --     {day = "Po–Čt", time = "8.00–18.00"},
+    --     {day = "Pá", time = "8.00–16.00"}
+    --   }
+    -- }
+    ), div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
     {card {row { 
       div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> 221 900 148'},
       div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},

@@ -121,6 +121,7 @@ end)
 -- aplikovat h5tk templates
 local apply_template = make_transformer(function(doc)
   local doc_card =card {doc.contents}
+  -- přidat obrázek pokud ho stránka má nastavený
   if doc.img then
     doc.contents = row {
       medium(8, doc_card),
@@ -237,7 +238,7 @@ local newindex = function(filepath,menu, languagestrings)
     print("mainmenu", menu)
     local obalky = get_new_books("data/obalky", 10)
     -- local languagestrings = languagestrings or {}
-    return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, obalky = obalky, strings = languagestrings or {}}
+    return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, prov_doba = prov_doba, obalky = obalky, strings = languagestrings or {}}
   end
 end
 

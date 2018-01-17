@@ -25,8 +25,8 @@ local translator = require "lib.translator"
 local print_actual = building_blocks.print_actual
 
 
-local function obalky(isbn)
-  return h.div {h.img{style = "height:9rem;display:inline;", src='/img/obalky/' .. isbn }}
+local function obalky(filename, isbn)
+  return h.div {a{target="_blank", href="https://ckis.cuni.cz/F?func=find-a&amp;&local_base=CKS&amp;find_code=ISN&amp;request=".. isbn, h.img{style = "height:9rem;display:inline;", src='/img/obalky/' .. filename }}}
 end
 
 local function progress(percent)
@@ -36,7 +36,7 @@ end
 local function print_obalky(obalky_tbl)
   local t = {}
   for _, obalka in ipairs(obalky_tbl or {}) do
-    table.insert(t, obalky(obalka.file))
+    table.insert(t, obalky(obalka.file, obalka.isbn))
   end
   return t
   -- return {p{"obalek: " .. #obalky_tbl}}

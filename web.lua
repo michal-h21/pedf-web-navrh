@@ -191,7 +191,7 @@ local function get_new_books(path, number)
     local current = t[i]
     if not current then break end
     current = current:match("([^%/]+)$")
-    local isbn = current:match("%d+%-%d+%-%d+%-(.+)")
+    local isbn = current:match("%d+%-%d+%-%d+%-(.+)%.jpg")
     table.insert(obalky, {file = current, isbn = isbn})
   end
   return obalky

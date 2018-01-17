@@ -29,7 +29,7 @@ return {
  ,["Studovna"] = "Studyroom"
  ,["Výpůjční protokol"] = "Library"
  ,["Po"] = "Mo"
- ,["Út–pá"] = "Tue-Fri"
- ,["Po–čt"] = "Mo-Thu"
+ ,["Út–Pá"] = "Tue-Fri"
+ ,["Po–Čt"] = "Mo-Thu"
  ,["Pá"] = "Fri"
  }

@@ -46,7 +46,8 @@ end
 local function provozni_doba(data, T)
   local t = {}
   local function tbl(jednotka)
-      local tbl = h.h2{T (jednotka.name)}--h.table {}
+      -- local tbl = h.tr{h.th{colspan=2,  T (jednotka.name)}}--h.table {}
+      local tbl = h.caption{ T (jednotka.name)}--h.table {}
       local tble = {}
 
 
@@ -55,7 +56,8 @@ local function provozni_doba(data, T)
         -- h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
         table.insert(tble, curr_row)
       end
-      return {tbl,h.table{tble}}
+      -- return {h.table{class="prov_doba",h.thead{tbl}, h.tbody{tble}}}
+      return {h.table{class="prov_doba",tbl, tble}}
   end
   local function jednotky(idata)
     for _, jednotka in ipairs(idata.children) do
@@ -67,8 +69,6 @@ local function provozni_doba(data, T)
     end
     return t
   end
-  print(data)
-  for k,v in pairs(data) do print("xxx",k,v) end
   return jednotky(data)
 end
 

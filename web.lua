@@ -13,7 +13,8 @@ local sitemap = require "sitemap"
 local discount = require "discount"
 local archiv = require "archivaktual".index
 local newindex_template = require "templates.newindex".template
-local prov_doba = require "prov_doba"
+local prov_doba_fn = require "prov_doba"
+local prov_doba = prov_doba_fn("data/opening.csv")
 -- local templates = require("templates")
 local base_template = require "templates.base"
 

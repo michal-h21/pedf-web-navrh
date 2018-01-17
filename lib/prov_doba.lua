@@ -1,103 +1,29 @@
-return {
-  -- comment = "V průběhu srpna bude mít knihovna omezený provoz",
-  -- children = {
-  --   {name = "Výpůjční protokol + studovna",
-  --    data = {
-  --      {day="1.8", time = "9.00–15.00"},
-  --      {day="8.8", time = "9.00–15.00"},
-  --      {day="15.8", time = "9.00–15.00"},
-  --      {day="22.8", time = "9.00–15.00"},
-  --      {day="29.8", time = "9.00–15.00"},
-  --      -- {day="Pá", time = "8.00 - 17.00"},
-  --    }
-  --   },
-    -- {
-    --   name = "Studovna",
-    --   data = {
-    --    {day="Po–Pá", time = "8.00–16.00"},
-    --    -- {day="Út", time = "8.00 - 18.00"},
-    --    -- {day="St", time = "8.00 - 18.00"},
-    --    -- {day="Čt", time = "8.00 - 18.00"},
-    --  }
-    -- },
-    -- {
-    --   name = "Studovna SAJL",
-    --   data = {
-    --     {day="Po + Pá", time = "13.00–16.00"},
-    --     {day="St", time = "9.00–12.00"},
-    --   }
-    -- }
-  -- }
-  comment = "",
-  children = {
-    {name = "Výpůjční protokol",
-     data = {
-       {day="Po", time = "8.00 – 16.00"},
-       {day="Út–pá", time = "8.00 – 17.00"},
-       -- {day="13.9.", time = "8.00–16.00"},
-       -- {day="20.9.", time = "8.00–16.00"},
-       -- {day="27.9.", time = "8.00–16.00"},
-       -- {day="Pá", time = "8.00 - 17.00"},
-     }
-    },
-    {
-      name = "Studovna",
-      data = {
-       {day="Po–čt", time = "8.00 – 18.00"},
-       {day="Pá", time = "8.00 - 16.00"},
-       -- {day="St", time = "8.00 - 18.00"},
-       -- {day="Čt", time = "8.00 - 18.00"},
-     }
-    },
-    -- {
-    --   name = "2. 10. 2017",
-    --   data = { day = "Sanitární den"}
-    -- },
-  --   {
-  --     name = "Studovna SAJL",
-  --     data = {
-  --       {day="Po + Pá", time = "13.00–16.00"},
-  --       {day="St", time = "9.00–12.00"},
-  --     }
-  --   }
-  -- }
-  -- children = {
-  --   {name = "Ústřední knihovna",
-  --    data = {
-  --      {day="Září", time= "Omezená provozní doba"},
-  --      -- {day="St", time = "8.00 - 17.00"},
-  --      -- {day="Čt", time = "8.00 - 17.00"},
-  --      -- {day="Pá", time = "8.00 - 17.00"},
-  --    }
-  --   },
-  -- },
-  -- children = {
-  --   {name = "Výpůjční protokol",
-  --    data = {
-  --      {day="Po", time = "8.00–16.00"},
-  --      {day="Út–Pá", time = "8.00–17.00"},
-  --      -- {day="St", time = "8.00 - 17.00"},
-  --      -- {day="Čt", time = "8.00 - 17.00"},
-  --      -- {day="Pá", time = "8.00 - 17.00"},
-  --    }
-  --   },
-  --   {
-  --     name = "Studovna",
-  --     data = {
-  --      {day="Po–Čt", time = "8.00–18.00"},
-  --      -- {day="Út", time = "8.00 - 18.00"},
-  --      -- {day="St", time = "8.00 - 18.00"},
-  --      -- {day="Čt", time = "8.00 - 18.00"},
-  --      {day="Pá", time = "8.00–16.00"},
-  --    }
-  --   },
-  --   {
-  --     name = "Studovna SAJL",
-  --     data = {
-  --       {day="Po", time = "13.00–16.00"},
-  --       {day="Út–St", time = "9.00–12.00"},
-  --       {day="Pá", time = "13.00–16.00"}
-  --     }
-  --   }
-  -- }
-}}
+local function load_opening(lines)
+  local rooms = {}
+  local seq = {} -- chceme zachovat pořadí, v jakém byly pobočky v CSV souboru
+  for line in lines do
+    local entries = {}
+    for entry in line:gmatch("([^|]+)") do
+      entries[#entries+1] = entry
+    end
+    local room, days, from, to, comment = table.unpack(entries)
+    if not rooms[room] then table.insert(seq, room) end
+    local current = rooms[room] or {name=room, data = {}}
+    local time = from .. " – " .. to
+    table.insert(current.data, {day = days, time = time})
+    rooms[room] = current
+    -- print("*****************",room, days, from, to, comment)
+  end
+  local opening = {children = {}}
+  for _, room in ipairs(seq) do
+    table.insert(opening.children, rooms[room])
+  end
+  return opening
+  -- return room
+end
+
+-- local csv_file = io.open("data/opening.csv")
+return function(filename)
+  return load_opening(io.lines(filename))
+end
+

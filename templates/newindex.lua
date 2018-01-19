@@ -23,6 +23,7 @@ local boxik = building_blocks.boxik
 local translator = require "lib.translator"
 
 local print_actual = building_blocks.print_actual
+local provozni_doba = building_blocks.provozni_doba
 
 
 local function obalky(filename, isbn)
@@ -42,35 +43,6 @@ local function print_obalky(obalky_tbl)
   -- return {p{"obalek: " .. #obalky_tbl}}
 end
 
-
-local function provozni_doba(data, T)
-  local t = {}
-  local function tbl(jednotka)
-      -- local tbl = h.tr{h.th{colspan=2,  T (jednotka.name)}}--h.table {}
-      local tbl = h.caption{ T (jednotka.name)}--h.table {}
-      local tble = {}
-
-
-      for _, obdobi in ipairs(jednotka.data) do
-        local curr_row = h.tr { h.td { T(obdobi.day)}, h.td {T(obdobi.time)}}
-        -- h.tr { h.td { obdobi.day}, h.td {obdobi.time}}
-        table.insert(tble, curr_row)
-      end
-      -- return {h.table{class="prov_doba",h.thead{tbl}, h.tbody{tble}}}
-      return {h.table{class="prov_doba",tbl, tble}}
-  end
-  local function jednotky(idata)
-    for _, jednotka in ipairs(idata.children) do
-      -- table.insert(t, h.h3 {jednotka.name})
-      -- h.h3 {jednotka.name}
-      -- table.insert(jednotka.data, 1, h.caption {jednotka.name})
-      table.insert(t, tbl(jednotka))
-      -- table.insert(t, tble)
-    end
-    return t
-  end
-  return jednotky(data)
-end
 
 
 
@@ -113,7 +85,7 @@ local function template(doc )
               },
               h.input{type="submit", value=T "hledat"}
             }},
-            h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='bjednavani_liter.htm'>nákup</a>."}
+            h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."}
           },"selected"),
           tab("ukaz", T "Ukaž (vyhledávání <acronym title='Elektronické informační zdroje'>EIZ</acronym>)", 
           h.form{ id="ebscohostCustomSearchBox", action="", onsubmit="return ebscoHostSearchGo(this);", method="post",

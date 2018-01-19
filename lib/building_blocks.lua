@@ -82,7 +82,7 @@ function building_blocks.provozni_doba(data, T)
         table.insert(tble, curr_row)
       end
       -- return {h.table{class="prov_doba",h.thead{tbl}, h.tbody{tble}}}
-      return {h.table{class="prov_doba",tbl, tble}}
+      return {h.table{class="prov_doba small",tbl, tble}}
   end
   local function jednotky(idata)
     for _, jednotka in ipairs(idata.children) do
@@ -97,4 +97,36 @@ function building_blocks.provozni_doba(data, T)
   return jednotky(data)
 end
 
-return building_blocks
+function building_blocks.uzavreni(data, T)
+   local t = {}
+   local function get_closing(days)
+     if type(days) == "string" then return days end
+     local t = {}
+     local function add(day, separator)
+       t[#t+1] = day
+       t[#t+1] = separator
+     end
+     for k,v in ipairs(days) do
+       local separator = v.modifier
+       if separator == "," then
+         separator = ", "
+       elseif separator == "-" then
+         separator = " – "
+       end
+       if not v.year then
+         add(string.format(T "%d. %d", v.day, v.month),  separator)
+       else
+         add(string.format(T "%d. %d. %d", v.day, v.month, v.year), separator)
+       end
+     end
+     return table.concat(t)
+   end
+   for _, v in ipairs(data) do
+     local name = T (v.comment)
+     local closing = get_closing(v.closing)
+     t[#t+1] = h.tr { h.td {name}, h.td{closing}}
+   end
+   return h.table{class="small", t}
+ end
+
+ return building_blocks

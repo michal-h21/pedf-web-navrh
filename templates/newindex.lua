@@ -53,6 +53,15 @@ local function template(doc )
   local title = doc.title
   local strings = doc.strings
   local T = translator.get_translator(strings)
+  -- handle closed days
+  local today = os.date("%Y-%m-%d", os.time())
+  local closing = doc.calendar
+  local close_comment = closing[today]
+  local close_element = {}
+  if close_comment then
+    close_element = div{class="closed", div{h.b {T "Dnes má knihovna zavřeno: "}}, div{T(close_comment)}}
+    -- close_element = div{class="closed", h.strong {T "Dnes má knihovna zavřeno: "}, T(close_comment)}
+  end
   local contents = {
     row{
       medium(9,{
@@ -148,7 +157,8 @@ local function template(doc )
     --     {day = "Pá", time = "8.00–16.00"}
     --   }
     -- }
-    ), div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
+    ), close_element,
+    div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
     {card {row { 
       div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> <a href="tel:221900148">221 900 148</a>'},
       div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},

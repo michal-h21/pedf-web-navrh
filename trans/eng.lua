@@ -15,7 +15,7 @@ return {
  ,["Předmětový rejstřík"]="Subject index"
  -- ,["ISBN/ISSN"]="ISBN/ISSN"
  ,["hledat"]="search"
- ,["Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='bjednavani_liter.htm'>nákup</a>."]="&nbsp;"
+ ,["Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."]="&nbsp;"
  ,["Ukaž (vyhledávání <acronym title='Elektronické informační zdroje'>EIZ</acronym>)"]="Electronic resouces"
  ,["E-časopisy"]="E-journals"
  ,[ "Plánované uzavření knihovny"]="Closing days"

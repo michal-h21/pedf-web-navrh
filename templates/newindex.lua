@@ -118,7 +118,7 @@ local function template(doc )
           tab("ukaz", T "Ukaž (vyhledávání <acronym title='Elektronické informační zdroje'>EIZ</acronym>)", 
           h.form{ id="ebscohostCustomSearchBox", action="", onsubmit="return ebscoHostSearchGo(this);", method="post",
           h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
-          h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&site=eds-live&scope=site&type=0&custid=s1240919&groupid=main&profid=eds&mode=bool&lang=cs&authtype=ip,guest"},
+          h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;scope=site&amp;type=0&amp;custid=s1240919&amp;groupid=main&amp;profid=eds&amp;mode=bool&amp;lang=cs&amp;authtype=ip,guest"},
           h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
           h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
           h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
@@ -210,7 +210,10 @@ local function template(doc )
 -- (body)
 -- }},
 -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
-h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true} 
+h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true},
+[[<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.js"></script>
+<!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
+]]
 ,h.script{type="text/javascript", [[
   var slider = tns({
     container: '.my-slider',
@@ -218,7 +221,7 @@ h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="t
     slideBy: 'page',
     controls:false,
     nav: false,
-    speed: 10,
+    speed: 7330,
     autoplay: true,
     autoplayHoverPause: true,
     autoplayTimeout: 1500,

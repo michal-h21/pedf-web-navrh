@@ -13,8 +13,11 @@ local sitemap = require "sitemap"
 local discount = require "discount"
 local archiv = require "archivaktual".index
 local newindex_template = require "templates.newindex".template
+local opening_template = require "templates.opening".template
 local prov_doba_fn = require "prov_doba"
 local prov_doba = prov_doba_fn("data/opening.csv")
+local load_closing = require "closing"
+local zaviraci_dny,kalendar  = load_closing(io.lines("data/closing.csv"))
 -- local templates = require("templates")
 local base_template = require "templates.base"
 
@@ -93,6 +96,7 @@ local html_filter = make_filter("htm[l]?$")
 
 local css_filter =  make_filter("css$")
 
+
 local only_root =   transformer(filter(function(doc)
   local fn = doc.relative_filepath
   return not fn:match("^diplomky/") and not fn:match("^en/")
@@ -132,6 +136,14 @@ local apply_template = make_transformer(function(doc)
     doc.contents = doc_card
   end
   local rendered = base_template(doc)
+  return merge(doc, {contents = rendered})
+end)
+
+local apply_opening_template = make_transformer(function(doc)
+  doc.prov_doba = prov_doba
+  doc.calendar = calendar
+  doc.closing = zaviraci_dny
+  local rendered = opening_template(doc)
   return merge(doc, {contents = rendered})
 end)
 
@@ -175,6 +187,20 @@ local function html_builder(lang)
     html_filter,
     only_root,
     lettersmith.docs
+  )
+end
+
+
+
+local function opening_builder(name, lang)
+  local langu_func = get_lang_func(lang)
+  local filter = make_filter(name)
+  return comp(
+  apply_opening_template,
+  add_defaults,
+  filter,
+  only_root,
+  lettersmith.docs
   )
 end
 
@@ -306,6 +332,7 @@ if commands[argument] == nil then
   builder(paths), 
   html_builder()(paths),
   html_builder("eng")(en_path),
+  opening_builder("provozni_doba.htm")(paths),
   css_builder(paths),
   index_gen("index-en.html", "eng")(en_aktuality),
   rss_gen("feed-en.rss",  "Library of Faculty of Education")(en_aktuality),

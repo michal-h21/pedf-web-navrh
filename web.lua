@@ -265,7 +265,10 @@ local newindex = function(filepath,menu, languagestrings)
     print("mainmenu", menu)
     local obalky = get_new_books("data/obalky", 10)
     -- local languagestrings = languagestrings or {}
-    return wrap_in_iter { title=title, menuitems =menu, date = date, items = items, relative_filepath = filepath, prov_doba = prov_doba, obalky = obalky, strings = languagestrings or {}}
+    return wrap_in_iter { title=title, menuitems =menu, date = date, items =
+    items, relative_filepath = filepath, prov_doba = prov_doba, obalky =
+    obalky, strings = languagestrings or {}, closing = zaviraci_dny, calendar = kalendar
+  }
   end
 end
 

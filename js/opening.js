@@ -25,6 +25,8 @@ var opening = (function(calendarfile,basemsg){
     var msg = getMsg(today, dates);
     if(msg){
       addMsg("<div><b>"+ basemsg + "</b></div><div>" +msg + "</div>");
+    }else{
+      addMsg("");
     }
   };
   xhr.send(null);

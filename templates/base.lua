@@ -44,6 +44,15 @@ local function boxik(title, href)
   return medium(2, h.a {href=href, title})
 end
 
+local function metaifexitst(key, value, name)
+  local property = name and "name" or "property"
+  if value then return h.meta{[property] = key, content=value } end
+end
+
+local function make_url(doc)
+  return doc.siteurl .. doc.relative_filepath
+end
+
 -- function column
 local function template(data)
   local strings = data.strings
@@ -55,6 +64,8 @@ local function template(data)
       h.meta{charset="utf-8"},
       h.meta{name="viewport", content="width=device-width, initial-scale=1"},
       h.title{(data.title)},
+      metaifexitst("og:title", data.title),
+      metaifexitst("og:url", make_url(data)),
       -- tohle změnit, použít lokální verzi
       -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
       '<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">',

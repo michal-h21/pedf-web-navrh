@@ -9,6 +9,7 @@ local translator = require "lib.translator"
 
 -- local render_mustache = require("lettersmith.mustache").choose_mustache
 
+siteurl =  "http://knihovna.pedf.cuni.cz/navrh"
 local rss = require "atom"
 local sitemap = require "sitemap"
 local discount = require "discount"
@@ -108,6 +109,7 @@ local add_defaults = make_transformer(function(doc)
   print("Zpracovavam", doc.relative_filepath)
   doc.template = doc.template or "blog.tpl"
   doc.styles = doc.styles or {}
+  doc.siteurl = siteurl
   doc.obalky_dir = "data/obalky/"
   if doc.design ~=false then
     table.insert(doc.styles,"css/scale.css")
@@ -283,7 +285,8 @@ local newindex = function(filepath,menu, languagestrings)
     -- local languagestrings = languagestrings or {}
     return wrap_in_iter { title=title, menuitems =menu, date = date, items =
     items, relative_filepath = filepath, prov_doba = prov_doba, obalky =
-    obalky, strings = languagestrings or {}, closing = zaviraci_dny, calendar = kalendar
+    obalky, strings = languagestrings or {}, closing = zaviraci_dny, calendar = kalendar,
+    siteurl = siteurl
   }
   end
 end

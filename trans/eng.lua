@@ -34,4 +34,11 @@ return {
  ,["Po–Čt"] = "Mo-Thu"
  ,["Pá"] = "Fri"
  ,['js/calendar.js'] = 'js/calendar-en.js'
+ ,['Zavírací den'] = "Closing day"
+ ,['Dnes má knihovna zavřeno: '] = "The library is closed today:"
+ ,['Vánoční prázdniny'] = "Christmas"
+ ,['Letní prázdniny'] = "Summer holiday"
+ ,['Rektorský den'] = "Rector's day"
+ ,['Děkanský den'] = "Dean's day"
+
  }

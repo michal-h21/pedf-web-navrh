@@ -5,6 +5,7 @@ local lazy = require "lettersmith.lazy"
 local merge = require("lettersmith.table_utils").merge
 local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
 local docs = require("lettersmith.docs_utils")
+local translator = require "lib.translator"
 
 -- local render_mustache = require("lettersmith.mustache").choose_mustache
 
@@ -147,9 +148,24 @@ local apply_opening_template = make_transformer(function(doc)
   return merge(doc, {contents = rendered})
 end)
 
+local function save_calendar(filename, calendar, T)
+  local buffer = {}
+  local f = io.open(filename, "w")
+  f:write("{")
+  -- write localized calendar as a JSON file
+  for k,v in pairs(calendar) do buffer[#buffer+1] = string.format('"%s":"%s"', T(k),T(v)) end
+  f:write(table.concat(buffer, ","))
+  f:write( "}")
+  f:close()
+end
+
 local apply_newindex = make_transformer(function(doc)
   -- doc.menuitems = mainmenu
   local rendered = newindex_template(doc)
+  local strings = doc.strings
+  local T = translator.get_translator(doc.strings)
+  local calendar_name = "js/calendar.js" 
+  save_calendar(T(calendar_name), doc.calendar, T)
   return merge(doc, {contents = rendered})
 end)
 

@@ -33,4 +33,5 @@ return {
  ,["Út–Pá"] = "Tue-Fri"
  ,["Po–Čt"] = "Mo-Thu"
  ,["Pá"] = "Fri"
+ ,['js/calendar.js'] = 'js/calendar-en.js'
  }

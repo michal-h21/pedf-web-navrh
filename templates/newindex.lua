@@ -57,9 +57,9 @@ local function template(doc )
   local today = os.date("%Y-%m-%d", os.time())
   local closing = doc.calendar
   local close_comment = closing[today]
-  local close_element = {}
+  local close_element = div {class="closed", id="closed"}
   if close_comment then
-    close_element = div{class="closed", div{h.b {T "Dnes má knihovna zavřeno: "}}, div{T(close_comment)}}
+    close_element = div{class="closed", id="closed", div{h.b {T "Dnes má knihovna zavřeno: "}}, div{T(close_comment)}}
     -- close_element = div{class="closed", h.strong {T "Dnes má knihovna zavřeno: "}, T(close_comment)}
   end
   local contents = {
@@ -193,6 +193,8 @@ local function template(doc )
 -- }},
 -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
 h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true},
+h.script{src="js/opening.js", type="text/javascript", defer=true},
+h.script{ "window.onload = function(){ opening('".. T "js/calendar.js" .."', '".. T("Dnes má knihovna zavřeno:") .. "')};"},
 [[<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.js"></script>
 <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
 ]]

@@ -50,7 +50,7 @@ local function template(data)
   local T = translator.get_translator(strings)
   
   return "<!DOCTYPE html>\n" .. (h.emit(
-  h.html{
+  h.html{lang=T "cs",
     h.head{
       h.meta{charset="utf-8"},
       h.meta{name="viewport", content="width=device-width, initial-scale=1"},
@@ -91,7 +91,7 @@ local function template(data)
       medium(9, 
       {
         -- h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
-        h.a{href="index.html", h.img{style="height:90%;",src=T "img/logo.svg"}},
+        h.a{ href="index.html", h.img{role="banner",style="height:90%;",alt=T "Logo knihovny", src=T "img/logo.svg"}},
         -- h.a{
         --   class="logo",
         --   href="/",
@@ -101,7 +101,7 @@ local function template(data)
         -- }
       }),
       medium(3,{
-        h.form{method="get", id="duckduckgo-search", action="http://duckduckgo.com/", 
+        h.form{role="search", method="get", id="duckduckgo-search", action="http://duckduckgo.com/", 
           h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
           h.input{type="hidden", name="k8" , value="#444444"},
           h.input{type="hidden", name="k9" , value="#D51920"},
@@ -114,7 +114,7 @@ local function template(data)
         -- style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;"}
       })
     },
-      h.header {
+      div{role="navigation",h.header {
         -- h.a{class="logo",h.div{"Ústřední knihovna PedF UK"}},
         -- h.menu{
         -- h.nav{class="nav-collapse",
@@ -124,7 +124,7 @@ local function template(data)
         mainmenu(data.menuitems),
         h.span{ a{href=T "index-en.html",h.img{src=T "img/gb.svg", alt=T "English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
         -- }},
-      },
+      }},
       -- row{
         data.contents,
     -- },
@@ -134,7 +134,7 @@ local function template(data)
     -- h.div{class="card", h.section {class="section ",
     -- (body)
     -- }},
-    h.footer{
+    h.footer{role="contentinfo",
       row{
         medium(4, div{
           p{"Knihovna PedF UK, Magdaleny Rettigové 4, 116&#8239;39&nbsp;Praha&nbsp;1"},

@@ -27,7 +27,7 @@ local provozni_doba = building_blocks.provozni_doba
 
 
 local function obalky(filename, isbn)
-  return h.div {a{target="_blank", href="https://ckis.cuni.cz/F?func=find-a&amp;&local_base=CKS&amp;find_code=ISN&amp;request=".. isbn, h.img{style = "height:9rem;display:inline;", src='/img/obalky/' .. filename }}}
+  return h.div {a{target="_blank", href="https://ckis.cuni.cz/F?func=find-a&amp;local_base=CKS&amp;find_code=ISN&amp;request=".. isbn, h.img{style = "height:9rem;display:inline;",alt=isbn, src='/img/obalky/' .. filename }}}
 end
 
 local function progress(percent)
@@ -92,87 +92,88 @@ local function template(doc )
                 h.option {value="SCAN_SUB", T "Předmětový rejstřík"},
                 h.option {value="FIND_ISN", T "ISBN/ISSN"},
               },
-              h.input{type="submit", value=T "hledat"}
-            }},
-            h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."}
-          },"selected"),
-          tab("ukaz", T "Ukaž (vyhledávání <acronym title='Elektronické informační zdroje'>EIZ</acronym>)", 
-          h.form{ id="ebscohostCustomSearchBox", action="", onsubmit="return ebscoHostSearchGo(this);", method="post",
-          h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
-          h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;scope=site&amp;type=0&amp;custid=s1240919&amp;groupid=main&amp;profid=eds&amp;mode=bool&amp;lang=cs&amp;authtype=ip,guest"},
-          h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
-          h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
-          h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
-          h.label{"Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
-          h.input{type="submit", value=T "hledat"}
-        }
-        ),
-        tab("e-casopisy", T "E-časopisy", [[
-  <form method="get" action="http://sfx.is.cuni.cz/sfxlcl3/az/ukall" target="_blank">
+            },
+            h.input{type="submit", value=T "hledat"},
+          },
+          h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."}
+        },"checked"),
+        tab("ukaz", T "Ukaž (vyhledávání <abbr title='Elektronické informační zdroje'>EIZ</abbr>)", 
+        h.form{ id="ebscohostCustomSearchBox", action="&nbsp;", onsubmit="return ebscoHostSearchGo(this);", method="post",
+        h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
+        h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;scope=site&amp;type=0&amp;custid=s1240919&amp;groupid=main&amp;profid=eds&amp;mode=bool&amp;lang=cs&amp;authtype=ip,guest"},
+        h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
+        h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
+        h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
+        h.label{"Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
+        h.input{type="submit", value=T "hledat"}
+      }
+      ),
+      tab("e-casopisy", T "E-časopisy", [[
+      <form method="get" action="http://sfx.is.cuni.cz/sfxlcl3/az/ukall" target="_blank">
 
-    <input name="param_perform_value" value="searchTitle" type="hidden">
-    <input name="param_jumpToPage_value" value="" type="hidden">
-    <input name="param_type_value" value="textSearch" type="hidden">
-    <input name="param_chinese_checkbox_active" value="1" type="hidden">
-    <input name="param_chinese_checkbox_value" id="param_chinese_checkbox_value1" value="0" type="hidden">
+      <input name="param_perform_value" value="searchTitle" type="hidden">
+      <input name="param_jumpToPage_value" value="" type="hidden">
+      <input name="param_type_value" value="textSearch" type="hidden">
+      <input name="param_chinese_checkbox_active" value="1" type="hidden">
+      <input name="param_chinese_checkbox_value" id="param_chinese_checkbox_value1" value="0" type="hidden">
 
       <label class="i_text">
-        <span>Slova z názvu</span>
-        <input name="param_pattern_value" id="param_pattern_value1" type="search">
+      <span>Slova z názvu</span>
+      <input name="param_pattern_value" id="param_pattern_value1" type="search">
       </label>
       <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
-        ]] .. '<p>' .. T("Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>.") .. "</p> </form>"
-        )
-      }}),
-    },
+      ]] .. '<p>' .. T("Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>.") .. "</p> </form>"
+      )
+    }}),
+  },
+  -- row{
+  --   boxik("Studenti se specifickými potřebami"),
+  --   boxik("EIZ pro PedF"),
+  --   k
+  --   boxik("Oborové EIZ"),
+  --   boxik("Periodika"), 
+  --   boxik("Návody"),
+  --   boxik("Řády a ceníky"),
+  --   boxik("Kontakty"),
+  --   boxik("Facebook"),
+  --   boxik("Galerie knihovny"),
+  --   boxik("Formuláře")
+  -- },
+})
+,
+medium(3,
+{ 
+  card{ provozni_doba( doc.prov_doba, T
+  -- {
+  --   name = "Výpůjční protokol",
+  --   data = {
+  --     {day="Po", time = "8.00–16.00"},
+  --     {day = "Út–Pá", time = "8.00–17.00"}
+  --   }
+  -- },
+  -- {
+  --   name = "Studovna",
+  --   data = {
+  --     {day = "Po–Čt", time = "8.00–18.00"},
+  --     {day = "Pá", time = "8.00–16.00"}
+  --   }
+  -- }
+  ), close_element,
+  div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
+  {card {row { 
+    div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> <a href="tel:221900148">221 900 148</a>'},
+    div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},
+    -- },
     -- row{
-    --   boxik("Studenti se specifickými potřebami"),
-    --   boxik("EIZ pro PedF"),
-    --   k
-    --   boxik("Oborové EIZ"),
-    --   boxik("Periodika"), 
-    --   boxik("Návody"),
-    --   boxik("Řády a ceníky"),
-    --   boxik("Kontakty"),
-    --   boxik("Facebook"),
-    --   boxik("Galerie knihovny"),
-    --   boxik("Formuláře")
-    -- },
-  })
-  ,
-  medium(3,
-  { 
-    card{ provozni_doba( doc.prov_doba, T
-    -- {
-    --   name = "Výpůjční protokol",
-    --   data = {
-    --     {day="Po", time = "8.00–16.00"},
-    --     {day = "Út–Pá", time = "8.00–17.00"}
-    --   }
-    -- },
-    -- {
-    --   name = "Studovna",
-    --   data = {
-    --     {day = "Po–Čt", time = "8.00–18.00"},
-    --     {day = "Pá", time = "8.00–16.00"}
-    --   }
-    -- }
-    ), close_element,
-    div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
-    {card {row { 
-      div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> <a href="tel:221900148">221 900 148</a>'},
-      div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},
-    -- },
-    -- row{
-      div {'<a href="https://www.facebook.com/knihovnapedfpraha"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>',a{href="https://www.facebook.com/knihovnapedfpraha",'knihovnapedfpraha'}}
-    }} 
-    },
-      {card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
-      row( div{ class="my-slider",  print_obalky(doc.obalky)}
-      -- obalky "978-80-7422-500-0",
-      -- obalky "80-85368-18-8", 
-      -- obalky "978-80-7294-458-3"
-      ),
+    div {'<a href="https://www.facebook.com/knihovnapedfpraha"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>',a{href="https://www.facebook.com/knihovnapedfpraha",'knihovnapedfpraha'}}
+  }} 
+},
+{card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
+row( div{ class="my-slider",  print_obalky(doc.obalky)}
+-- obalky "978-80-7422-500-0",
+-- obalky "80-85368-18-8", 
+-- obalky "978-80-7294-458-3"
+),
     }},
     -- card {
     --   h.h2 {"Ankety"}, 
@@ -192,13 +193,13 @@ local function template(doc )
 -- (body)
 -- }},
 -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
-h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true},
-h.script{src="js/opening.js", type="text/javascript", defer=true},
+h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer="defer"},
+h.script{src="js/opening.js", type="text/javascript", defer="defer"},
 h.script{ "window.onload = function(){ opening('".. T "js/calendar.js" .."', '".. T("Dnes má knihovna zavřeno: ") .. "')};"},
-[[<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.js"></script>
-<!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
-]]
-,h.script{type="text/javascript", [[
+  [[<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.js"></script>
+  <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
+  ]]
+  ,h.script{type="text/javascript", [[
   var slider = tns({
     container: '.my-slider',
     items: 3,
@@ -226,6 +227,6 @@ end
 
 
 return {template = template}--("Úvodní stránka - Knihvna PedF UK", {
-  -- h.h1 {"Úvodní stránka"},
-  -- ipsum,ipsum, ipsum,ipsum,ipsum,ipsum,ipsum,
+-- h.h1 {"Úvodní stránka"},
+-- ipsum,ipsum, ipsum,ipsum,ipsum,ipsum,ipsum,
 -- })

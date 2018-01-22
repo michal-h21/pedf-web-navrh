@@ -114,7 +114,7 @@ function building_blocks.uzavreni(data, T)
          separator = " – "
        end
        if not v.year then
-         add(string.format(T "%d. %d", v.day, v.month),  separator)
+         add(string.format(T "%d. %d.", v.day, v.month),  separator)
        else
          add(string.format(T "%d. %d. %d", v.day, v.month, v.year), separator)
        end
@@ -126,7 +126,7 @@ function building_blocks.uzavreni(data, T)
      local closing = get_closing(v.closing)
      t[#t+1] = h.tr { h.td {name}, h.td{closing}}
    end
-   return h.table{class="small", t}
+   return h.table{class="small closing", t}
  end
 
  return building_blocks

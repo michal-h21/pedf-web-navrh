@@ -40,5 +40,7 @@ return {
  ,['Letní prázdniny'] = "Summer holiday"
  ,['Rektorský den'] = "Rector's day"
  ,['Děkanský den'] = "Dean's day"
+ ,['Logo knihovny'] = "Library logo"
+ ,['cs'] = "en"
 
  }

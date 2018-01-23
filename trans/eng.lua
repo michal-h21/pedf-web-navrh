@@ -1,7 +1,7 @@
 return {
  ["Hledat na webu knihovny"] = "Search on the library site"
  ,["Aktuality"] = "News"
- ,[' (<a href="archiv.html">archiv</a>)'] = ' (<a href="archive-en.html">archive</a>)'    
+ ,[' (<a href="archiv.html">více</a>)'] = ' (<a href="archive-en.html">more</a>)'    
  ,[ "Katalog"]= "Catalog"
  ,[ "https://ckis.cuni.cz/F/"] =  "https://ckis.cuni.cz/F/?CON_LNG=ENG"
  ,["Klíčová slova:"] = "Keywords:"
@@ -16,7 +16,7 @@ return {
  -- ,["ISBN/ISSN"]="ISBN/ISSN"
  ,["hledat"]="search"
  ,["Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."]="&nbsp;"
- ,["Ukaž (vyhledávání <acronym title='Elektronické informační zdroje'>EIZ</acronym>)"]="Electronic resouces"
+ ,["Ukaž (vyhledávání <abbr title='Elektronické informační zdroje'>EIZ</abbr>)"]="Electronic resouces"
  ,["E-časopisy"]="E-journals"
  ,[ "Plánované uzavření knihovny"]="Closing days"
  ,["Nové knihy"]="New books"

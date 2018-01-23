@@ -26,7 +26,7 @@ body.container{padding-top:1rem;}
 html.wf-active body *{font-family:"Fira Sans";}
 
 footer *, footer p{
-  font-size:0.8rem;
+  font-size:0.9rem;
   color:#dfd0b0;
   margin:0;
 }
@@ -45,5 +45,25 @@ table.prov_doba caption{margin:0;padding:0;font-size:1rem; font-weight:bold; tex
 
 table.small{margin-left:0;}
 table.closing{margin-top:2.2rem;}
+
+table.closing, table.small{
+  border:none; 
+}
+table.closing td, table.small td{border: none}
+table.small * {padding-left: 0;}
+div.row h1{margin:0.5rem 0; }
+table.small caption{
+  background-color:black;
+  color:#f5f5f5;
+  font-weight:normal;
+  padding-left:.5rem;
+  padding-top:.2rem;
+}
+
+address{font-style:normal;}
+address li{list-style:none;margin-left:0;list-style-position:inside;}
+address ul{margin-left:0;padding-left:0.5rem;}
+div#mapa img{max-width:none;}
+
 
 /* section.section h2{text-align:center;} */

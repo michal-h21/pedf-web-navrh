@@ -158,7 +158,7 @@ local function template(data)
 
         }),
         medium(4, div {
-          p{"<a href='mailto:michal.hoftich@pedf.cuni.cz'>Webmaster</a>"}
+          p{"Webmaster: <a href='mailto:michal.hoftich@pedf.cuni.cz'>michal.hoftich@pedf.cuni.cz</a>"}
         })
         -- boxik("EIZ pro PedF", "eiz.htm"),
         -- boxik('Časopisy', "periodika.htm"),

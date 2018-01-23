@@ -202,7 +202,7 @@ h.script{ "window.onload = function(){ opening('".. T "js/calendar.js" .."', '".
   ,h.script{type="text/javascript", [[
   var slider = tns({
     container: '.my-slider',
-    items: 3,
+    items: 1,
     slideBy: 'page',
     controls:false,
     nav: false,

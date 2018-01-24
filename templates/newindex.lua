@@ -79,7 +79,7 @@ local function template(doc )
         tab("ukaz", T "Ukaž (vyhledávání <abbr title='informační zdroje'>IZ</abbr>)", 
         h.form{ id="ebscohostCustomSearchBox", action="&nbsp;", onsubmit="return ebscoHostSearchGo(this);", method="post",
         h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
-        h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;scope=site&amp;type=0&amp;custid=s1240919&amp;groupid=main&amp;profid=eds&amp;mode=bool&amp;lang=cs&amp;authtype=ip,guest"},
+        h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;scope=site&amp;type=0&amp;custid=s1240919&amp;groupid=main&amp;profid=eds&amp;mode=bool&amp;lang=".. T "cs" .. "&amp;authtype=ip,guest"},
         h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
         h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
         h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },

@@ -9,7 +9,7 @@ local translator = require "lib.translator"
 
 -- local render_mustache = require("lettersmith.mustache").choose_mustache
 
-siteurl =  "http://knihovna.pedf.cuni.cz/navrh"
+local siteurl =  "http://knihovna.pedf.cuni.cz/navrh"
 local rss = require "atom"
 local sitemap = require "sitemap"
 local discount = require "discount"

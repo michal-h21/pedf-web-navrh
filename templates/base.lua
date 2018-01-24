@@ -60,7 +60,7 @@ end
 local function default_img(doc)
   local imgpath = doc.img or "img/informace.jpg"
   local base_url = get_base_url(doc.siteurl)
-  return base_url .. "/" .. imgpath
+  return base_url ..  imgpath
 end
 
 
@@ -75,10 +75,11 @@ local function template(data)
       h.meta{charset="utf-8"},
       h.meta{name="viewport", content="width=device-width, initial-scale=1"},
       h.title{(data.title)},
+      metaifexitst("og:type", "website"),
       metaifexitst("og:title", data.title),
       metaifexitst("og:url", make_url(data)),
-      -- metaifexitst("og:image", default_img(data)),
-      h.meta{name="twitter:card", content="summary_large_image"},
+      metaifexitst("og:image", default_img(data)),
+      metaifexitst( "tter:card", "summary_large_image" , "name"),
       -- tohle změnit, použít lokální verzi
       -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
       '<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">',

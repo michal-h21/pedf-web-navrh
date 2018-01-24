@@ -165,7 +165,8 @@ medium(3,
     div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},
     -- },
     -- row{
-    div {'<a href="https://www.facebook.com/knihovnapedfpraha"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>',a{href="https://www.facebook.com/knihovnapedfpraha",'knihovnapedfpraha'}}
+    div {'<a href="https://www.facebook.com/knihovnapedfpraha"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>','<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-hidden="true"></i></a>',a{href="https://www.facebook.com/knihovnapedfpraha",'knihovnapedfpraha'}},
+    -- div {'<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-hidden="true"></i></a>',a{href="https://www.instagram.com/KnihovnaPedFPraha/",'knihovnapedfpraha'}}
   }} 
 },
 {card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},

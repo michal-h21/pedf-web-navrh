@@ -77,6 +77,7 @@ local function template(data)
       h.title{(data.title)},
       metaifexitst("og:type", "website"),
       metaifexitst("og:title", data.title),
+      metaifexitst("og:description", data.description),
       metaifexitst("og:url", make_url(data)),
       metaifexitst("og:image", default_img(data)),
       metaifexitst( "tter:card", "summary_large_image" , "name"),

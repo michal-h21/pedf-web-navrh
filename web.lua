@@ -275,7 +275,7 @@ local get_news_item = function(doc)
 end
 
 local newindex = function(filepath,menu, languagestrings)
-  local take_news = comp(take(3), map(get_news_item))
+  local take_news = comp(take(2), map(get_news_item))
   return function(iter, ...)
     local items = into(take_news, iter, ...)
     -- local items = {}

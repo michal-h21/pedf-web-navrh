@@ -20,6 +20,16 @@ img.aktual-img{ display:none;}
               }
 }
 
+@media print{
+  body{font-size:12pt;}
+  body * {background-color:none;color:black;}
+  body.container > div.card{border:none;}
+  /* [role=banner], */ 
+
+  #duckduckgo-search,[role=navigation],footer{display:none;}
+
+}
+
 body.container{padding-top:1rem;}
 
 /* html.wf-active {font-family:"Fira Sans";} */

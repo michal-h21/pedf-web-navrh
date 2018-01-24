@@ -83,8 +83,9 @@ local function template(doc )
         h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
         h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
         h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
-        h.label{"Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
-        h.input{type="submit", value=T "hledat"}
+        h.label{T "Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
+        h.input{type="submit", value=T "hledat"},
+          h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."}
       },"checked"
       ),
             tab("aleph", T "Katalog",  h.form{action=T "https://ckis.cuni.cz/F/", method="get", target="_blank", 

@@ -42,5 +42,6 @@ return {
  ,['Děkanský den'] = "Dean's day"
  ,['Logo knihovny'] = "Library logo"
  ,['cs'] = "en"
+ ,["Klíčová slova:"]="Keywords"
 
  }

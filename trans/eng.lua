@@ -16,7 +16,7 @@ return {
  -- ,["ISBN/ISSN"]="ISBN/ISSN"
  ,["hledat"]="search"
  ,["Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."]="&nbsp;"
- ,["Ukaž (vyhledávání <abbr title='Elektronické informační zdroje'>EIZ</abbr>)"]="Electronic resouces"
+ ,["Ukaž (vyhledávání <abbr title='informační zdroje'>IZ</abbr>)"]="Information resouces"
  ,["E-časopisy"]="E-journals"
  ,[ "Plánované uzavření knihovny"]="Closing days"
  ,["Nové knihy"]="New books"

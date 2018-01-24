@@ -53,19 +53,32 @@ local function make_url(doc)
   return doc.siteurl .. doc.relative_filepath
 end
 
+local function get_base_url(url)
+  return url:match("(https?%://[^/]+)")
+end
+
+local function default_img(doc)
+  local imgpath = doc.img or "img/informace.jpg"
+  local base_url = get_base_url(doc.siteurl)
+  return base_url .. "/" .. imgpath
+end
+
+
 -- function column
 local function template(data)
   local strings = data.strings
   local T = translator.get_translator(strings)
   
   return "<!DOCTYPE html>\n" .. (h.emit(
-  h.html{lang=T "cs",
+  h.html{lang=T "cs", prefix="og: http://ogp.me/ns#",
     h.head{
       h.meta{charset="utf-8"},
       h.meta{name="viewport", content="width=device-width, initial-scale=1"},
       h.title{(data.title)},
       metaifexitst("og:title", data.title),
       metaifexitst("og:url", make_url(data)),
+      -- metaifexitst("og:image", default_img(data)),
+      h.meta{name="twitter:card", content="summary_large_image"},
       -- tohle změnit, použít lokální verzi
       -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
       '<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">',
@@ -154,6 +167,7 @@ local function template(data)
         }),
         medium(4, div {
           div{a {href="https://www.facebook.com/knihovnapedfpraha", "Facebook"}}
+          ,div{a {href="https://www.instagram.com/KnihovnaPedFPraha/", "Instagram"}}
           ,div{a {href=T "feed.rss", "RSS"}}
 
         }),

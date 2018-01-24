@@ -76,6 +76,17 @@ local function template(doc )
             -- medium(9, {card {p{"Vyhledávací boxy"}}}),
             -- medium(9, card{ div{class="tabs", 
             medium(12, card{ div{class="tabs", 
+        tab("ukaz", T "Ukaž (vyhledávání <abbr title='informační zdroje'>IZ</abbr>)", 
+        h.form{ id="ebscohostCustomSearchBox", action="&nbsp;", onsubmit="return ebscoHostSearchGo(this);", method="post",
+        h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
+        h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;scope=site&amp;type=0&amp;custid=s1240919&amp;groupid=main&amp;profid=eds&amp;mode=bool&amp;lang=cs&amp;authtype=ip,guest"},
+        h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
+        h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
+        h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
+        h.label{"Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
+        h.input{type="submit", value=T "hledat"}
+      },"checked"
+      ),
             tab("aleph", T "Katalog",  h.form{action=T "https://ckis.cuni.cz/F/", method="get", target="_blank", 
             h.input{  name="local_base", value="pedfr", type="hidden"},
             h.input {name="func", value="find-e" ,type="hidden"},
@@ -96,18 +107,7 @@ local function template(doc )
             h.input{type="submit", value=T "hledat"},
           },
           h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."}
-        },"checked"),
-        tab("ukaz", T "Ukaž (vyhledávání <abbr title='Elektronické informační zdroje'>EIZ</abbr>)", 
-        h.form{ id="ebscohostCustomSearchBox", action="&nbsp;", onsubmit="return ebscoHostSearchGo(this);", method="post",
-        h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
-        h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;scope=site&amp;type=0&amp;custid=s1240919&amp;groupid=main&amp;profid=eds&amp;mode=bool&amp;lang=cs&amp;authtype=ip,guest"},
-        h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
-        h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
-        h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
-        h.label{"Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
-        h.input{type="submit", value=T "hledat"}
-      }
-      ),
+        }),
       tab("e-casopisy", T "E-časopisy", [[
       <form method="get" action="http://sfx.is.cuni.cz/sfxlcl3/az/ukall" target="_blank">
 

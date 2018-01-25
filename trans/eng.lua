@@ -1,5 +1,6 @@
 return {
- ["Hledat na webu knihovny"] = "Search on the library site"
+ ["Hledat výraz"] = "Search on the library site"
+ ,["Knihovna PedF UK"] = "Library of Faculty of Education CU"
  ,["Aktuality"] = "News"
  ,[' (<a href="archiv.html">více</a>)'] = ' (<a href="archive-en.html">more</a>)'    
  ,[ "Katalog"]= "Catalog"
@@ -24,6 +25,7 @@ return {
  ,[ "img/logo.svg"] =  "img/logo-eng.svg"
  ,[ "index-en.html"] =  "index.html"
  ,[ "img/gb.svg"] =  "img/cz.svg"
+ ,["provozni_doba.htm"] = "about.html"
  ,[ "English version"] = "Česká verze"
  ,[ "Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>."] = ""
  ,["Studovna"] = "Studyroom"
@@ -43,5 +45,6 @@ return {
  ,['Logo knihovny'] = "Library logo"
  ,['cs'] = "en"
  ,["Klíčová slova:"]="Keywords"
+ ,["<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."] = ""
 
  }

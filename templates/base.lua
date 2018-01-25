@@ -74,7 +74,7 @@ local function template(data)
     h.head{
       h.meta{charset="utf-8"},
       h.meta{name="viewport", content="width=device-width, initial-scale=1"},
-      h.title{(data.title)},
+      h.title{(T (data.title))},
       metaifexitst("og:type", "website"),
       metaifexitst("og:title", data.title),
       metaifexitst("og:description", data.description),

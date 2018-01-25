@@ -69,7 +69,8 @@ local mainmenu = {
 local engmenu = {
   menuitem("Home", "index-en.html"),
   menuitem("Services", "services.html"),
-  menuitem("Contact us", "contact-en.html")
+  menuitem("Catalogues and databases", "catalogues.html"),
+  menuitem("About library", "about.html")
 }
 
 local engstrings = require "trans.eng"

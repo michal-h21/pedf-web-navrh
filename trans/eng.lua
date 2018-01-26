@@ -45,6 +45,6 @@ return {
  ,['Logo knihovny'] = "Library logo"
  ,['cs'] = "en"
  ,["Klíčová slova:"]="Keywords"
- ,["<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."] = ""
+ ,["<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."] = "<a href='http://support.ebsco.com/help/index.php?lang=en&int=eds'>More information</a> about the EDS"
 
  }

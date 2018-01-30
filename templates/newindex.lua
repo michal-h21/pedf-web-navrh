@@ -44,9 +44,15 @@ local function print_obalky(obalky_tbl)
 end
 
 
-
-
-
+local function data_links(T,data)
+  local t = {}
+  for i, v in ipairs(data) do
+    local separator = ""
+    if i < #data then separator = ", " end
+    table.insert(t, "<a href='" ..T(v[2]).. "'>".. T(v[1]).."</a>"..separator)
+  end
+  return t
+end
 
 -- function column
 local function template(doc )
@@ -86,7 +92,21 @@ local function template(doc )
         h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
         h.label{T "Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
         h.input{type="submit", value=T "hledat"},
-          h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."}
+          h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."},
+          h.div{class="bottom", h.b {T "Další možnosti vyhledávání:"}, data_links(T,{
+            {"WoS", "https://webofknowledge.com/"},
+            {"Scopus", "https://www.scopus.com/"},
+            {"DOAJ", "https://doaj.org/"},
+            {"ERIH", "https://dbh.nsd.uib.no/publiseringskanaler/erihplus/"},
+            {"Ulrichsweb", "https://ulrichsweb.serialssolutions.com"},
+            {"JCR", "https://jcr.incites.thomsonreuters.com/"},
+            {"DOI", "https://www.doi.org/"},
+            {"Knihovní katalog", "https://ckis.cuni.cz/"},
+            {"NK", "https://aleph.nkp.cz/F/?func=file&file_name=base-list"},
+            {"CPK", "https://www.knihovny.cz/"},
+            {"UKAŽ(UK)", "https:ukaz.cuni.cz"},
+            {"Google Scholar", "https://scholar.google.cz/"}
+          })}
       },"checked"
       ),
             tab("aleph", T "Katalog",  h.form{action=T "https://ckis.cuni.cz/F/", method="get", target="_blank", 
@@ -163,7 +183,7 @@ medium(3,
   ), close_element,
   div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
   {card {row { 
-    div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> <a href="tel:221900148">221 900 148</a>'},
+    div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> <a href="tel:+420221900148">+420 221 900 148</a>'},
     div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},
     -- },
     -- row{

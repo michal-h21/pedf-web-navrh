@@ -28,7 +28,7 @@ return {
  ,["provozni_doba.htm"] = "about.html"
  ,[ "English version"] = "Česká verze"
  ,[ "Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>."] = ""
- ,["Studovna"] = "Studyroom"
+ ,["Studovna"] = "Study room"
  ,["Výpůjční protokol"] = "Library"
  ,["Půjčovna"] = "Library"
  ,["Po"] = "Mo"

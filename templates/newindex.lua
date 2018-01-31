@@ -78,10 +78,11 @@ local function template(doc )
             -- actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
             -- actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme <b>všechny</b> uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
           }},
-          row {
+          -- row {
             -- medium(9, {card {p{"Vyhledávací boxy"}}}),
             -- medium(9, card{ div{class="tabs", 
-            medium(12, card{ div{class="tabs", 
+            medium(12, 
+            card{ div{class="tabs", 
         tab("ukaz", T "Ukaž (vyhledávání <abbr title='informační zdroje'>IZ</abbr>)", 
         h.form{ id="ebscohostCustomSearchBox", action="&nbsp;", onsubmit="return ebscoHostSearchGo(this);", method="post",
         h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
@@ -93,20 +94,6 @@ local function template(doc )
         h.label{T "Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
         h.input{type="submit", value=T "hledat"},
           h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."},
-          h.div{class="bottom", h.b {T "Další možnosti vyhledávání:"}, data_links(T,{
-            {"WoS", "https://webofknowledge.com/"},
-            {"Scopus", "https://www.scopus.com/"},
-            {"DOAJ", "https://doaj.org/"},
-            {"ERIH", "https://dbh.nsd.uib.no/publiseringskanaler/erihplus/"},
-            {"Ulrichsweb", "https://ulrichsweb.serialssolutions.com"},
-            {"JCR", "https://jcr.incites.thomsonreuters.com/"},
-            {"DOI", "https://www.doi.org/"},
-            {"Knihovní katalog", "https://ckis.cuni.cz/"},
-            {"NK", "https://aleph.nkp.cz/F/?func=file&file_name=base-list"},
-            {"CPK", "https://www.knihovny.cz/"},
-            {"UKAŽ(UK)", "https:ukaz.cuni.cz"},
-            {"Google Scholar", "https://scholar.google.cz/"}
-          })}
       },"checked"
       ),
             tab("aleph", T "Katalog",  h.form{action=T "https://ckis.cuni.cz/F/", method="get", target="_blank", 
@@ -147,7 +134,23 @@ local function template(doc )
       ]] .. '<p>' .. T("Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>.") .. "</p> </form>"
       )
     }}),
-  },
+    -- row{
+    medium(12, card(
+          h.div{ h.b {T "Další možnosti vyhledávání:"}, data_links(T,{
+            {"WoS", "https://webofknowledge.com/"},
+            {"Scopus", "https://www.scopus.com/"},
+            {"DOAJ", "https://doaj.org/"},
+            {"ERIH", "https://dbh.nsd.uib.no/publiseringskanaler/erihplus/"},
+            {"Ulrichsweb", "https://ulrichsweb.serialssolutions.com"},
+            {"JCR", "https://jcr.incites.thomsonreuters.com/"},
+            {"DOI", "https://www.doi.org/"},
+            {"Katalog (UK)", "https://ckis.cuni.cz/F/"},
+            {"NK", "http://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
+            {"CPK", "https://www.knihovny.cz/"},
+            {"UKAŽ (UK)", "https:ukaz.cuni.cz"},
+            {"Google Scholar", "https://scholar.google.cz/"}
+          })}))--}
+  -- },
   -- row{
   --   boxik("Studenti se specifickými potřebami"),
   --   boxik("EIZ pro PedF"),

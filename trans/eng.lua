@@ -46,5 +46,10 @@ return {
  ,['cs'] = "en"
  ,["Klíčová slova:"]="Keywords"
  ,["<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."] = "<a href='http://support.ebsco.com/help/index.php?lang=en&int=eds'>More information</a> about the EDS"
+ ,["http://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"] = "http://aleph.nkp.cz/F/?func=file&amp;file_name=base-list&amp;CON_LNG=ENG"
+ ,["NK"] = "National Library"
+ ,["Katalog (UK)"] = "Catalog (CU)"
+ ,["UKAŽ (UK)" ] = "EDS (CU)"
+ ,["Další možnosti vyhledávání:"] = "More search options:"
 
  }

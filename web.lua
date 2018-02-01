@@ -81,6 +81,7 @@ local paths = lettersmith.paths("html")
 local en_path = lettersmith.paths("html/en")
 local aktuality = lettersmith.paths("html/aktuality")
 local en_aktuality = lettersmith.paths("html/en/aktuality")
+local nove_knihy = lettersmith.paths("html/nove_knihy")
 -- local diplomka_path = lettersmith.paths("diplomky")
 
 local make_transformer = function(fn)
@@ -106,17 +107,26 @@ local only_root =   transformer(filter(function(doc)
 end))
 
 
+local nk_defaults = make_transformer(function(doc)
+ doc.relative_filepath = "/nove_knihy/index.html"
+ print("Nové knihy", doc.relative_filepath)
+ doc.title = "Nové knihy"
+ doc.styles = {"/css/nove_knihy.css"}
+ return doc
+end)
+
 local add_defaults = make_transformer(function(doc)
   print("Zpracovavam", doc.relative_filepath)
   doc.template = doc.template or "blog.tpl"
-  doc.styles = doc.styles or {}
+  -- don't use old styles in the documents
+  doc.styles = {} -- doc.styles or {}
   doc.siteurl = siteurl
   doc.obalky_dir = "data/obalky/"
   doc.description = "Fakultní knihovna v centru Prahy. Bohatý knižní fond, množství elektronických zdrojů, pravidelné výstavy, denní tisk a časopisy. Těšíme se na vás!"
-  if doc.design ~=false then
-    table.insert(doc.styles,"css/scale.css")
-    table.insert(doc.styles,"css/design.css")
-  end
+  -- if doc.design ~=false then
+    -- table.insert(doc.styles,"css/scale.css")
+    -- table.insert(doc.styles,"css/design.css")
+  -- end
   if doc.lang == "eng" then
     doc.menuitems = engmenu
     doc.strings = engstrings
@@ -210,6 +220,18 @@ local function html_builder(lang)
   )
 end
 
+local function nove_knihy_builder(lang)
+  local lang_func = get_lang_func(lang)
+  return comp(
+    apply_template,
+    nk_defaults,
+    add_defaults,
+    lang_func,
+    html_filter,
+    only_root,
+    lettersmith.docs
+  )
+end
 
 
 local function opening_builder(name, lang)
@@ -355,6 +377,7 @@ if commands[argument] == nil then
   "www", 
   builder(paths), 
   html_builder()(paths),
+  nove_knihy_builder()(nove_knihy),
   html_builder("eng")(en_path),
   opening_builder("provozni_doba.htm")(paths),
   css_builder(paths),

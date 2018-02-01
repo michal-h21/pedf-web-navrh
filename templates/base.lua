@@ -10,7 +10,7 @@ local a, p, div, header, section = h.a, h.p, h.div, h.header, h.section
 
 local menuitem = function(title, href)
   -- return h.menuitem{class="button", h.a{src=href, title}}
-  return h.a{href=href, class="button", title}
+  return h.a{href="/" .. href, class="button", title}
 end
 
 
@@ -32,7 +32,7 @@ local function mainmenu(menuitems)
   local t = {}
   local menuitems = menuitems or {}
   for _, item in ipairs(menuitems) do
-    table.insert(t, menuitem(item.title, item.href))
+    table.insert(t, menuitem(item.title,  item.href))
   end
   return t
 end
@@ -63,6 +63,16 @@ local function default_img(doc)
   return base_url ..  imgpath
 end
 
+local function custom_styles(data)
+  local styles = data.styles
+  local t = {}
+  if styles then
+    for _, v in ipairs(styles) do
+      t[#t+1] = h.link{rel="stylesheet", type="text/css", href=v}
+    end
+  end
+  return t
+end
 
 -- function column
 local function template(data)
@@ -85,9 +95,10 @@ local function template(data)
       -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
       '<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">',
      h.link {rel="alternate",  type="application/rss+xml", href= T "feed.rss"},
-      h.link{rel="stylesheet", type="text/css", href="mini-knihovna.css"},
-      h.link{rel="stylesheet", type="text/css", href="style.css"},
-      h.link{rel="stylesheet", type="text/css", href="media.css"},
+      h.link{rel="stylesheet", type="text/css", href="/mini-knihovna.css"},
+      h.link{rel="stylesheet", type="text/css", href="/style.css"},
+      h.link{rel="stylesheet", type="text/css", href="/media.css"},
+      custom_styles(data),
       [[
       <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -117,7 +128,7 @@ local function template(data)
       medium(9, 
       {
         -- h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
-        h.a{ href="index.html", h.img{role="banner",style="height:90%;",alt=T "Logo knihovny", src=T "img/logo.svg"}},
+        h.a{ href="/index.html", h.img{role="banner",style="height:90%;",alt=T "Logo knihovny", src=T "/img/logo.svg"}},
         -- h.a{
         --   class="logo",
         --   href="/",
@@ -148,7 +159,7 @@ local function template(data)
         -- class="row",
         h.span {class="logo", "&nbsp;"},
         mainmenu(data.menuitems),
-        h.span{ a{href=T "index-en.html",h.img{src=T "img/gb.svg", alt=T "English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
+        h.span{ a{href=T "/index-en.html",h.img{src=T "/img/gb.svg", alt=T "English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
         -- }},
       }},
       -- row{
@@ -170,7 +181,7 @@ local function template(data)
         medium(4, div {
           div{a {href="https://www.facebook.com/knihovnapedfpraha", "Facebook"}}
           ,div{a {href="https://www.instagram.com/KnihovnaPedFPraha/", "Instagram"}}
-          ,div{a {href=T "feed.rss", "RSS"}}
+          ,div{a {href=T "/feed.rss", "RSS"}}
 
         }),
         medium(4, div {

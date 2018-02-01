@@ -37,7 +37,7 @@ local rss_template_string = [[
     <link>{{{url}}}</link>
     <description>{{contents}}</description>
     <pubDate>{{pubdate}}</pubDate>
-    <guid>{{guid}}</guid>
+    <guid isPermaLink="false">{{guid}}</guid>
     {{#author}}
     <author>{{author}}</author>
     {{/author}}
@@ -93,11 +93,13 @@ local function generate_rss(relative_filepath, site_url, site_title, site_descri
   return function(iter, ...)
     -- Map table of docs to table of rss items using transducers.
     local items = into(take_20_rss_items, iter, ...)
+    local feed_url = site_url .. "/" .. relative_filepath
 
     local contents = render_feed({
       site_url = site_url,
       site_title = site_title,
       site_description = site_description,
+      feed_url = feed_url,
       items = items
     })
     local feed_date

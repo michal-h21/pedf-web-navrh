@@ -37,6 +37,7 @@ local rss_template_string = [[
     <link>{{{url}}}</link>
     <description>{{contents}}</description>
     <pubDate>{{pubdate}}</pubDate>
+    <guid>{{guid}}</guid>
     {{#author}}
     <author>{{author}}</author>
     {{/author}}
@@ -58,6 +59,7 @@ local function to_rss_item_from_doc(doc, root_url_string)
   local html = discount(contents)
   contents = html
   local author = doc.author
+  local guid = doc.relative_filepath
 
   -- Reformat doc date as RFC 1123, per RSS spec
   -- http://tools.ietf.org/html/rfc1123.html
@@ -76,7 +78,8 @@ local function to_rss_item_from_doc(doc, root_url_string)
     url = root_url_string,
     contents = contents,
     pubdate = pubdate,
-    author = author
+    author = author,
+    guid = guid
   }
 end
 

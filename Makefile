@@ -1,5 +1,5 @@
 
-.Phony: upload generate
+.Phony: upload generate serve
 
 all: style.css index.html mini-knihovna.css generate upload 
 
@@ -27,4 +27,5 @@ upload:
 	# scp mini-knihovna.css style.css index.html beta:/var/www/html/navrh/
 	# scp img/*.* beta:/var/www/html/navrh/img/
 	
-
+serve: generate
+	python server.py

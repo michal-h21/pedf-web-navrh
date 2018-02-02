@@ -1,5 +1,5 @@
 return {
- ["Hledat výraz"] = "Search on the library site"
+ ["Hledat na tomto webu"] = "Search on the library site"
  ,["Knihovna PedF UK"] = "Library of Faculty of Education CU"
  ,["Aktuality"] = "News"
  ,[' (<a href="archiv.html">více</a>)'] = ' (<a href="archive-en.html">more</a>)'    

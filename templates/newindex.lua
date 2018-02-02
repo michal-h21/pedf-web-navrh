@@ -91,7 +91,8 @@ local function template(doc )
         h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
         h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
         h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
-        h.label{T "Klíčová slova:", h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="23"}},
+        -- h.label{T "Klíčová slova:", 
+        h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="28"},
         h.input{type="submit", value=T "hledat"},
           h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."},
       },"checked"
@@ -100,12 +101,13 @@ local function template(doc )
             h.input{  name="local_base", value="pedfr", type="hidden"},
             h.input {name="func", value="find-e" ,type="hidden"},
             row{
-              h.label {T "Klíčová slova:", h.input {name="request", type="search"}},
+              -- h.label {T "Klíčová slova:", 
+              h.input {name="request", type="search"},
               h.label {T "Vyhledat v: ", h.select {
                 name="find_scan_code",
                 h.option{value="FIND_WRD", selected="selected", T "Všechna pole"},
                 h.option {value="FIND_WTI", T "Název"},
-                h.option {value="SCAN_TIT", T "První slovo z názvu"},
+                -- h.option {value="SCAN_TIT", T "První slovo z názvu"},
                 h.option {value="FIND_WAU", T "Autor"},
                 h.option {value="SCAN_AUT", T "Autorský rejstřík"},
                 h.option {value="FIND_WKW", T "Předmět"},
@@ -137,6 +139,7 @@ local function template(doc )
     -- row{
     medium(12, card(
           h.div{ h.b {T "Další možnosti vyhledávání:"}, data_links(T,{
+            {"Katalog (UK)", "https://ckis.cuni.cz/F/"},
             {"WoS", "https://webofknowledge.com/"},
             {"Scopus", "https://www.scopus.com/"},
             {"DOAJ", "https://doaj.org/"},
@@ -144,7 +147,6 @@ local function template(doc )
             {"Ulrichsweb", "https://ulrichsweb.serialssolutions.com"},
             {"JCR", "https://jcr.incites.thomsonreuters.com/"},
             {"DOI", "https://www.doi.org/"},
-            {"Katalog (UK)", "https://ckis.cuni.cz/F/"},
             {"NK", "http://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
             {"CPK", "https://www.knihovny.cz/"},
             {"UKAŽ (UK)", "https:ukaz.cuni.cz"},

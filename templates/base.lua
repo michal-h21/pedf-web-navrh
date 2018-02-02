@@ -143,7 +143,7 @@ local function template(data)
           h.input{type="hidden", name="k8" , value="#444444"},
           h.input{type="hidden", name="k9" , value="#D51920"},
           h.input{type="hidden", name="kt" , value="h"},
-          h.input{type="search", name="q" , maxlength="255", style="width:12rem", placeholder=T "Hledat výraz"},
+          h.input{type="search", name="q" , maxlength="255", style="width:12rem", placeholder=T "Hledat na tomto webu"},
           h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
         }
 

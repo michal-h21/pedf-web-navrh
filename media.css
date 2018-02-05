@@ -60,6 +60,8 @@ table.closing, table.small{
   border:none; 
 }
 table.closing td, table.small td{border: none}
+div.closed div:first-child{color:#d63422;}
+
 table.small * {padding-left: 0;}
 div.row h1{margin:0.5rem 0; }
 table.small caption{

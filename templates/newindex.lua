@@ -149,7 +149,7 @@ local function template(doc )
             {"DOI", "https://www.doi.org/"},
             {"NK", "http://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
             {"CPK", "https://www.knihovny.cz/"},
-            {"UKAŽ (UK)", "https:ukaz.cuni.cz"},
+            {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
             {"Google Scholar", "https://scholar.google.cz/"}
           })}))--}
   -- },

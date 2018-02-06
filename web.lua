@@ -235,11 +235,12 @@ end
 
 
 local function opening_builder(name, lang)
-  local langu_func = get_lang_func(lang)
+  local lang_func = get_lang_func(lang)
   local filter = make_filter(name)
   return comp(
   apply_opening_template,
   add_defaults,
+  lang_func,
   filter,
   only_root,
   lettersmith.docs
@@ -379,6 +380,7 @@ if commands[argument] == nil then
   html_builder()(paths),
   nove_knihy_builder()(nove_knihy),
   html_builder("eng")(en_path),
+  opening_builder("opening.html","eng")(en_path),
   opening_builder("provozni_doba.htm")(paths),
   css_builder(paths),
   index_gen("index-en.html", "eng")(en_aktuality),

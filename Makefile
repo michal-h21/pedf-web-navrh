@@ -1,7 +1,7 @@
 
 .Phony: upload generate serve
 
-all: style.css index.html mini-knihovna.css generate upload 
+all: style.css index.html mini-knihovna.css html/eiz-pedf.html generate upload 
 
 style.css: style.lua
 	lua style.lua > style.css
@@ -9,6 +9,11 @@ style.css: style.lua
 # index.html: template.lua
 	# lua template.lua > index.html
 
+data/eiz.csv: data/eiz.xlsx
+	in2csv $< > $@
+
+html/eiz-pedf.html: data/eiz.csv src/eiz.lua
+	lua src/eiz.lua < $< > $@
 
 mini-knihovna.css: mini.css/src/flavors/mini-knihovna.scss
 	scss mini.css/src/flavors/mini-knihovna.scss > mini-knihovna.css

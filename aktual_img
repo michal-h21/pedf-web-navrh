@@ -1,0 +1,8 @@
+#/usr/bin/env bash
+img=$1
+new=`basename $img`
+
+convert -auto-orient -resize 244x244 $img $new
+scp $new beta:/var/www/html/img/
+rm $new
+echo /img/$new

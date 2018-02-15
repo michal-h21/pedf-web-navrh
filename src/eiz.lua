@@ -58,7 +58,7 @@ print [[
 <ul>
 <li><a href="https://ukaz.cuni.cz">Vyhledávání jednotlivých článků</a></li>
 <li><a href="https://ckis.cuni.cz/">Vyhledávání on-line časopisů</a></li>
-<li><a href="https://ckis.cuni.cz/">Vyhledávání tištěných časopisů</a>, <a href="http://knihovna.pedf.cuni.cz/periodika.htm">Seznam časopisů</a></li>
-<li><a href="pez.cuni.cz">Vyhledávání celých databází</a></li>
+<li><a href="http://sfx.is.cuni.cz/sfxlcl3/az/ukall">Vyhledávání tištěných časopisů</a></li> 
+<li><a href="https://pez.cuni.cz">Vyhledávání celých databází</a></li>
 </ul>
 ]]

@@ -61,4 +61,7 @@ print [[
 <li><a href="http://sfx.is.cuni.cz/sfxlcl3/az/ukall">Vyhledávání tištěných časopisů</a></li> 
 <li><a href="https://pez.cuni.cz">Vyhledávání celých databází</a></li>
 </ul>
+<p>
+Předplatné na tyto databáze je hrazeno z prostředků PedF, ÚK UK, grantů a projektu CzechElib.
+</p>
 ]]

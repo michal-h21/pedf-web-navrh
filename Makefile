@@ -28,7 +28,7 @@ generate:
 	cp js/*.* www/js/
 
 upload:
-	cd www && rsync -avz . beta:/var/www/html/
+	cd www && rsync -auvz --checksum . beta:/var/www/html/
 	# scp mini-knihovna.css style.css index.html beta:/var/www/html/navrh/
 	# scp img/*.* beta:/var/www/html/navrh/img/
 	

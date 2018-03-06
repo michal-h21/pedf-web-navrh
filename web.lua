@@ -119,7 +119,7 @@ local add_defaults = make_transformer(function(doc)
   print("Zpracovavam", doc.relative_filepath)
   doc.template = doc.template or "blog.tpl"
   -- don't use old styles in the documents
-  doc.styles = {} -- doc.styles or {}
+  doc.styles = doc.styles or {}
   doc.siteurl = siteurl
   doc.obalky_dir = "data/obalky/"
   doc.description = "Fakultní knihovna v centru Prahy. Bohatý knižní fond, množství elektronických zdrojů, pravidelné výstavy, denní tisk a časopisy. Těšíme se na vás!"

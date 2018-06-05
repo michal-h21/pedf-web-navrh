@@ -1,0 +1,17 @@
+#!/usr/bin/bash
+title="$1"
+
+name="$(echo $title | iconv  -t ASCII//TRANSLIT -f utf-8 | tr '[:upper:]' '[:lower:]' | tr ' ' '_')"
+echo $name
+date="$(date +%Y-%m-%d)"
+filename="html/en/aktuality/$date-$name.md"
+echo $filename
+
+echo "---" > $filename
+echo title: $title >> $filename
+echo hide: \"2199-12-31\" >> $filename
+echo alt: alt text >> $filename
+echo img: img file >> $filename
+echo --- >> $filename
+
+vim $filename

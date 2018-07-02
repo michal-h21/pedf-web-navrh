@@ -170,7 +170,8 @@ local function template(doc )
 ,
 medium(3,
 { 
-  card{ provozni_doba( doc.prov_doba, T
+  card{ 
+    -- provozni_doba( doc.prov_doba, T
   -- {
   --   name = "Výpůjční protokol",
   --   data = {
@@ -185,7 +186,25 @@ medium(3,
   --     {day = "Pá", time = "8.00–16.00"}
   --   }
   -- }
-  ), close_element,
+  -- ), 
+  [[
+           <table class="prov_doba small">
+                            <caption>]] ..T "Letní prázdniny" ..[[</caption>
+                            <tr>
+                                <td>]] .. T "Studovna" .. [[</td>
+                                <td>]] .. T"Zavřeno do odvolání" ..[[</td>
+                            </tr>
+                            <tr>
+                                <td>]] .. T"Půjčovna" ..[[</td>
+                                <td>]] .. T "Zavřeno červenec + srpen" .. [[</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>]] .. T "Otevřeno každé úterý v srpnu, 9.00 — 15.00" ..[[</td>
+                            </tr>
+                        </table>
+  ]],
+  close_element,
   div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
   {card {row { 
     div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> <a href="tel:+420221900148">+420 221 900 148</a>'},

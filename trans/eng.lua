@@ -52,5 +52,8 @@ return {
  ,["Katalog (UK)"] = "Catalog (CU)"
  ,["UKAŽ (UK)" ] = "EDS (CU)"
  ,["Další možnosti vyhledávání:"] = "More search options:"
+ ,["Zavřeno do odvolání"] = "Closed until further notice"
+ ,["Zavřeno červenec + srpen"] = "Closed in July and August"
+ ,["Otevřeno každé úterý v srpnu, 9.00 — 15.00"] = "Open every Tuesday in August"
 
  }

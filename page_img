@@ -3,6 +3,6 @@ img=$1
 new=`basename $img`
 
 convert -auto-orient -resize 900x900 $img $new
-scp $new beta:/var/www/html/img/
+scp $new knihovna-new:/home/hoftich/nginx/html/img/
 rm $new
 echo /img/$new

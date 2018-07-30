@@ -138,7 +138,7 @@ local function template(doc )
     }}),
     -- row{
     medium(12, card(
-          h.div{ h.b {T "Další možnosti vyhledávání:"}, data_links(T,{
+          h.div{ h.b {T "Další nástroje:"}, data_links(T,{
             {"Katalog (UK)", "https://ckis.cuni.cz/F/"},
             {"WoS", "https://webofknowledge.com/"},
             {"Scopus", "https://www.scopus.com/"},
@@ -150,7 +150,8 @@ local function template(doc )
             {"NK", "http://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
             {"CPK", "https://www.knihovny.cz/"},
             {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
-            {"Google Scholar", "https://scholar.google.cz/"}
+            {"Google Scholar", "https://scholar.google.cz/"},
+            {"PEZ", "https://pez.cuni.cz/"}
           })}))--}
   -- },
   -- row{

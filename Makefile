@@ -1,7 +1,7 @@
 
 .Phony: upload generate serve
 
-all: style.css index.html mini-knihovna.css html/eiz-pedf.html generate upload 
+all: style.css mini-knihovna.css html/eiz-pedf.html generate upload 
 
 style.css: style.lua
 	lua style.lua > style.css

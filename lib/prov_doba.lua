@@ -9,7 +9,7 @@ local function load_opening(lines)
     local room, days, from, to, comment = table.unpack(entries)
     if not rooms[room] then table.insert(seq, room) end
     local current = rooms[room] or {name=room, data = {}}
-    local time = from .. " – " .. to
+    local time = table.concat({from,  to}, " – ")
     table.insert(current.data, {day = days, time = time})
     rooms[room] = current
     -- print("*****************",room, days, from, to, comment)

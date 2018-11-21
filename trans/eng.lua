@@ -46,7 +46,7 @@ return {
  ,['Logo knihovny'] = "Library logo"
  ,['cs'] = "en"
  ,["Klíčová slova:"]="Keywords"
- ,["<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."] = "<a href='http://support.ebsco.com/help/index.php?lang=en&int=eds'>More information</a> about the EDS"
+ ,["<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."] = "<a href='http://support.ebsco.com/help/index.php?lang=en&int=eds'>More information</a> about the EDS."
  ,["http://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"] = "http://aleph.nkp.cz/F/?func=file&amp;file_name=base-list&amp;CON_LNG=ENG"
  ,["NK"] = "National Library"
  ,["Katalog (UK)"] = "Catalog (CU)"
@@ -55,5 +55,6 @@ return {
  ,["Zavřeno do odvolání"] = "Closed until further notice"
  ,["Zavřeno červenec + srpen"] = "Closed in July and August"
  ,["Otevřeno každé úterý v srpnu, 9.00 — 15.00"] = "Open every Tuesday in August"
-
+ ,["<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."] = "<a href='catalogues.html#notice'>Terms of service</a>."
+ ,['<a href="studovna.html">Náhradní studovna</a>&nbsp; (R423)']="Temporary studyroom (R423)"
  }

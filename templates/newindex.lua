@@ -94,7 +94,7 @@ local function template(doc )
         -- h.label{T "Klíčová slova:", 
         h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="28"},
         h.input{type="submit", value=T "hledat"},
-          h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž."},
+          h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž.", T "<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."},
       },"checked"
       ),
             tab("aleph", T "Katalog",  h.form{action=T "https://ckis.cuni.cz/F/", method="get", target="_blank", 

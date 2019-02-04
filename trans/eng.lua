@@ -57,4 +57,7 @@ return {
  ,["Otevřeno každé úterý v srpnu, 9.00 — 15.00"] = "Open every Tuesday in August"
  ,["<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."] = "<a href='catalogues.html#notice'>Terms of service</a>."
  ,['<a href="studovna.html">Náhradní studovna</a>&nbsp; (R423)']="Temporary studyroom (R423)"
+ ,['Rekonstrukce knihovny']="Reconstruction of the Library"
+ ,['Sanitární den']="Closing day"
+ ,['Státní svátky']="Public holiday"
  }

@@ -15,6 +15,7 @@ local function make_range(t,first, second)
   local first_date = get_date(first)
   local second_date = get_date(second)
   local diff = date.diff( second_date, first_date)
+  t[#t+1] = first_date:copy()
   for i=1,  diff:spandays()-1, 1 do
     t[#t+1] = first_date:adddays(1):copy()
   end

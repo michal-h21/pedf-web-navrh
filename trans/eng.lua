@@ -60,4 +60,6 @@ return {
  ,['Rekonstrukce knihovny']="Reconstruction of the Library"
  ,['Sanitární den']="Closing day"
  ,['Státní svátky']="Public holiday"
+ ,['Zkušební přístupy EIZ']="E-resources free trials"
+ ,['http://pez.cuni.cz/prehled/freetrials.php?lang=cs'] = "http://pez.cuni.cz/prehled/freetrials.php?lang=en"
  }

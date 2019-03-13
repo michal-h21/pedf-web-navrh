@@ -224,7 +224,7 @@ row( div{ class="my-slider",  print_obalky(doc.obalky)}
 -- obalky "80-85368-18-8", 
 -- obalky "978-80-7294-458-3"
 ),
-h.h3 {a{href="http://pez.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
+h.h3 {a{href= T "http://pez.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
     }},
     -- card {
     --   h.h2 {"Ankety"}, 

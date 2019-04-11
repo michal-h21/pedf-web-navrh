@@ -138,7 +138,7 @@ local function template(data)
         -- }
       }),
       medium(3,{
-        h.form{role="search", method="get", id="duckduckgo-search", action="http://duckduckgo.com/", 
+        h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", 
           h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
           h.input{type="hidden", name="k8" , value="#444444"},
           h.input{type="hidden", name="k9" , value="#D51920"},

@@ -27,7 +27,9 @@ local provozni_doba = building_blocks.provozni_doba
 
 
 local function obalky(filename, isbn)
-  return h.div {a{target="_blank", href="https://ckis.cuni.cz/F?func=find-a&amp;local_base=CKS&amp;find_code=ISN&amp;request=".. isbn, h.img{style = "height:9rem;display:inline;",alt=isbn, src='/img/obalky/' .. filename }}}
+  -- return h.div {a{target="_blank", href="https://ckis.cuni.cz/F?func=find-a&amp;local_base=CKS&amp;find_code=ISN&amp;request=".. isbn, h.img{style = "height:9rem;display:inline;",alt=isbn, src='/img/obalky/' .. filename }}}
+  -- odkazovat do UKAŽ místo katalogu. v UKAŽ můžou být odkazy na Bookport :(
+  return h.div {a{target="_blank", href="https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;scope=site&amp;type=0&amp;custid=s1240919&amp;groupid=pedf&amp;profid=eds&amp;mode=bool&amp;lang=cs&amp;authtype=ip,guest&amp;bquery=IB+".. isbn, h.img{style = "height:9rem;display:inline;",alt=isbn, src='/img/obalky/' .. filename }}}
 end
 
 local function progress(percent)

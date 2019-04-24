@@ -122,7 +122,7 @@ local function template(doc )
           h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."}
         }),
       tab("e-casopisy", T "E-časopisy", [[
-      <form method="get" action="http://sfx.is.cuni.cz/sfxlcl3/az/ukall" target="_blank">
+      <form method="get" action="https://sfx.is.cuni.cz/sfxlcl3/az/ukall" target="_blank">
 
       <input name="param_perform_value" value="searchTitle" type="hidden">
       <input name="param_jumpToPage_value" value="" type="hidden">
@@ -149,7 +149,7 @@ local function template(doc )
             {"Ulrichsweb", "https://ulrichsweb.serialssolutions.com"},
             {"JCR", "https://jcr.incites.thomsonreuters.com/"},
             {"DOI", "https://www.doi.org/"},
-            {"NK", "http://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
+            {"NK", "https://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
             {"CPK", "https://www.knihovny.cz/"},
             {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
             {"Google Scholar", "https://scholar.google.cz/"},
@@ -226,7 +226,7 @@ row( div{ class="my-slider",  print_obalky(doc.obalky)}
 -- obalky "80-85368-18-8", 
 -- obalky "978-80-7294-458-3"
 ),
-h.h3 {a{href= T "http://pez.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
+h.h3 {a{href= T "https://pez.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
     }},
     -- card {
     --   h.h2 {"Ankety"}, 

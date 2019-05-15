@@ -186,6 +186,7 @@ local function template(data)
         }),
         medium(4, div {
           p{"Webmaster: <a href='mailto:michal.hoftich@pedf.cuni.cz'>michal.hoftich@pedf.cuni.cz</a>"}
+          ,p{a {href="prohlaseni.html", "Prohlášení o přístupnosti stránek"}}
         })
         -- boxik("EIZ pro PedF", "eiz.htm"),
         -- boxik('Časopisy', "periodika.htm"),

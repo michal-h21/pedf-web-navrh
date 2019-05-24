@@ -20,7 +20,7 @@ return {
  ,["Ukaž (vyhledávání <abbr title='informační zdroje'>IZ</abbr>)"]="Information resouces"
  ,["E-časopisy"]="E-journals"
  ,[ "Plánované uzavření knihovny"]="Closing days"
- ,["Nové knihy"]="New books"
+ ,["Nové knihy (i online v Bookportu)"]="New books"
  ,["feed.rss"] = "feed-en.rss"
  ,[ "/img/logo.svg"] =  "/img/logo-eng.svg"
  ,[ "/index-en.html"] =  "/index.html"

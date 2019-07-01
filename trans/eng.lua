@@ -53,6 +53,10 @@ return {
  ,["UKAŽ (UK)" ] = "EDS (CU)"
  ,["Další možnosti vyhledávání:"] = "More search options:"
  ,["Zavřeno do odvolání"] = "Closed until further notice"
+ ,["Červenec"] = "July"
+ ,["Srpen"] = "August"
+ ,["Zavřeno"] = "Closed"
+ ,["Otevřeno každé úterý"] = "Open every Tuesday"
  ,["Zavřeno červenec + srpen"] = "Closed in July and August"
  ,["Otevřeno každé úterý v srpnu, 9.00 — 15.00"] = "Open every Tuesday in August"
  ,["<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."] = "<a href='catalogues.html#notice'>Terms of service</a>."
@@ -61,5 +65,5 @@ return {
  ,['Sanitární den']="Closing day"
  ,['Státní svátky']="Public holiday"
  ,['Zkušební přístupy EIZ']="E-resources free trials"
- ,['http://pez.cuni.cz/prehled/freetrials.php?lang=cs'] = "http://pez.cuni.cz/prehled/freetrials.php?lang=en"
+ ,['http://ezdroje.cuni.cz/prehled/freetrials.php?lang=cs'] = "http://ezdroje.cuni.cz/prehled/freetrials.php?lang=en"
  }

@@ -131,11 +131,27 @@ local function template(doc )
       <input name="param_chinese_checkbox_value" id="param_chinese_checkbox_value1" value="0" type="hidden">
 
       <label class="i_text">
-      <span>Slova z názvu</span>
+      <span>]] .. T "Slova z názvu" .. [[</span>
       <input name="param_pattern_value" id="param_pattern_value1" type="search">
       </label>
       <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
       ]] .. '<p>' .. T("Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>.") .. "</p> </form>"
+      ),
+      tab("e-knihy", T "E-knihy", [[
+      <form method="get" action="http://sfx.is.cuni.cz/sfxlcl3/azbook/ukall" target="_blank">
+
+      <input name="param_perform_value" value="searchTitle" type="hidden">
+      <input name="param_jumpToPage_value" value="" type="hidden">
+      <input name="param_type_value" value="textSearch" type="hidden">
+      <input name="param_chinese_checkbox_active" value="1" type="hidden">
+      <input name="param_chinese_checkbox_value" id="param_chinese_checkbox_value2" value="0" type="hidden">
+
+      <label class="i_text">
+      <span>]] .. T "Slova z názvu" .. [[</span>
+      <input name="param_pattern_value" id="param_pattern_value2" type="search">
+      </label>
+      <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
+      ]] ..  "</p> </form>"
       )
     }}),
     -- row{
@@ -153,7 +169,7 @@ local function template(doc )
             {"CPK", "https://www.knihovny.cz/"},
             {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
             {"Google Scholar", "https://scholar.google.cz/"},
-            {"PEZ", "https://pez.cuni.cz/"}
+            {"PEZ", "https://ezdroje.cuni.cz/"}
           })}))--}
   -- },
   -- row{
@@ -226,7 +242,7 @@ row( div{ class="my-slider",  print_obalky(doc.obalky)}
 -- obalky "80-85368-18-8", 
 -- obalky "978-80-7294-458-3"
 ),
-h.h3 {a{href= T "https://pez.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
+h.h3 {a{href= T "https://ezdroje.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
     }},
     -- card {
     --   h.h2 {"Ankety"}, 

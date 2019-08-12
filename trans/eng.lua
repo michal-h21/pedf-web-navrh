@@ -66,4 +66,6 @@ return {
  ,['Státní svátky']="Public holiday"
  ,['Zkušební přístupy EIZ']="E-resources free trials"
  ,['http://ezdroje.cuni.cz/prehled/freetrials.php?lang=cs'] = "http://ezdroje.cuni.cz/prehled/freetrials.php?lang=en"
+ ,["E-knihy"] = "E-books"
+ ,["Slova z názvu"] = "Words from the title"
  }

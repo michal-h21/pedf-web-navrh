@@ -169,7 +169,8 @@ local function template(doc )
             {"CPK", "https://www.knihovny.cz/"},
             {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
             {"Google Scholar", "https://scholar.google.cz/"},
-            {"PEZ", "https://ezdroje.cuni.cz/"}
+            {"PEZ", "https://ezdroje.cuni.cz/"},
+            {"Repozitář", "http://repozitar.cuni.cz/"}
           })}))--}
   -- },
   -- row{

@@ -237,7 +237,7 @@ medium(3,
     -- div {'<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-hidden="true"></i></a>',a{href="https://www.instagram.com/KnihovnaPedFPraha/",'knihovnapedfpraha'}}
   }} 
 },
-{card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy (i online v Bookportu)"}},
+{card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
 row( div{ class="my-slider",  print_obalky(doc.obalky)}
 -- obalky "978-80-7422-500-0",
 -- obalky "80-85368-18-8", 

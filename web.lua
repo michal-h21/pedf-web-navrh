@@ -8,6 +8,9 @@ local docs = require("lettersmith.docs_utils")
 local translator = require "lib.translator"
 
 -- local render_mustache = require("lettersmith.mustache").choose_mustache
+local html_dir = os.getenv("HTML_DIR") or "html"
+local www_dir = os.getenv("WWW_DIR") or "www"
+local data_dir = os.getenv("DATA_DIR") or "data"
 
 local siteurl =  "http://knihovna.pedf.cuni.cz/"
 local rss = require "atom"
@@ -17,9 +20,9 @@ local archiv = require "archivaktual".index
 local newindex_template = require "templates.newindex".template
 local opening_template = require "templates.opening".template
 local prov_doba_fn = require "prov_doba"
-local prov_doba = prov_doba_fn("data/opening.csv")
+local prov_doba = prov_doba_fn(data_dir .. "/opening.csv")
 local load_closing = require "closing"
-local zaviraci_dny,kalendar  = load_closing(io.lines("data/closing.csv"))
+local zaviraci_dny,kalendar  = load_closing(io.lines( data_dir .. "/closing.csv"))
 -- local templates = require("templates")
 local base_template = require "templates.base"
 
@@ -76,8 +79,6 @@ local engmenu = {
 local engstrings = require "trans.eng"
 
 
-local html_dir = os.getenv("HTML_DIR") or "html"
-local www_dir = os.getenv("WWW_DIR") or "www"
 
 
 -- Get paths from "raw" folder

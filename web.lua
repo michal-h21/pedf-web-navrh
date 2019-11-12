@@ -76,12 +76,16 @@ local engmenu = {
 local engstrings = require "trans.eng"
 
 
+local html_dir = os.getenv("HTML_DIR") or "html"
+local www_dir = os.getenv("WWW_DIR") or "www"
+
+
 -- Get paths from "raw" folder
-local paths = lettersmith.paths("html")
-local en_path = lettersmith.paths("html/en")
-local aktuality = lettersmith.paths("html/aktuality")
-local en_aktuality = lettersmith.paths("html/en/aktuality")
-local nove_knihy = lettersmith.paths("html/nove_knihy")
+local paths = lettersmith.paths(html_dir)
+local en_path = lettersmith.paths(html_dir .. "/en")
+local aktuality = lettersmith.paths(html_dir .. "/aktuality")
+local en_aktuality = lettersmith.paths(html_dir .. "/en/aktuality")
+local nove_knihy = lettersmith.paths(html_dir .. "/nove_knihy")
 -- local diplomka_path = lettersmith.paths("diplomky")
 
 local make_transformer = function(fn)
@@ -375,7 +379,7 @@ local argument = arg[1]
 if commands[argument] == nil then
   print "budujeme"
   lettersmith.build(
-  "www", 
+  www_dir, 
   builder(paths), 
   html_builder()(paths),
   nove_knihy_builder()(nove_knihy),

@@ -164,6 +164,7 @@ local function template(doc )
             {"ERIH", "https://dbh.nsd.uib.no/publiseringskanaler/erihplus/"},
             {"Ulrichsweb", "https://ulrichsweb.serialssolutions.com"},
             {"DOI", "https://www.doi.org/"},
+            {"JCR", "https://jcr.clarivate.com/"},
             {"NK", "https://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
             {"CPK", "https://www.knihovny.cz/"},
             {"UKAŽ (UK)", "https://ukaz.cuni.cz"},

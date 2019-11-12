@@ -163,14 +163,13 @@ local function template(doc )
             {"DOAJ", "https://doaj.org/"},
             {"ERIH", "https://dbh.nsd.uib.no/publiseringskanaler/erihplus/"},
             {"Ulrichsweb", "https://ulrichsweb.serialssolutions.com"},
-            {"JCR", "https://jcr.incites.thomsonreuters.com/"},
             {"DOI", "https://www.doi.org/"},
             {"NK", "https://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
             {"CPK", "https://www.knihovny.cz/"},
             {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
             {"Google Scholar", "https://scholar.google.cz/"},
             {"PEZ", "https://ezdroje.cuni.cz/"},
-            {"Repozitář", "http://repozitar.cuni.cz/"}
+            {"Repozitář UK", "http://repozitar.cuni.cz/"}
           })}))--}
   -- },
   -- row{

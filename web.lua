@@ -126,7 +126,7 @@ local add_defaults = make_transformer(function(doc)
   -- don't use old styles in the documents
   doc.styles = doc.styles or {}
   doc.siteurl = siteurl
-  doc.obalky_dir = "data/obalky/"
+  doc.obalky_dir = data_dir .. "/obalky/"
   doc.description = "Fakultní knihovna v centru Prahy. Bohatý knižní fond, množství elektronických zdrojů, pravidelné výstavy, denní tisk a časopisy. Těšíme se na vás!"
   -- if doc.design ~=false then
     -- table.insert(doc.styles,"css/scale.css")
@@ -142,6 +142,19 @@ local add_defaults = make_transformer(function(doc)
   doc.prov_doba = prov_doba
   return doc
 end)
+
+local set_english = make_transformer(function(doc)
+  doc.lang = "eng"
+  return doc
+end)
+
+local function get_lang_func(lang)
+  local lang_func = make_transformer(function(doc) return doc end)
+  if lang == "eng" then 
+    lang_func = set_english
+  end
+  return lang_func
+end
 
 -- aplikovat h5tk templates
 local apply_template = make_transformer(function(doc)
@@ -167,6 +180,7 @@ local apply_opening_template = make_transformer(function(doc)
   return merge(doc, {contents = rendered})
 end)
 
+-- this is not used anymore
 local function save_calendar(filename, calendar, T)
   local buffer = {}
   local f = io.open(filename, "w")
@@ -178,13 +192,44 @@ local function save_calendar(filename, calendar, T)
   f:close()
 end
 
+
+-- make calendar JS
+local function make_calendar(calendar, T)
+  local buffer = {}
+  buffer[#buffer+1] = "{"
+  -- write localized calendar as a JSON file
+  for k,v in pairs(calendar) do buffer[#buffer+1] = string.format('"%s":"%s"', T(k),T(v)) end
+  buffer[#buffer+1] = "}"
+  return table.concat(buffer, ",")
+end
+
+-- save calendar JS
+local function calendar_builder(path, lang) 
+  local lang_func = get_lang_func(lang)
+  local calendar_render = make_transformer(function(doc)
+    doc.relative_filepath = path
+    local T = translator.get_translator(doc.strings)
+    -- global variable
+    local contents = make_calendar(kalendar, T)
+    return merge(doc, {contents = contents})
+  end)
+  return comp(
+  calendar_render,
+  add_defaults,
+  lang_func,
+  html_filter,
+  only_root,
+  lettersmith.docs
+  )
+end
+
 local apply_newindex = make_transformer(function(doc)
   -- doc.menuitems = mainmenu
   local rendered = newindex_template(doc)
   local strings = doc.strings
-  local T = translator.get_translator(doc.strings)
-  local calendar_name = "js/calendar.js" 
-  save_calendar(T(calendar_name), doc.calendar, T)
+  -- local T = translator.get_translator(doc.strings)
+  -- local calendar_name = "js/calendar.js" 
+  -- save_calendar(T(calendar_name), doc.calendar, T)
   return merge(doc, {contents = rendered})
 end)
 
@@ -193,19 +238,6 @@ end)
 --   doc.prov_doba = prov_doba
 --   return doc
 -- end)
-
-local set_english = make_transformer(function(doc)
-  doc.lang = "eng"
-  return doc
-end)
-
-local function get_lang_func(lang)
-  local lang_func = make_transformer(function(doc) return doc end)
-  if lang == "eng" then 
-    lang_func = set_english
-  end
-  return lang_func
-end
 
 
 local builder = comp(
@@ -388,6 +420,8 @@ if commands[argument] == nil then
   opening_builder("opening.html","eng")(en_path),
   opening_builder("provozni_doba.htm")(paths),
   css_builder(paths),
+  calendar_builder("js/calendar.js")(paths),
+  calendar_builder("js/calendar-en.js", "eng")(paths),
   index_gen("index-en.html", "eng")(en_aktuality),
   rss_gen("feed-en.rss",  "Library of Faculty of Education")(en_aktuality),
   archive_gen("archive-en.html","eng")(en_aktuality),

@@ -14,7 +14,7 @@ local data_dir = os.getenv("DATA_DIR") or "data"
 
 local siteurl =  "http://knihovna.pedf.cuni.cz/"
 local rss = require "atom"
-local sitemap = require "sitemap"
+-- local sitemap = require "sitemap"
 local discount = require "discount"
 local archiv = require "archivaktual".index
 local newindex_template = require "templates.newindex".template
@@ -138,7 +138,7 @@ local add_defaults = make_transformer(function(doc)
   else
     doc.menuitems = mainmenu
   end
-  doc.sitemap = sitemap
+  -- doc.sitemap = sitemap
   doc.prov_doba = prov_doba
   return doc
 end)
@@ -188,11 +188,11 @@ local apply_newindex = make_transformer(function(doc)
   return merge(doc, {contents = rendered})
 end)
 
-local add_sitemap = make_transformer(function(doc)
-  doc.sitemap=sitemap
-  doc.prov_doba = prov_doba
-  return doc
-end)
+-- local add_sitemap = make_transformer(function(doc)
+--   doc.sitemap=sitemap
+--   doc.prov_doba = prov_doba
+--   return doc
+-- end)
 
 local set_english = make_transformer(function(doc)
   doc.lang = "eng"
@@ -366,7 +366,7 @@ local archive_gen = function(page, lang)
   archiv_items,
   add_defaults,
   lang_func,
-  add_sitemap,
+  -- add_sitemap,
   archiv(page),
   lettersmith.docs
   )

@@ -11,6 +11,7 @@ local translator = require "lib.translator"
 local html_dir = os.getenv("HTML_DIR") or "html"
 local www_dir = os.getenv("WWW_DIR") or "www"
 local data_dir = os.getenv("DATA_DIR") or "data"
+print("Data dir" , data_dir)
 
 local siteurl =  "http://knihovna.pedf.cuni.cz/"
 local rss = require "atom"
@@ -343,7 +344,7 @@ local newindex = function(filepath,menu, languagestrings)
     -- local date = items[1].date
     local title = "Knihovna PedF UK"
     print("mainmenu", menu)
-    local obalky = get_new_books("data/obalky", 9)
+    local obalky = get_new_books(data_dir .. "/obalky", 9)
     -- local languagestrings = languagestrings or {}
     return wrap_in_iter { title=title, menuitems =menu, date = date, items =
     items, relative_filepath = filepath, prov_doba = prov_doba, obalky =

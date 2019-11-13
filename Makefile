@@ -1,5 +1,5 @@
 
-.Phony: upload generate serve
+.Phony: upload generate serve docker
 
 all: style.css mini-knihovna.css html/eiz-pedf.html generate upload 
 
@@ -35,3 +35,6 @@ upload:
 	
 serve: generate
 	python server.py
+
+docker:
+	sudo docker run --entrypoint="" --rm -it -v `pwd`/data:/opt/data:z  -v `pwd`/html/:/opt/html:z web /bin/sh

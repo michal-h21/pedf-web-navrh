@@ -23,7 +23,7 @@ generate:
 	# cp index.html www
 	cp mini-knihovna.css media.css style.css www
 	mkdir www/img
-	mkdir www/js
+	# mkdir www/js
 	cp img/*.svg www/img/
 	cp js/*.* www/js/
 

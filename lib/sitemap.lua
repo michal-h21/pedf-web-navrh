@@ -1,3 +1,4 @@
+-- sitemap se již nepoužívá, místo toho je pole mainmenu v web.lua
 
 local result = {}
 for line in io.lines("sitemap.tsv") do

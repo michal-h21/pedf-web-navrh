@@ -7,7 +7,7 @@ ARG HTML_DIR
 ARG WWW_DIR
 ARG DATA_DIR
 ENV HTML_DIR /opt/html/
-ENV WWW_DIR /opt/www/
+ENV WWW_DIR /opt/www/result/
 ENV DATA_DIR /opt/data/
 
 WORKDIR /opt/pedf_web/

@@ -37,4 +37,4 @@ serve: generate
 	python server.py
 
 docker:
-	sudo docker run --entrypoint="" --rm -it -v `pwd`/data:/opt/data:z  -v `pwd`/html/:/opt/html:z web /bin/sh
+	sudo docker run  --rm  -v `pwd`/data:/opt/data:z -v `pwd`/www:/opt/www/:rw -v `pwd`/html/:/opt/html:z web 

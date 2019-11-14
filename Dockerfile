@@ -1,7 +1,5 @@
 FROM michalh21/lettersmith
 
-RUN apk --no-cache add discount-dev
-# RUN luarocks --server=https://rocks.luarocks.org install --local h5tk discount 
 RUN luarocks install h5tk 
 RUN luarocks install date
 
@@ -18,4 +16,4 @@ COPY lib/ ./lib/
 COPY trans/ ./trans/
 COPY templates/ ./templates/
 
-CMD ["echo", "Build start"]
+ENTRYPOINT ["lua", "web.lua"]

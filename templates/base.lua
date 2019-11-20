@@ -90,7 +90,7 @@ local function template(data)
       metaifexitst("og:description", data.description),
       metaifexitst("og:url", make_url(data)),
       metaifexitst("og:image", default_img(data)),
-      metaifexitst( "tter:card", "summary_large_image" , "name"),
+      metaifexitst( "twitter:card", "summary_large_image" , "name"),
       -- tohle změnit, použít lokální verzi
       -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
       '<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">',

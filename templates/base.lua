@@ -89,7 +89,7 @@ local function template(data)
       metaifexitst("og:title", data.title),
       metaifexitst("og:description", data.description),
       metaifexitst("og:url", make_url(data)),
-      metaifexitst("og:site_name", "Knihovna PedF UK",
+      metaifexitst("og:site_name", "Knihovna PedF UK"),
       metaifexitst("og:image", default_img(data)),
       metaifexitst( "twitter:card", "summary_large_image" , "name"),
       -- tohle změnit, použít lokální verzi

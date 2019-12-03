@@ -265,7 +265,7 @@ h.h3 {a{href= T "https://ezdroje.cuni.cz/prehled/freetrials.php?lang=cs", T "Zku
 -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
 h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer="defer"},
 h.script{src="js/opening.js", type="text/javascript", defer="defer"},
-h.script{ "window.onload = function(){ opening('".. T "js/calendar.js" .."', '".. T("Dnes má knihovna zavřeno: ") .. "')};"},
+h.script{ "window.onload = function(){ opening('".. T "/js/calendar.js" .."', '".. T("Dnes má knihovna zavřeno: ") .. "')};"},
   [[<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.js"></script>
   <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
   ]]

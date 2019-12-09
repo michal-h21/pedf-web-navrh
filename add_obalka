@@ -1,5 +1,9 @@
 #/usr/bin/env bash
-img=$(printf %q "$1")
+# tohle nefunguje
+# img=$(printf %q "$1")
+# jak provést hromadnou konverzi:
+# for i in /cesta/k/obrazkum; do ./add_obalka "$i" $(basename "$i" .jpg); done
+img="$1"
 isbn="$2"
 
 DATE=`date +%Y-%m-%d`

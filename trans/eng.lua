@@ -30,12 +30,16 @@ return {
  ,["Provozní doba"] = "Opening hours"
  ,[ "English version"] = "Česká verze"
  ,[ "Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>."] = ""
- ,["Studovna"] = "Study room"
+ ,["Studovna"] = "Study Room"
  ,["Výpůjční protokol"] = "Library"
  ,["Půjčovna"] = "Library"
- ,["Po"] = "Mo"
- ,["Út–Pá"] = "Tue-Fri"
- ,["Po–Čt"] = "Mo-Thu"
+ ,["Studovna Celetná"] = "Language Study Room"
+ ,["Po"] = "Mon"
+ ,["Út"] = "Tue"
+ ,["Čt"] = "Thu"
+ ,["Út–Pá"] = "Tue–Fri"
+ ,["Po–Čt"] = "Mon–Thu"
+ ,["Po–Pá"] = "Mon–Fri"
  ,["Pá"] = "Fri"
  ,['js/calendar.js'] = 'js/calendar-en.js'
  ,['Zavírací den'] = "Closing day"
@@ -70,4 +74,5 @@ return {
  ,["E-knihy"] = "E-books"
  ,["Repozitář UK"] = "CU Repository"
  ,["Slova z názvu"] = "Words from the title"
+
  }

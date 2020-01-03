@@ -197,11 +197,13 @@ end
 -- make calendar JS
 local function make_calendar(calendar, T)
   local buffer = {}
-  buffer[#buffer+1] = "{"
+  -- buffer[#buffer+1] = "{"
   -- write localized calendar as a JSON file
-  for k,v in pairs(calendar) do buffer[#buffer+1] = string.format('"%s":"%s"', T(k),T(v)) end
-  buffer[#buffer+1] = "}"
-  return table.concat(buffer, ",")
+  for k,v in pairs(calendar) do 
+    buffer[#buffer+1] = string.format('"%s":"%s"', T(k),T(v)) 
+  end
+  -- buffer[#buffer+1] = "}"
+  return "{\n" .. table.concat(buffer, ",") .. "\n}"
 end
 
 -- save calendar JS

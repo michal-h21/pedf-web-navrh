@@ -58,12 +58,13 @@ local function load_closing(lines)
   local calendar = {}
   for line in lines do
     local comment, dates = line:match("(.+)%s*:%s*(.+)%s*")
-    -- print(comment)
-    local closing = dates 
-    if closing:match("^%s*%d") then
-      closing, calendar = parse_dates(calendar,dates, comment)
+    if comment then
+      local closing = dates 
+      if closing:match("^%s*%d") then
+        closing, calendar = parse_dates(calendar,dates, comment)
+      end
+      entries[#entries+1] = {closing = closing, comment = comment}
     end
-    entries[#entries+1] = {closing = closing, comment = comment}
   end
   return entries, calendar
 end

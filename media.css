@@ -37,7 +37,7 @@ html.wf-active body *{font-family:"Fira Sans";}
 
 footer *, footer p{
   font-size:0.9rem;
-  color:#dfd0b0;
+  color:#dfd0b0 ;
   margin:0;
 }
 footer a, footer a:visited{
@@ -53,13 +53,14 @@ div.page-img img{width:100%;}
 table.prov_doba{margin-bottom:1rem;}
 table.prov_doba caption{margin:0;padding:0;font-size:1rem; font-weight:bold; text-align:left;}
 
-table.small{margin-left:0;}
+table.small{margin-left:0;padding-left:0.5rem;}
 table.closing{margin-top:2.2rem;}
 
 table.closing, table.small{
   border:none; 
 }
-table.closing td, table.small td{border: none}
+table.closing td, table.small td{border: none; padding:2pt; padding-right: 6pt; margin:0}
+
 div.closed div:first-child{color:#d63422;}
 
 table.small * {padding-left: 0;}

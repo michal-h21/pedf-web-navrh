@@ -129,7 +129,7 @@ local function template(data)
       medium(9, 
       {
         -- h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
-        h.a{ href="/index.html", h.img{role="banner",style="height:90%;",alt=T "Logo knihovny", src=T "/img/logo.svg"}},
+        h.a{ href= T "/index.html", h.img{role="banner",style="height:90%;",alt=T "Logo knihovny", src=T "/img/logo.svg"}},
         -- h.a{
         --   class="logo",
         --   href="/",

@@ -25,6 +25,7 @@ return {
  ,["feed.rss"] = "feed-en.rss"
  ,[ "/img/logo.svg"] =  "/img/logo-eng.svg"
  ,[ "/index-en.html"] =  "/index.html"
+ ,[ "/index.html"] =  "/index-en.html"
  ,[ "/img/gb.svg"] =  "/img/cz.svg"
  ,["provozni_doba.htm"] = "opening.html"
  ,["Provozní doba"] = "Opening hours"
@@ -41,6 +42,9 @@ return {
  ,["Po–Čt"] = "Mon–Thu"
  ,["Po–Pá"] = "Mon–Fri"
  ,["Pá"] = "Fri"
+ ,["Studovna v Celetné"] = "Language Study Room"
+ ,["Otevřeme"] = "Opening"
+ ,["17. 1."] = "Jan  17"
  ,['js/calendar.js'] = 'js/calendar-en.js'
  ,['Zavírací den'] = "Closing day"
  ,['Dnes má knihovna zavřeno: '] = "The library is closed today:"

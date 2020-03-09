@@ -1,13 +1,12 @@
-import SimpleHTTPServer
-import SocketServer
 import os
+import http.server
+import socketserver
 
 PORT = 8000
 
+Handler = http.server.SimpleHTTPRequestHandler
+
 os.chdir("www")
-Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
-
-httpd = SocketServer.TCPServer(("", PORT), Handler)
-
-print "serving at port", PORT
-httpd.serve_forever()
+with socketserver.TCPServer(("", PORT), Handler) as httpd:
+    print("serving at port", PORT)
+    httpd.serve_forever()

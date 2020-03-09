@@ -52,14 +52,16 @@ div.page-img img{width:100%;}
 
 table.prov_doba{margin-bottom:1rem;}
 table.prov_doba caption{margin:0;padding:0;font-size:1rem; font-weight:bold; text-align:left;}
+table.prov_doba td:first-child{min-width:2em;}
 
 table.small{margin-left:0;padding-left:0.5rem;}
 table.closing{margin-top:2.2rem;}
 
+
 table.closing, table.small{
   border:none; 
 }
-table.closing td, table.small td{border: none; padding:2pt; padding-right: 6pt; margin:0}
+table.closing td, table.small td{border: none; padding:2pt; padding-right: 12pt; margin:0}
 
 div.closed div:first-child{color:#d63422;}
 
@@ -70,6 +72,7 @@ table.small caption{
   color:#f5f5f5;
   font-weight:normal;
   padding-left:.5rem;
+  padding-right:.5rem;
   padding-top:.2rem;
 }
 

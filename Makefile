@@ -34,7 +34,7 @@ upload:
 	# scp img/*.* beta:/var/www/html/navrh/img/
 	
 serve: generate
-	python server.py
+	python3 server.py
 
 docker:
 	sudo docker run  --rm  -v `pwd`/data:/opt/data:z -v `pwd`/www:/opt/www/:rw -v `pwd`/html/:/opt/html:z web 

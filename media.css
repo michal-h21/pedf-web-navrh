@@ -66,7 +66,7 @@ table.closing td, table.small td{border: none; padding:2pt; padding-right: 12pt;
 div.closed div:first-child{color:#d63422;}
 
 table.small * {padding-left: 0;}
-div.row h1{margin:0.5rem 0; }
+/* div.row h1{margin:0.5rem 0; } */
 table.small caption{
   background-color:black;
   color:#f5f5f5;
@@ -82,7 +82,8 @@ address ul{margin-left:0;padding-left:0.5rem;}
 div#mapa img{max-width:none;}
 
 
-p + h2 {margin-top:1.4rem;}
+ul + h2, ol + h2, p + h2 {margin-top:1.4rem;}
+p, h1, h2, h3{margin-left:0;margin-right:0;}
 ul + h1, ol + h1, p + h1 {margin-top:2rem;}
 
 /* section.section h2{text-align:center;} */

@@ -74,6 +74,16 @@ local function custom_styles(data)
   return t
 end
 
+local function obsolete(data)
+  -- 
+  if data.obsolete then
+    return [[<div class="row"><div class="card fluid warning"><mark class="secondary">Upozornění</mark>Tato stránka není aktuální.
+      Nachází se zde pouze proto, že mohou existovat stránky, které na ní odkazují.
+      Použijte prosím navigaci v hlavním menu stránky k nalezení aktuálních
+      informací.</div></div>]]
+  end
+end
+
 -- function column
 local function template(data)
   local strings = data.strings
@@ -164,6 +174,7 @@ local function template(data)
         -- }},
       }},
       -- row{
+        obsolete(data), -- upozornění na zastaralé stránky
         data.contents,
     -- },
 

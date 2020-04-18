@@ -38,6 +38,7 @@ return {
  ,["Studovna Celetná"] = "Language Study Room Celetná"
  ,["Po"] = "Mon"
  ,["Út"] = "Tue"
+ ,["St"] = "Wed"
  ,["Čt"] = "Thu"
  ,["Út–Pá"] = "Tue–Fri"
  ,["Po–Čt"] = "Mon–Thu"
@@ -79,5 +80,9 @@ return {
  ,["E-knihy"] = "E-books"
  ,["Repozitář UK"] = "CU Repository"
  ,["Slova z názvu"] = "Words from the title"
+ ,["Omezený provoz. Knihovna otevřena pouze pro půjčování knih na objednávku v pondělí a ve středu."] = "Library closed due to COVID-19 restrictions."
+ ,["zavírací den"] = "Closing day"
+ ,["děkanský den"] = "Closing day"
+ ,["rektorský den"] = "Closing day"
 
  }

@@ -162,10 +162,10 @@ local apply_template = make_transformer(function(doc)
   local doc_card =card {h.article{role="main",doc.contents}}
   -- přidat obrázek pokud ho stránka má nastavený
   if doc.img then
-    doc.contents = row {
+    doc.contents = card{ row {
       medium(7, h.article{role="main", doc.contents}),
       medium(5, h.div{ class="page-img", h.img{src = doc.img, alt=doc.alt, title=doc.alt}})
-    }
+    }}
   else
     doc.contents = doc_card
   end

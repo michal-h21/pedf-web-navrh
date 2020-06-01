@@ -30,6 +30,8 @@ img.aktual-img{ display:none;}
 
 }
 
+div.logo-container img{margin-top:0.5rem;}
+
 body.container{padding-top:1rem;}
 
 /* html.wf-active {font-family:"Fira Sans";} */

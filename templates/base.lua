@@ -135,7 +135,19 @@ local function template(data)
     },
     h.body{
       class="container",
-      row{-- nepoužívat row class="row",
+      div{role="navigation",h.header {
+        -- h.a{class="logo",h.div{"Ústřední knihovna PedF UK"}},
+        -- h.menu{
+        -- h.nav{class="nav-collapse",
+        -- h.ul{
+        -- class="row",
+        h.span {class="logo", "&nbsp;"},
+        mainmenu(data.menuitems),
+        h.span{ a{href=(data.altlang or T "/index-en.html"),h.img{src=T "/img/gb.svg", alt=T "English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
+        -- }},
+      }},
+      -- row {h.p {}},
+      h.div {class="logo-container", row{-- nepoužívat row class="row",
       medium(9, 
       {
         -- h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
@@ -161,18 +173,7 @@ local function template(data)
         -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",
         -- style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;"}
       })
-    },
-      div{role="navigation",h.header {
-        -- h.a{class="logo",h.div{"Ústřední knihovna PedF UK"}},
-        -- h.menu{
-        -- h.nav{class="nav-collapse",
-        -- h.ul{
-        -- class="row",
-        h.span {class="logo", "&nbsp;"},
-        mainmenu(data.menuitems),
-        h.span{ a{href=(data.altlang or T "/index-en.html"),h.img{src=T "/img/gb.svg", alt=T "English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
-        -- }},
-      }},
+    }},
       -- row{
         obsolete(data), -- upozornění na zastaralé stránky
         data.contents,

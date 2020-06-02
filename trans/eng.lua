@@ -49,6 +49,7 @@ return {
  ,["Po–Pá"] = "Mon–Fri"
  ,["Pá"] = "Fri"
  ,["Studovna v Celetné"] = "Study Room Celetná"
+ ,["Web knihovny"] = "Library Website"
  ,["Otevřeme"] = "Opening"
  ,["17. 1."] = "Jan  17"
  ,['js/calendar.js'] = 'js/calendar-en.js'

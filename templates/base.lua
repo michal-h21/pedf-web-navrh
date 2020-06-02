@@ -148,7 +148,7 @@ local function template(data)
       }},
       -- row {h.p {}},
       h.div {class="logo-container", row{-- nepoužívat row class="row",
-      medium(9, 
+      medium(12, 
       {
         -- h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
         h.a{ href= T "/index.html", h.img{role="banner",style="height:90%;",alt=T "Logo knihovny", src=T "/img/logo.svg"}},
@@ -160,19 +160,19 @@ local function template(data)
         --   h.div{"PedF UK"}
         -- }
       }),
-      medium(3,{
-        h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", 
-          h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
-          h.input{type="hidden", name="k8" , value="#444444"},
-          h.input{type="hidden", name="k9" , value="#D51920"},
-          h.input{type="hidden", name="kt" , value="h"},
-          h.input{type="search", name="q" , maxlength="255", style="width:12rem", placeholder=T "Hledat na tomto webu"},
-          h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
-        }
+      -- medium(3,{
+      --   h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", 
+      --     h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
+      --     h.input{type="hidden", name="k8" , value="#444444"},
+      --     h.input{type="hidden", name="k9" , value="#D51920"},
+      --     h.input{type="hidden", name="kt" , value="h"},
+      --     h.input{type="search", name="q" , maxlength="255", style="width:12rem", placeholder=T "Hledat na tomto webu"},
+      --     h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
+      --   }
 
-        -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",
-        -- style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;"}
-      })
+      --   -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",
+      --   -- style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;"}
+      -- })
     }},
       -- row{
         obsolete(data), -- upozornění na zastaralé stránky

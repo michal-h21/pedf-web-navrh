@@ -12,12 +12,16 @@ img.aktual-img{ display:none;}
 @media (min-width: 933px){
     :root {
           font-size: 1.5vw;
-              }
+    }
+    div.logo-container img{height:100%;width:auto;}
+
+    
 }
 @media (min-width: 1200px){
     :root {
           font-size: 18px;
-              }
+    }
+
 }
 
 @media print{
@@ -31,7 +35,12 @@ img.aktual-img{ display:none;}
 }
 
 hr {width:100%;}
-
+/* div.logo-container {background-color:#ff677b;} */
+div.logo-container div.row{min-height:30vh;}
+/* When page is whorter than logo width * 2 */
+@media (max-width: 514px){
+  div.logo-container div.row{min-height:auto;}
+}
 div.logo-container img{margin-top:0.5rem;}
 
 body.container{padding-top:1rem;}

@@ -73,6 +73,14 @@ local function template(doc )
   local contents = {
     row{
       medium(9,{
+        medium(12, card(row{
+          -- card {
+            h.h2{ T "Aktuality" },
+            print_actual(doc.items), div {class="archiv-link", T ' (<a href="archiv.html">Archiv</a>)' }
+            -- actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
+            -- actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme <b>všechny</b> uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
+          }
+          )),--},
           -- row {
             -- medium(9, {card {p{"Vyhledávací boxy"}}}),
             -- medium(9, card{ div{class="tabs", 
@@ -145,16 +153,18 @@ local function template(doc )
       </label>
       <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
       ]] ..  "</p> </form>"
-      )
+      ),
+      tab("web-knihovny", T "Web knihovny", 
+        h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", 
+          h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
+          h.input{type="hidden", name="k8" , value="#444444"},
+          h.input{type="hidden", name="k9" , value="#D51920"},
+          h.input{type="hidden", name="kt" , value="h"},
+          h.input{type="search", name="q" , maxlength="255", style="width:12rem", placeholder=T "Hledat na tomto webu"},
+          h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
+        }
+        )
     }}),
-        medium(12, card(row{
-          -- card {
-            h.h2{ T "Aktuality" },
-            print_actual(doc.items), div {class="archiv-link", T ' (<a href="archiv.html">Archiv</a>)' }
-            -- actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
-            -- actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme <b>všechny</b> uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
-          }
-          )),--},
     -- row{
     medium(12, card(
           h.div{ h.b {T "Další nástroje:"}, data_links(T,{
@@ -238,14 +248,14 @@ medium(3,
     -- div {'<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-hidden="true"></i></a>',a{href="https://www.instagram.com/KnihovnaPedFPraha/",'knihovnapedfpraha'}}
   }} 
 },
-{card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
-row( div{ class="my-slider",  print_obalky(doc.obalky)}
--- obalky "978-80-7422-500-0",
--- obalky "80-85368-18-8", 
--- obalky "978-80-7294-458-3"
-),
-h.h3 {a{href= T "https://ezdroje.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
-    }},
+-- {card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
+-- -- row( div{ class="my-slider",  print_obalky(doc.obalky)}
+-- -- -- obalky "978-80-7422-500-0",
+-- -- -- obalky "80-85368-18-8", 
+-- -- -- obalky "978-80-7294-458-3"
+-- -- ),
+-- h.h2 {a{href= T "https://ezdroje.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
+--     }},
     -- card {
     --   h.h2 {"Ankety"}, 
     --   p {"Nějaká otázka. Trochu delší text"},

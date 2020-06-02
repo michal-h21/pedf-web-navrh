@@ -36,7 +36,10 @@ return {
  ,["Studovna Rettigová"] = "Study Room"
  ,["Výpůjční protokol"] = "Library"
  ,["Půjčovna"] = "Library"
- ,["Studovna Celetná"] = "Language Study Room Celetná"
+ ,['<a href="vypujcni_protokol.html">Půjčovna</a>']= '<a href="reference-desk.html">Library</a>'
+ ,["Studovna Celetná"] = "Study Room Celetná"
+ ,['<a href="celetna.html">Studovna v Celetné</a>'] = '<a href="celetna-en.html">Study Room Celetná</a>'
+ ,['<a href="studovna.html">Studovna</a>'] = '<a href="study-room.html">Study Room</a>'
  ,["Po"] = "Mon"
  ,["Út"] = "Tue"
  ,["St"] = "Wed"
@@ -45,7 +48,7 @@ return {
  ,["Po–Čt"] = "Mon–Thu"
  ,["Po–Pá"] = "Mon–Fri"
  ,["Pá"] = "Fri"
- ,["Studovna v Celetné"] = "Language Study Room Celetná"
+ ,["Studovna v Celetné"] = "Study Room Celetná"
  ,["Otevřeme"] = "Opening"
  ,["17. 1."] = "Jan  17"
  ,['js/calendar.js'] = 'js/calendar-en.js'

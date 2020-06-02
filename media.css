@@ -49,6 +49,10 @@ footer a, footer a:visited{
   /* text-decoration:none; */
 }
 
+caption a, caption a:visited{
+  color: white;
+}
+
 div.page-img {margin-top:.5rem;}
 div.page-img img{width:100%;}
 

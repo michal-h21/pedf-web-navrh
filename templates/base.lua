@@ -3,6 +3,7 @@ local h5tk = require "h5tk"
 local css = require "css"
 local building_blocks = require "lib.building_blocks"
 local translator = require "lib.translator"
+local os = require "os"
 
 local h = h5tk.init(true)
 
@@ -188,7 +189,8 @@ local function template(data)
       row{
         medium(4, div{
           p{"Knihovna PedF UK, Magdaleny Rettigové 4, 116&#8239;39&nbsp;Praha&nbsp;1"},
-          p{"© Univerzita Karlova"},
+          p{"Aktualizováno: " .. os.date("%Y-%m-%d")},
+          p{"© Univerzita Karlova",},
 
         }),
         medium(4, div {

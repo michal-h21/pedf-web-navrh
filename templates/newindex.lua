@@ -84,6 +84,91 @@ local function template(doc )
           -- row {
             -- medium(9, {card {p{"Vyhledávací boxy"}}}),
             -- medium(9, card{ div{class="tabs", 
+  -- },
+  -- row{
+  --   boxik("Studenti se specifickými potřebami"),
+  --   boxik("EIZ pro PedF"),
+  --   k
+  --   boxik("Oborové EIZ"),
+  --   boxik("Periodika"), 
+  --   boxik("Návody"),
+  --   boxik("Řády a ceníky"),
+  --   boxik("Kontakty"),
+  --   boxik("Facebook"),
+  --   boxik("Galerie knihovny"),
+  --   boxik("Formuláře")
+  -- },
+})
+,
+medium(3,
+{ 
+  card{ 
+    provozni_doba( doc.prov_doba, T),
+    
+  -- {
+  --   name = "Výpůjční protokol",
+  --   data = {
+  --     {day="Po", time = "8.00–16.00"},
+  --     {day = "Út–Pá", time = "8.00–17.00"}
+  --   }
+  -- },
+  -- {
+  --   name = "Studovna",
+  --   data = {
+  --     {day = "Po–Čt", time = "8.00–18.00"},
+  --     {day = "Pá", time = "8.00–16.00"}
+  --   }
+  -- }
+  -- ), 
+  -- [[
+           -- <table class="prov_doba small">
+                            -- <caption>]] ..T "Letní prázdniny" ..[[</caption>
+                            -- <tr>
+                                -- <td>]] .. T "Studovna" .. [[</td>
+                                -- <td>]] .. T"Zavřeno do odvolání" ..[[</td>
+                            -- </tr>
+                            -- <tr>
+                                -- <td>]] .. T"Půjčovna" ..[[</td>
+                                -- <td>]] .. T "Zavřeno červenec + srpen" .. [[</td>
+                            -- </tr>
+                            -- <tr>
+                                -- <td></td>
+                                -- <td>]] .. T "Otevřeno každé úterý v srpnu, 9.00 — 15.00" ..[[</td>
+                            -- </tr>
+                        -- </table>
+  -- ]],
+  
+  close_element,
+  div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
+  {card {row { 
+    div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> <a href="tel:+420221900148">+420 221 900 148</a>'},
+    div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},
+    -- },
+    -- row{
+    div {'<a href="https://www.facebook.com/knihovnapedfpraha"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>','<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-hidden="true"></i></a>',a{href="https://www.facebook.com/knihovnapedfpraha",'knihovnapedfpraha'}},
+    -- div {'<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-hidden="true"></i></a>',a{href="https://www.instagram.com/KnihovnaPedFPraha/",'knihovnapedfpraha'}}
+  }} 
+},
+-- {card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
+-- -- row( div{ class="my-slider",  print_obalky(doc.obalky)}
+-- -- -- obalky "978-80-7422-500-0",
+-- -- -- obalky "80-85368-18-8", 
+-- -- -- obalky "978-80-7294-458-3"
+-- -- ),
+-- h.h2 {a{href= T "https://ezdroje.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
+--     }},
+    -- card {
+    --   h.h2 {"Ankety"}, 
+    --   p {"Nějaká otázka. Trochu delší text"},
+    --   h.ol{
+    --     h.li{"první možnost", progress(300)},
+    --     h.li{"druhá možnost", progress(400)}, 
+    --     h.li {"třetí možnost",progress(300)}
+    --   }
+    -- }
+  })
+},
+{
             medium(12, 
             card{ div{class="tabs", 
         tab("ukaz", T "Ukaž (vyhledávání <abbr title='informační zdroje'>IZ</abbr>)", 
@@ -183,91 +268,7 @@ local function template(doc )
             {"PEZ", "https://ezdroje.cuni.cz/"},
             {"Repozitář UK", "http://repozitar.cuni.cz/"}
           })}))--}
-  -- },
-  -- row{
-  --   boxik("Studenti se specifickými potřebami"),
-  --   boxik("EIZ pro PedF"),
-  --   k
-  --   boxik("Oborové EIZ"),
-  --   boxik("Periodika"), 
-  --   boxik("Návody"),
-  --   boxik("Řády a ceníky"),
-  --   boxik("Kontakty"),
-  --   boxik("Facebook"),
-  --   boxik("Galerie knihovny"),
-  --   boxik("Formuláře")
-  -- },
-})
-,
-medium(3,
-{ 
-  card{ 
-    provozni_doba( doc.prov_doba, T),
-    
-  -- {
-  --   name = "Výpůjční protokol",
-  --   data = {
-  --     {day="Po", time = "8.00–16.00"},
-  --     {day = "Út–Pá", time = "8.00–17.00"}
-  --   }
-  -- },
-  -- {
-  --   name = "Studovna",
-  --   data = {
-  --     {day = "Po–Čt", time = "8.00–18.00"},
-  --     {day = "Pá", time = "8.00–16.00"}
-  --   }
-  -- }
-  -- ), 
-  -- [[
-           -- <table class="prov_doba small">
-                            -- <caption>]] ..T "Letní prázdniny" ..[[</caption>
-                            -- <tr>
-                                -- <td>]] .. T "Studovna" .. [[</td>
-                                -- <td>]] .. T"Zavřeno do odvolání" ..[[</td>
-                            -- </tr>
-                            -- <tr>
-                                -- <td>]] .. T"Půjčovna" ..[[</td>
-                                -- <td>]] .. T "Zavřeno červenec + srpen" .. [[</td>
-                            -- </tr>
-                            -- <tr>
-                                -- <td></td>
-                                -- <td>]] .. T "Otevřeno každé úterý v srpnu, 9.00 — 15.00" ..[[</td>
-                            -- </tr>
-                        -- </table>
-  -- ]],
-  
-  close_element,
-  div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
-  {card {row { 
-    div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> <a href="tel:+420221900148">+420 221 900 148</a>'},
-    div {'<i class="fa fa-envelope" aria-hidden="true"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},
-    -- },
-    -- row{
-    div {'<a href="https://www.facebook.com/knihovnapedfpraha"><i class="fab fa-facebook-square" aria-hidden="true"></i></a>','<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-hidden="true"></i></a>',a{href="https://www.facebook.com/knihovnapedfpraha",'knihovnapedfpraha'}},
-    -- div {'<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-hidden="true"></i></a>',a{href="https://www.instagram.com/KnihovnaPedFPraha/",'knihovnapedfpraha'}}
-  }} 
 },
--- {card {h.h2{ a{href="/nove_knihy/index.html", T "Nové knihy"}},
--- -- row( div{ class="my-slider",  print_obalky(doc.obalky)}
--- -- -- obalky "978-80-7422-500-0",
--- -- -- obalky "80-85368-18-8", 
--- -- -- obalky "978-80-7294-458-3"
--- -- ),
--- h.h2 {a{href= T "https://ezdroje.cuni.cz/prehled/freetrials.php?lang=cs", T "Zkušební přístupy EIZ"}},
---     }},
-    -- card {
-    --   h.h2 {"Ankety"}, 
-    --   p {"Nějaká otázka. Trochu delší text"},
-    --   h.ol{
-    --     h.li{"první možnost", progress(300)},
-    --     h.li{"druhá možnost", progress(400)}, 
-    --     h.li {"třetí možnost",progress(300)}
-    --   }
-    -- }
-  })
-},
-
 
 -- h.div{class="row", h.div {class="col-sm-12 col-md-10 col-md-offset-1",
 -- h.div{class="card", h.section {class="section ",
@@ -277,24 +278,24 @@ medium(3,
 h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer="defer"},
 h.script{src="js/opening.js", type="text/javascript", defer="defer"},
 h.script{ "window.onload = function(){ opening('".. T "/js/calendar.js" .."', '".. T("Dnes má knihovna zavřeno: ") .. "')};"},
-  [[<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.js"></script>
-  <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
-  ]]
-  ,h.script{type="text/javascript", [[
-  var slider = tns({
-    container: '.my-slider',
-    items: 1,
-    slideBy: 'page',
-    controls:false,
-    nav: false,
-    speed: 7330,
-    autoplay: true,
-    autoplayHoverPause: true,
-    autoplayTimeout: 1500,
-    autoplayButtonOutput: false,
-    mouseDrag: true,
-  });
-  ]]}
+  -- [[<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.js"></script>
+  -- <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
+  -- ]]
+  -- ,h.script{type="text/javascript", [[
+  -- var slider = tns({
+  --   container: '.my-slider',
+  --   items: 1,
+  --   slideBy: 'page',
+  --   controls:false,
+  --   nav: false,
+  --   speed: 7330,
+  --   autoplay: true,
+  --   autoplayHoverPause: true,
+  --   autoplayTimeout: 1500,
+  --   autoplayButtonOutput: false,
+  --   mouseDrag: true,
+  -- });
+  -- ]]}
 }
 -- local doc = {}
 doc.contents = contents

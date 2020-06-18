@@ -39,7 +39,7 @@ return {
  ,['<a href="vypujcni_protokol.html">Půjčovna</a>']= '<a href="reference-desk.html">Library</a>'
  ,["Studovna Celetná"] = "Study Room Celetná"
  ,['<a href="celetna.html">Studovna v Celetné</a>'] = '<a href="celetna-en.html">Study Room Celetná</a>'
- ,['<a href="studovna.html">Studovna</a>'] = '<a href="study-room.html">Study Room</a>'
+ ,['<a href="studovna.html">Studovna v Rettigové</a>'] = '<a href="study-room.html">Study Room Rettigová</a>'
  ,["Po"] = "Mon"
  ,["Út"] = "Tue"
  ,["St"] = "Wed"

@@ -36,7 +36,7 @@ img.aktual-img{ display:none;}
 
 hr {width:100%;}
 /* div.logo-container {background-color:#ff677b;} */
-div.logo-container div.row{min-height:20vh;}
+div.logo-container div.row{min-height:15vh;}
 /* When page is whorter than logo width * 2 */
 @media (max-width: 514px){
   div.logo-container div.row{min-height:auto;}

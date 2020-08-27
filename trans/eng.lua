@@ -52,7 +52,7 @@ return {
  ,["Web knihovny"] = "Library Website"
  ,["Otevřeme"] = "Opening"
  ,["17. 1."] = "Jan  17"
- ,['js/calendar.js'] = 'js/calendar-en.js'
+ ,['/js/calendar.js'] = 'js/calendar-en.js'
  ,['Zavírací den'] = "Closing day"
  ,['Dnes má knihovna zavřeno: '] = "The library is closed today:"
  ,['Vánoční prázdniny'] = "Christmas"

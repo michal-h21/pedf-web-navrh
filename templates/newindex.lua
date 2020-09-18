@@ -253,6 +253,7 @@ medium(3,
     -- row{
     medium(12, card(
           h.div{ h.b {T "Další nástroje:"}, data_links(T,{
+            {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
             {"Katalog (UK)", "https://ckis.cuni.cz/F/"},
             {"WoS", "https://webofknowledge.com/"},
             {"Scopus", "https://www.scopus.com/"},
@@ -263,7 +264,6 @@ medium(3,
             {"JCR", "https://jcr.clarivate.com/"},
             {"NK", "https://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
             {"CPK", "https://www.knihovny.cz/"},
-            {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
             {"Google Scholar", "https://scholar.google.cz/"},
             {"PEZ", "https://ezdroje.cuni.cz/"},
             {"Repozitář UK", "http://repozitar.cuni.cz/"}

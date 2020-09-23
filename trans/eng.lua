@@ -90,5 +90,6 @@ return {
  ,["zavírací den"] = "Closing day"
  ,["děkanský den"] = "Closing day"
  ,["rektorský den"] = "Closing day"
+ ,["dočasné uzavření knihovny"] = "Library temporarily closed"
 
  }

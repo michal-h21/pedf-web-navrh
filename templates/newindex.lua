@@ -255,18 +255,17 @@ medium(3,
           h.div{ h.b {T "Další nástroje:"}, data_links(T,{
             {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
             {"Katalog (UK)", "https://ckis.cuni.cz/F/"},
-            {"WoS", "https://webofknowledge.com/"},
+            {"PEZ", "https://ezdroje.cuni.cz/"},
+            {"NK", "https://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
+            {"NDK", "https://ndk.cz/"},
             {"Scopus", "https://www.scopus.com/"},
             {"DOAJ", "https://doaj.org/"},
             {"ERIH", "https://dbh.nsd.uib.no/publiseringskanaler/erihplus/"},
-            {"Ulrichsweb", "https://ulrichsweb.serialssolutions.com"},
-            {"DOI", "https://www.doi.org/"},
+            {"Ulrichsweb", "https://ezdroje.cuni.cz/prehled/zdroj.php?lang=cs&id=214"},
             {"JCR", "https://jcr.clarivate.com/"},
-            {"NK", "https://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
-            {"CPK", "https://www.knihovny.cz/"},
+            {"WoS", "https://webofknowledge.com/"},
             {"Google Scholar", "https://scholar.google.cz/"},
-            {"PEZ", "https://ezdroje.cuni.cz/"},
-            {"Repozitář UK", "http://repozitar.cuni.cz/"}
+            {"Repozitář UK", "https://dspace.cuni.cz/?locale-attribute=cs"}
           })}))--}
 },
 

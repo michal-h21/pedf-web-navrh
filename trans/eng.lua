@@ -4,6 +4,7 @@ return {
  ,["Aktuality"] = "News"
  ,[' (<a href="archiv.html">více</a>)'] = ' (<a href="archive-en.html">more</a>)'    
  ,[' (<a href="archiv.html">Archiv</a>)'] = ' (<a href="archive-en.html">Archive</a>)'    
+ ,[' (<a href="archiv.html">Další aktuality zde</a>)'] = ' (<a href="archive-en.html">Archive</a>)'    
  ,[ "Katalog"]= "Catalog"
  ,[ "https://ckis.cuni.cz/F/"] =  "https://ckis.cuni.cz/F/?CON_LNG=ENG"
  ,["Klíčová slova:"] = "Keywords:"

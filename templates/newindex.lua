@@ -76,7 +76,7 @@ local function template(doc )
         medium(12, card(row{
           -- card {
             h.h2{ T "Aktuality" },
-            print_actual(doc.items), div {class="archiv-link", T ' (<a href="archiv.html">Archiv</a>)' }
+            print_actual(doc.items), div {class="archiv-link", T ' (<a href="archiv.html">Další aktuality zde</a>)' }
             -- actuality("Provozní doba v průběhu letních prázdnin", "26. 6. 2017", p {"Aktualizovanou provozní dobu knihovny v průběhu letních prázdnin a v září naleznete zde"}),
             -- actuality("Uzavření SAJL v Celetné", "23.06.2017", "Upozorňujeme <b>všechny</b> uživatele služeb ve Studovně anglického jazyka a literatury PedF v Celetné 13, aby si veškerou literaturu, kterou budou potřebovat ke zkouškám v září, vypůjčili do konce června. V srpnu bude studovna z důvodu stěhování knihovního fondu uzavřena.")
           }

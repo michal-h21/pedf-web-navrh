@@ -29,7 +29,9 @@ generate:
 
 upload:
 	cd www && rsync -auvz --checksum . knihovna-new:/home/hoftich/nginx/html/
-	lftp -c "open  knihovna-test; mirror -c -p -R -L www www"
+	mkdir -p backup/img
+	rsync -r --checksum www/ backup/
+	lftp -c "open  knihovna-test; mirror -c -p -R -L backup www"
 	# cd www && rsync -auvz --checksum . beta:/var/www/html/
 	# scp mini-knihovna.css style.css index.html beta:/var/www/html/navrh/
 	# scp img/*.* beta:/var/www/html/navrh/img/

@@ -28,7 +28,7 @@ $h5-font-size:          1;                     // Font size for h5
 $h6-font-size:          0.8125rem;                // Font size for h6
 $heading-line-height:   1.2em;                    // Line height for all headings
 $heading-margin:        0.75rem 0.5rem;           // Margin for all headings
-$heading-font-weight:   500;                      // Font weight for all headings
+$heading-font-weight:   bolder;                      // Font weight for all headings
 $heading-smalltext-fore-color:  #424242;          // <small> color in headings
 $make-heading-smalltext-block:  true;             // Should <small> elements in headings be displayed as blocks (`true`/`false`) [4]
 $heading-smalltext-b-font-size:  0.75em;          // Font size of block <small> elements in headings
@@ -36,7 +36,7 @@ $heading-smalltext-b-top-margin:-0.25rem;         // Top margin of block <small>
 $paragraph-margin:       0.5rem;                  // Margin for <p> elements
 $list-margin:            0.5rem;                  // Margin for <ol> and <ul> elements
 $list-left-padding:      1rem;                    // Left padding for <ol> and <ul> elements
-$bold-font-weight:       700;                     // Font weight for <b> and <strong>
+$bold-font-weight:       bolder;                     // Font weight for <b> and <strong>
 $horizontal-rule-line-height:  1.25em;            // <hr> line height
 $horizontal-rule-margin:       0.5rem;            // <hr> margin
 $horizontal-rule-border-style: $_1px solid #8c8c8c;// Border style for horizontal rules (used in the <hr> element's border-top)

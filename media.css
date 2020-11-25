@@ -45,9 +45,8 @@ div.logo-container img{margin-top:0.5rem;}
 
 body.container{padding-top:1rem;}
 
-/* html.wf-active {font-family:"Fira Sans";} */
 /* html.wf-active body *{font-family:"Fira Sans";} */
-html.wf-active body *{font-family: Moderat, Arial, Helvetica Neue, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;}
+html body *{font-family: Moderat, Arial, Helvetica Neue, Helvetica, "Nimbus Sans L", "Liberation Sans", FreeSans, sans-serif;}
 
 footer *, footer p{
   font-size:0.9rem;

@@ -105,7 +105,7 @@ local function template(data)
       metaifexitst( "twitter:card", "summary_large_image" , "name"),
       -- tohle změnit, použít lokální verzi
       -- h.link{rel="stylesheet", type="text/css", href="https://gitcdn.link/repo/Chalarangelo/mini.css/master/dist/mini-default.min.css"},
-      '<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">',
+      -- '<link rel="stylesheet" href="https://code.cdn.mozilla.net/fonts/fira.css">',
      h.link {rel="alternate",  type="application/rss+xml", href= T "feed.rss"},
       h.link{rel="stylesheet", type="text/css", href="/mini-knihovna.css"},
       h.link{rel="stylesheet", type="text/css", href="/style.css"},

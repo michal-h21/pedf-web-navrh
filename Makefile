@@ -28,7 +28,7 @@ generate:
 	cp js/*.* www/js/
 
 upload:
-	cd www && rsync -auvz --checksum . knihovna-new:/home/hoftich/nginx/html/
+	# cd www && rsync -auvz --checksum . knihovna-new:/home/hoftich/nginx/html/
 	mkdir -p backup/img
 	mkdir -p backup/handi
 	rsync -r --checksum www/ backup/

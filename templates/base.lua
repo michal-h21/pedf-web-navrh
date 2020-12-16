@@ -121,15 +121,15 @@ local function template(data)
       <link rel="stylesheet" type="text/css" href="/css/fa-svg-with-js.css" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/tiny-slider.css">
       <script defer src="/js/fontawesome-all.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
-      <script>
-        WebFont.load({
-          custom: {
-            families: ['Fira Sans']
-          }
-        });
-        </script>
       ]]
+      -- <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+      -- <script>
+      --   WebFont.load({
+      --     custom: {
+      --       families: ['Fira Sans']
+      --     }
+      --   });
+      --   </script>
 
       -- h.link{rel="stylesheet", type="text/css", href="src/responsive-nav.css"},
       -- h.script{type="text/javascript", src="responsive-nav.js",},

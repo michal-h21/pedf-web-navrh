@@ -36,7 +36,7 @@ local function get_date_ranges(calendar, dates, comment)
     end
   end
   for _, v in ipairs(t) do 
-    local day = v:fmt("%G-%m-%d")
+    local day = v:fmt("%Y-%m-%d")
     calendar[day] = comment
   end
   return calendar

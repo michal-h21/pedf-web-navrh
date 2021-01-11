@@ -217,6 +217,7 @@ local function template(data)
     },
     -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
     -- h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true}
+    h.script{['data-goatcounter']="https://knihovna.pedf.cuni.cz/counter/counter.php", async=true, type="text/javascript", src="/js/count.js"},
   },
 }
 ))

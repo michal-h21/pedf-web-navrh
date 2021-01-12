@@ -3,7 +3,7 @@
 // the JS part is from Goatcounter
 
 $ipaddress = $_SERVER['REMOTE_ADDR'];
-$timestamp = date('Y/m/d h:i:s');
+$timestamp = date('Y/m/d H:i:s');
 $referrer = $_GET['r'];
 $page  = $_GET['p'];
 $dimensions = $_GET['s'];

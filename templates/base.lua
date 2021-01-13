@@ -126,7 +126,6 @@ local function template(data)
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
       <meta name="theme-color" content="#ffffff">
       <link rel="stylesheet" type="text/css" href="/css/fa-svg-with-js.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/tiny-slider.css">
       <script defer src="/js/fontawesome-all.min.js"></script>
       ]]
       -- <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>

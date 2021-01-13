@@ -3,6 +3,7 @@
 
 all: style.css mini-knihovna.css html/eiz-pedf.html generate upload 
 
+# style.css už nepoužíváme, nic tam nepřidávat
 style.css: style.lua
 	lua style.lua > style.css
 

@@ -85,6 +85,12 @@ local function obsolete(data)
   end
 end
 
+local function meta_obsolete(data)
+  if data.obsolete then
+    return '<meta name="robots" content="noindex" />'
+  end
+end
+
 -- function column
 local function template(data)
   local strings = data.strings
@@ -96,6 +102,7 @@ local function template(data)
       h.meta{charset="utf-8"},
       h.meta{name="viewport", content="width=device-width, initial-scale=1"},
       h.title{(T (data.title))},
+      meta_obsolete(data),
       metaifexitst("og:type", "website"),
       metaifexitst("og:title", data.title),
       metaifexitst("og:description", data.description),

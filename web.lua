@@ -128,7 +128,13 @@ local add_defaults = make_transformer(function(doc)
   doc.styles = doc.styles or {}
   doc.siteurl = siteurl
   doc.obalky_dir = data_dir .. "/obalky/"
-  doc.description = "Fakultní knihovna v centru Prahy. Bohatý knižní fond, množství elektronických zdrojů, pravidelné výstavy, denní tisk a časopisy. Těšíme se na vás!"
+  if not doc.description then
+    if doc.lang == "eng" then
+      doc.description = "Faculty library in the center of Prague. Rich book collection, many electronic resources, and magazines. We look forward to you!"
+    else
+      doc.description = "Fakultní knihovna v centru Prahy. Bohatý knižní fond, množství elektronických zdrojů, pravidelné výstavy, denní tisk a časopisy. Těšíme se na vás!"
+    end
+  end
   -- if doc.design ~=false then
     -- table.insert(doc.styles,"css/scale.css")
     -- table.insert(doc.styles,"css/design.css")

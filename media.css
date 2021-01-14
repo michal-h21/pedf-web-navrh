@@ -6,12 +6,18 @@ body  {
 /* tricks from https://madebymike.com.au/writing/precise-control-responsive-typography/*/
 :root { font-size: 14px;  /* default below 600px */ }
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 img.aktual-img{ display:none;}
 @media (min-width: 770px){
   img.aktual-img{
     display:block;
     margin-top:1rem;
     width:86%;
+    height: auto;
   }
 }
 @media (min-width: 933px){

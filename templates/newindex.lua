@@ -56,6 +56,16 @@ local function data_links(T,data)
   return t
 end
 
+local function print_updates(T, data)
+  local t = {}
+
+  for i=1, 5 do
+    local x = data[i] or {}
+    t[#t+1] = string.format("<a href='%s'>%s</a>", x.relative_filepath, x.title)
+  end
+  return " (" ..data[1].date .."): " .. table.concat(t , ", ")
+end
+
 -- function column
 local function template(doc )
   local title = doc.title
@@ -266,7 +276,9 @@ medium(3,
             {"WoS", "https://webofknowledge.com/"},
             {"Google Scholar", "https://scholar.google.cz/"},
             {"Repozitář UK", "https://dspace.cuni.cz/?locale-attribute=cs"}
-          })}))--}
+          })})),--}
+    medium(12, card(
+          h.div{ h.b {T "Nejnovější aktualizace"}, print_updates(T,doc.updates), "/",  h.a{href= T "aktualizace.html",  T "Starší"}}))
 },
 
 -- h.div{class="row", h.div {class="col-sm-12 col-md-10 col-md-offset-1",

@@ -22,6 +22,7 @@ local discount = require "discount"
 local archiv = require "archivaktual".index
 local newindex_template = require "templates.newindex".template
 local opening_template = require "templates.opening".template
+local updates_template = require "templates.updates".template
 local prov_doba_fn = require "prov_doba"
 local prov_doba = prov_doba_fn(data_dir .. "/opening.csv")
 local load_closing = require "closing"
@@ -132,8 +133,9 @@ local add_defaults = make_transformer(function(doc)
   doc.styles = doc.styles or {}
   doc.siteurl = siteurl
   doc.obalky_dir = data_dir .. "/obalky/"
-  doc.modified = attributes(doc.file_path, "modification")
-  print(doc.file_path, doc.modified)
+  if doc.file_path then
+    doc.modified = attributes(doc.file_path, "modification")
+  end
   if not doc.description then
     if doc.lang == "eng" then
       doc.description = "Faculty library in the center of Prague. Rich book collection, many electronic resources, and magazines. We look forward to you!"
@@ -272,6 +274,61 @@ local function html_builder(lang)
   )
 end
 
+local page_actualizations = {}
+
+-- make table with modified pages
+local function newest_pages_builder(path, lang)
+  local lang = lang or ""
+  local lang_func = get_lang_func(lang)
+  -- don't process obsolete pages
+  local obsolete_filter =  transformer(filter(function(doc)
+    return not doc.obsolete
+  end))
+  local apply_update_template = make_transformer(function(doc) return merge(doc, {contents = updates_template(doc) }) end)
+  local menu = mainmenu
+  local strings = {} -- don't use translation strings by default
+  local altlang = "updates.html"
+  -- ignore english pages
+  local pages_filter = transformer(filter(function(doc)  return not string.match(doc.relative_filepath,"^%/.-%/") end))
+  if lang == "eng" then
+    menu = engmenu
+    strings = engstrings
+    altlang = "aktualizace.html"
+    pages_filter = transformer(filter(function(doc)  return true end))
+    -- pages_filter = transformer(filter(function(doc) return string.match(doc.relative_filepath or "///","^%/en%/[^%/]+$") end))
+  end
+  -- convert documents to table
+  local get_newest_pages = function(doc) return {modified = doc.modified, relative_filepath = doc.relative_filepath, title = doc.title, obsolete = doc.obsolete, date = os.date("%Y-%m-%d", doc.modified) } end
+  local take_news = comp(take(5000), map(get_newest_pages))
+  local newest_pages = function(iter, ...)
+    local items = into(take_news, iter, ...)
+    table.sort(items, function(a,b) return a.modified > b.modified end)
+    -- save table somewhere it will be available for other pages
+    page_actualizations[lang] = items
+    -- os.exit()
+    return wrap_in_iter { title= "Aktualizace stránek", menuitems =menu, date = date, items =
+    items, relative_filepath = path, strings = strings, 
+    items = items,
+    siteurl = siteurl,
+    altlang = altlang,
+    img = "/img/informace.jpg",
+    alt = "Foto: Martina Růžičková" 
+  }
+  end
+  return comp(
+    apply_update_template,
+    -- apply_template,
+    newest_pages,
+    add_defaults,
+    lang_func,
+    pages_filter,
+    obsolete_filter,
+    html_filter,
+    only_root,
+    lettersmith.docs
+  )
+end
+
 local function nove_knihy_builder(lang)
   local lang_func = get_lang_func(lang)
   return comp(
@@ -350,7 +407,7 @@ local get_news_item = function(doc)
   return {akt_title = title, contents = contents, date = date, img = img, alt = alt}
 end
 
-local newindex = function(filepath,menu, languagestrings)
+local newindex = function(filepath,menu, languagestrings, lang)
   local take_news = comp(take(2), map(get_news_item))
   return function(iter, ...)
     local items = into(take_news, iter, ...)
@@ -358,12 +415,14 @@ local newindex = function(filepath,menu, languagestrings)
     -- local date = items[1].date
     local title = "Knihovna PedF UK"
     print("mainmenu", menu)
+    -- get updated pages
+    local newest = page_actualizations[lang or ""]
     local obalky = get_new_books(data_dir .. "/obalky", 9)
     -- local languagestrings = languagestrings or {}
     return wrap_in_iter { title=title, menuitems =menu, date = date, items =
     items, relative_filepath = filepath, prov_doba = prov_doba, obalky =
     obalky, strings = languagestrings or {}, closing = zaviraci_dny, calendar = kalendar,
-    siteurl = siteurl
+    siteurl = siteurl, updates = newest
   }
   end
 end
@@ -391,7 +450,7 @@ local function index_gen(page, lang)
   end
   return comp(
   apply_newindex,
-  newindex(page,menu, strings),
+  newindex(page,menu, strings,lang),
   add_defaults,
   lang_func,
   filter_aktual,
@@ -437,6 +496,8 @@ if commands[argument] == nil then
   css_builder(paths),
   calendar_builder("js/calendar.js")(paths),
   calendar_builder("js/calendar-en.js", "eng")(paths),
+  newest_pages_builder("aktualizace.html")(paths),
+  newest_pages_builder("updates.html", "eng")(en_path),
   index_gen("index-en.html", "eng")(en_aktuality),
   rss_gen("feed-en.rss",  "Library of Faculty of Education")(en_aktuality),
   archive_gen("archive-en.html","eng")(en_aktuality),

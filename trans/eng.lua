@@ -100,5 +100,10 @@ return {
  ,["https://ndk.cz/"]="https://ndk.cz/"
  ,["https://ezdroje.cuni.cz/prehled/zdroj.php?lang=cs&id=214"] = "https://ezdroje.cuni.cz/prehled/zdroj.php?lang=en&id=214"
  ,["https://ukaz.cuni.cz"] = "https://ukaz.cuni.cz/en/"
+ ,["Další nástroje:"] = "Additional resources:"
+ ,["Nejnovější aktualizace"] = "Latest updates"
+ ,["aktualizace.html"] = "updates.html"
+ ,["Starší"] = "Older"
+ ,["Aktualizace webu"] = "Web updates"
 
  }

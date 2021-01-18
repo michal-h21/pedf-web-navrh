@@ -13,6 +13,7 @@ local attributes = lfs.attributes
 local html_dir = os.getenv("HTML_DIR") or "html"
 local www_dir = os.getenv("WWW_DIR") or "www"
 local data_dir = os.getenv("DATA_DIR") or "data"
+local html_dir_en = html_dir .. "/en"
 print("Data dir" , data_dir)
 
 local siteurl =  "http://knihovna.pedf.cuni.cz/"
@@ -89,7 +90,8 @@ local engstrings = require "trans.eng"
 
 -- Get paths from "raw" folder
 local paths = lettersmith.paths(html_dir)
-local en_path = lettersmith.paths(html_dir .. "/en")
+
+local en_path = lettersmith.paths(html_dir_en)
 local aktuality = lettersmith.paths(html_dir .. "/aktuality")
 local en_aktuality = lettersmith.paths(html_dir .. "/en/aktuality")
 local nove_knihy = lettersmith.paths(html_dir .. "/nove_knihy")
@@ -134,6 +136,7 @@ local add_defaults = make_transformer(function(doc)
   doc.siteurl = siteurl
   doc.obalky_dir = data_dir .. "/obalky/"
   if doc.file_path then
+    -- this doesn't work in Github actions
     doc.modified = attributes(doc.file_path, "modification")
   end
   if not doc.description then
@@ -276,6 +279,19 @@ end
 
 local page_actualizations = {}
 
+-- we need to get the modified date from Git :/
+local iopopen = io.popen
+-- path should point to the Git directory of HTML pages
+local function get_git_modified(doc, path)
+  -- keep just the filename without path
+  local file_path = doc.file_path:match("/([^/]+)$")
+  local cmd = "git -C " .. path .. " log -1 --format='%at' HEAD " ..  file_path
+  local time = iopopen(cmd, "r")
+  local result = time:read("*all")
+  time:close()
+  return tonumber(result)
+end
+
 -- make table with modified pages
 local function newest_pages_builder(path, lang)
   local lang = lang or ""
@@ -290,15 +306,20 @@ local function newest_pages_builder(path, lang)
   local altlang = "updates.html"
   -- ignore english pages
   local pages_filter = transformer(filter(function(doc)  return not string.match(doc.relative_filepath,"^%/.-%/") end))
+  -- path to git repo with html source files
+  local repo_path = html_dir
   if lang == "eng" then
     menu = engmenu
     strings = engstrings
     altlang = "aktualizace.html"
+    repo_path = html_dir_en
     pages_filter = transformer(filter(function(doc)  return true end))
     -- pages_filter = transformer(filter(function(doc) return string.match(doc.relative_filepath or "///","^%/en%/[^%/]+$") end))
   end
   -- convert documents to table
-  local get_newest_pages = function(doc) return {modified = doc.modified, relative_filepath = doc.relative_filepath, title = doc.title, obsolete = doc.obsolete, date = os.date("%Y-%m-%d", doc.modified) } end
+  local get_newest_pages = function(doc) 
+    local modified = get_git_modified(doc, repo_path)
+    return {modified = modified, relative_filepath = doc.relative_filepath, title = doc.title, obsolete = doc.obsolete, date = os.date("%Y-%m-%d", modified) } end
   local take_news = comp(take(5000), map(get_newest_pages))
   local newest_pages = function(iter, ...)
     local items = into(take_news, iter, ...)

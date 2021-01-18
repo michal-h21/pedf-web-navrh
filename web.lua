@@ -319,6 +319,7 @@ local function newest_pages_builder(path, lang)
   -- convert documents to table
   local get_newest_pages = function(doc) 
     local modified = get_git_modified(doc, repo_path)
+    print("updated", doc.relative_filepath, os.date("%Y-%m-%d", modified))
     return {modified = modified, relative_filepath = doc.relative_filepath, title = doc.title, obsolete = doc.obsolete, date = os.date("%Y-%m-%d", modified) } end
   local take_news = comp(take(5000), map(get_newest_pages))
   local newest_pages = function(iter, ...)

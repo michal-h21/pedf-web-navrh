@@ -6,6 +6,8 @@ local merge = require("lettersmith.table_utils").merge
 local wrap_in_iter = require("lettersmith.plugin_utils").wrap_in_iter
 local docs = require("lettersmith.docs_utils")
 local translator = require "lib.translator"
+local lfs = require "lfs"
+local attributes = lfs.attributes
 
 -- local render_mustache = require("lettersmith.mustache").choose_mustache
 local html_dir = os.getenv("HTML_DIR") or "html"
@@ -36,6 +38,8 @@ local into = transducers.into
 local comp = transducers.comp
 local transform = lazy.transform
 local transformer = lazy.transformer
+
+
 
 local file_utils = require "lettersmith.file_utils"
 local walk_file_paths = file_utils.walk_file_paths
@@ -128,6 +132,8 @@ local add_defaults = make_transformer(function(doc)
   doc.styles = doc.styles or {}
   doc.siteurl = siteurl
   doc.obalky_dir = data_dir .. "/obalky/"
+  doc.modified = attributes(doc.file_path, "modification")
+  print(doc.file_path, doc.modified)
   if not doc.description then
     if doc.lang == "eng" then
       doc.description = "Faculty library in the center of Prague. Rich book collection, many electronic resources, and magazines. We look forward to you!"

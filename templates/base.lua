@@ -59,7 +59,7 @@ local function get_base_url(url)
 end
 
 local function default_img(doc)
-  local imgpath = doc.img or "img/informace.jpg"
+  local imgpath = doc.img or "/img/informace.jpg"
   local base_url = get_base_url(doc.siteurl)
   return base_url ..  imgpath
 end

@@ -32,6 +32,7 @@ return {
  ,["provozni_doba.htm"] = "opening.html"
  ,["Provozní doba"] = "Opening hours"
  ,[ "English version"] = "Česká verze"
+ ,[ "Switch to English version"] = "Přepnout na českou verzi"
  ,[ "Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>."] = ""
  ,["Studovna"] = "Study Room"
  ,["Studovna Rettigová"] = "Study Room"

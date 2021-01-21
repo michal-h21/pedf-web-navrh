@@ -150,7 +150,7 @@ local function template(data)
         -- class="row",
         h.span {class="logo", "&nbsp;"},
         mainmenu(data.menuitems),
-        h.span{ a{href=(data.altlang or T "/index-en.html"),h.img{src=T "/img/gb.svg", alt=T "English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
+        h.span{ a{href=(data.altlang or T "/index-en.html"),h.img{src=T "/img/gb.svg", alt=T "Switch to English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
         -- }},
       }},
       -- row {h.p {}},

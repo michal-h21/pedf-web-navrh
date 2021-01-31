@@ -151,11 +151,14 @@ medium(3,
   close_element,
   div{ a {href=T "provozni_doba.htm", T "Plánované uzavření knihovny"}}},
   {card {row { 
-    div{ '<i class="fa fa-phone-square" aria-hidden="true"></i> <a href="tel:+420221900148" aria-label="telephone 4 2 0 2 2 1 9 0 0 1 4 8">+420 221 900 148</a>'},
-    div {'<i class="fa fa-envelope" aria-label="e-mail"></i> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},
+    div{ '<img src="img/phone.svg" style="width:0.9em" alt="" /> <a href="tel:+420221900148" aria-label="telephone 4 2 0 2 2 1 9 0 0 1 4 8">+420 221 900 148</a>'},
+    div {'<img src="img/envelope.svg" style="width:0.9em" alt="e-mail" /> ', a{href="mailto:knihovna@pedf.cuni.cz","knihovna@pedf.cuni.cz"}},
     -- },
     -- row{
-    div {'<a href="https://www.facebook.com/knihovnapedfpraha"><i class="fab fa-facebook-square" aria-label="facebook"></i></a>','<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-label="instagram"></i></a>',a{href="https://www.facebook.com/knihovnapedfpraha", ["aria-label"]="facebook knihovnapedfpraha",'knihovnapedfpraha'}},
+    div {
+      '<a href="https://www.facebook.com/knihovnapedfpraha"><img src="img/facebook.svg" style="width:0.9em" alt="facebook" /></a>',
+      '<a href="https://www.instagram.com/KnihovnaPedFPraha/"><img src="img/instagram.svg" style="width:0.9em" alt="instagram" /></a>',
+      a{href="https://www.facebook.com/knihovnapedfpraha", ["aria-label"]="facebook knihovnapedfpraha",'knihovnapedfpraha'}},
     -- div {'<a href="https://www.instagram.com/KnihovnaPedFPraha/"><i class="fab fa-instagram" aria-hidden="true"></i></a>',a{href="https://www.instagram.com/KnihovnaPedFPraha/",'knihovnapedfpraha'}}
   }} 
 },

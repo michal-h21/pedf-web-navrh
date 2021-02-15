@@ -4,7 +4,8 @@ local day = 24 * 60 * 60
 local first = os.time {year = 2021, month = 2, day = 15}
 
 local function get_date(x)
-  return os.date("%d. %m",x)
+  -- získej dny a měsíce, bez počátečních nul
+  return os.date("%d. %m.",x):gsub("^0",""):gsub(" 0", "")
 end
 
 -- jeden krok je tyden

@@ -184,74 +184,74 @@ medium(3,
 {
             medium(12, 
             card{ div{class="tabs", 
-        tab("ukaz", T "Ukaž (vyhledávání <abbr title='informační zdroje'>IZ</abbr>)", 
-        h.form{ id="ebscohostCustomSearchBox", action="&nbsp;", onsubmit="return ebscoHostSearchGo(this);", method="post",
-        h.input {id="ebscohostwindow",name="ebscohostwindow",type="hidden",value="1"},
--- http://search.ebscohost.com/login.aspx?direct=true&scope=site&type=0&site=eds-live&custid=s1240919&groupid=pedf&profid=eds&lang=cs
-        h.input {id="ebscohosturl",name="ebscohosturl",type="hidden",value="https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;scope=site&amp;type=0&amp;custid=s1240919&amp;groupid=pedf&amp;profid=eds&amp;profile=eds&amp;mode=bool&amp;lang=".. T "cs" .. "&amp;authtype=ip,guest"},
-        h.input {id="ebscohostsearchsrc",name="ebscohostsearchsrc",type="hidden",value="db"},
-        h.input {id="ebscohostsearchmode", name="ebscohostsearchmode", type="hidden", value="+"},
-        h.input {id="ebscohostkeywords", name="ebscohostkeywords", type="hidden", value="" },
-        -- h.label{T "Klíčová slova:", 
-        h.input{id="ebscohostsearchtext",class="",name="ebscohostsearchtext",type="search",size="28"},
-        h.input{type="submit", value=T "hledat"},
+        tab("ukaz", T "UKAŽ – zdroje PedF UK", 
+        h.form{ id="ebscohostCustomSearchBox",  action="https://cuni.primo.exlibrisgroup.com/discovery/search", onsubmit="searchPrimo()", method="get",enctype="application/x-www-form-urlencoded; charset=utf-8", target="_blank",
+            h.input{ type="hidden", name="vid", value="420CKIS_INST:UKAZ"},
+            h.input{ type="hidden", name="tab", value="Everything"},
+            h.input{ type="hidden", name="search_scope", value="MyInst_and_CI"},
+            h.input{ type="hidden", name="lang", value= T "cs"},
+            h.input{ type="hidden", name="mode", value="basic"},
+            h.input{ type="hidden", name="query", id="primoQuery"},
+            h.input{ type="hidden", name="pcAvailabiltyMode", value="true"},
+            h.input{ type="hidden", name="mfacet", value="library,include,6986–112118530006986,1"},
+            h.input{type="text", id="primoQueryTemp", value=""},
+            h.input{id="go", title=T "hledat", onclick="searchPrimo()", type="button", value= T "hledat" ,alt= T "hledat"},
           h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž.", T "<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."},
       },"checked"
       ),
-            tab("aleph", T "Katalog",  h.form{action=T "https://ckis.cuni.cz/F/", method="get", target="_blank", 
-            h.input{  name="local_base", value="pedfr", type="hidden"},
-            h.input {name="func", value="find-e" ,type="hidden"},
-            row{
-              -- h.label {T "Klíčová slova:", 
-              h.input {name="request", type="search"},
-              h.label {T "Vyhledat v: ", h.select {
-                name="find_scan_code",
-                h.option{value="FIND_WRD", selected="selected", T "Všechna pole"},
-                h.option {value="FIND_WTI", T "Název"},
-                -- h.option {value="SCAN_TIT", T "První slovo z názvu"},
-                h.option {value="FIND_WAU", T "Autor"},
-                h.option {value="SCAN_AUT", T "Autorský rejstřík"},
-                h.option {value="FIND_WKW", T "Předmět"},
-                h.option {value="SCAN_SUB", T "Předmětový rejstřík"},
-                h.option {value="FIND_ISN", T "ISBN/ISSN"},
-              },
-            },
-            h.input{type="submit", value=T "hledat"},
-          },
-          h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."}
-        }),
-      tab("e-casopisy", T "E-časopisy", [[
-      <form method="get" action="https://sfx.is.cuni.cz/sfxlcl3/az/ukall" target="_blank">
-
-      <input name="param_perform_value" value="searchTitle" type="hidden">
-      <input name="param_jumpToPage_value" value="" type="hidden">
-      <input name="param_type_value" value="textSearch" type="hidden">
-      <input name="param_chinese_checkbox_active" value="1" type="hidden">
-      <input name="param_chinese_checkbox_value" id="param_chinese_checkbox_value1" value="0" type="hidden">
-
-      <label class="i_text">
-      <span>]] .. T "Slova z názvu" .. [[</span>
-      <input name="param_pattern_value" id="param_pattern_value1" type="search">
-      </label>
-      <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
-      ]] .. '<p>' .. T("Přehled našich časopisů si můžete prohlédnout <a href='periodika.htm'>zde</a>.") .. "</p> </form>"
+            -- tab("aleph", T "Katalog",  h.form{action=T "https://ckis.cuni.cz/F/", method="get", target="_blank", 
+            -- h.input{  name="local_base", value="pedfr", type="hidden"},
+            -- h.input {name="func", value="find-e" ,type="hidden"},
+            -- row{
+            --   -- h.label {T "Klíčová slova:", 
+            --   h.input {name="request", type="search"},
+            --   h.label {T "Vyhledat v: ", h.select {
+            --     name="find_scan_code",
+            --     h.option{value="FIND_WRD", selected="selected", T "Všechna pole"},
+            --     h.option {value="FIND_WTI", T "Název"},
+            --     -- h.option {value="SCAN_TIT", T "První slovo z názvu"},
+            --     h.option {value="FIND_WAU", T "Autor"},
+            --     h.option {value="SCAN_AUT", T "Autorský rejstřík"},
+            --     h.option {value="FIND_WKW", T "Předmět"},
+            --     h.option {value="SCAN_SUB", T "Předmětový rejstřík"},
+            --     h.option {value="FIND_ISN", T "ISBN/ISSN"},
+            --   },
+            -- },
+            -- h.input{type="submit", value=T "hledat"},
+          -- },
+          -- h.div{class="bottom", T "Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."}
+        -- }),
+      tab("e-casopisy", T "Články v časopisech", 
+        h.form{ id="clanky-search",  action="https://cuni.primo.exlibrisgroup.com/discovery/search", onsubmit="searchClanky()", method="get",enctype="application/x-www-form-urlencoded; charset=utf-8", target="_blank",
+            h.input{ type="hidden", name="vid", value="420CKIS_INST:UKAZ"},
+            h.input{ type="hidden", name="tab", value="Everything"},
+            h.input{ type="hidden", name="search_scope", value="MyInst_and_CI"},
+            h.input{ type="hidden", name="lang", value= T "cs"},
+            h.input{ type="hidden", name="mode", value="basic"},
+            h.input{ type="hidden", name="query", id="primoClanky"},
+            h.input{ type="hidden", name="pcAvailabiltyMode", value="true"},
+            h.input{ type="hidden", name="facet", value="rtype,include,articles"},
+            h.input{type="text", id="primoClankyTemp", value=""},
+            h.input{id="go", title=T "hledat", onclick="searchClanky()", type="button", value= T "hledat" ,alt= T "hledat"},
+          h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž.", T "<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."},
+      }
       ),
-      tab("e-knihy", T "E-knihy", [[
-      <form method="get" action="http://sfx.is.cuni.cz/sfxlcl3/azbook/ukall" target="_blank">
+      -- tab("e-knihy", T "E-knihy", [[
+      -- <form method="get" action="http://sfx.is.cuni.cz/sfxlcl3/azbook/ukall" target="_blank">
 
-      <input name="param_perform_value" value="searchTitle" type="hidden">
-      <input name="param_jumpToPage_value" value="" type="hidden">
-      <input name="param_type_value" value="textSearch" type="hidden">
-      <input name="param_chinese_checkbox_active" value="1" type="hidden">
-      <input name="param_chinese_checkbox_value" id="param_chinese_checkbox_value2" value="0" type="hidden">
+      -- <input name="param_perform_value" value="searchTitle" type="hidden">
+      -- <input name="param_jumpToPage_value" value="" type="hidden">
+      -- <input name="param_type_value" value="textSearch" type="hidden">
+      -- <input name="param_chinese_checkbox_active" value="1" type="hidden">
+      -- <input name="param_chinese_checkbox_value" id="param_chinese_checkbox_value2" value="0" type="hidden">
 
-      <label class="i_text">
-      <span>]] .. T "Slova z názvu" .. [[</span>
-      <input name="param_pattern_value" id="param_pattern_value2" type="search">
-      </label>
-      <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
-      ]] ..  "</p> </form>"
-      ),
+      -- <label class="i_text">
+      -- <span>]] .. T "Slova z názvu" .. [[</span>
+      -- <input name="param_pattern_value" id="param_pattern_value2" type="search">
+      -- </label>
+      -- <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
+      -- ]] ..  "</p> </form>"
+      -- ),
       tab("web-knihovny", T "Web knihovny", 
         h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", 
           h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
@@ -289,9 +289,22 @@ medium(3,
 -- (body)
 -- }},
 -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
-h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer="defer"},
 h.script{src="js/opening.js", type="text/javascript", defer="defer"},
 h.script{ "window.onload = function(){ opening('".. T "/js/calendar.js" .."', '".. T("Dnes má knihovna zavřeno: ") .. "')};"},
+  -- Hledání v UKAŽ
+  [[<script type="text/javascript">
+  function searchPrimoBase(id,temp) {
+    document.getElementById(id).value = "any,contains," + document.getElementById(temp).value.replace(/[,]/g, " ");
+    document.forms["searchForm"].submit();
+  }
+  function searchPrimo() {
+    searchPrimoBase("primoQuery","primoQueryTemp");
+  }
+  function searchClanky(){
+    searchPrimoBase("primoClanky","primoClankyTemp");
+  }
+  </script>
+  ]],
   -- [[<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.js"></script>
   -- <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
   -- ]]

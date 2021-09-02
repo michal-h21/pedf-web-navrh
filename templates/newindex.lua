@@ -267,7 +267,6 @@ medium(3,
     medium(12, card(
           h.div{ h.b {T "Další nástroje:"}, data_links(T,{
             {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
-            {"Katalog (UK)", "https://ckis.cuni.cz/F/"},
             {"PEZ", "https://ezdroje.cuni.cz/"},
             {"NK", "https://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
             {"NDK", "https://ndk.cz/"},

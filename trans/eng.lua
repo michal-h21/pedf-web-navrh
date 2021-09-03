@@ -19,7 +19,7 @@ return {
  -- ,["ISBN/ISSN"]="ISBN/ISSN"
  ,["hledat"]="search"
  ,["Pokud požadovanou publikaci nemáme, můžete nám dát návrh na její <a href='objednavani_liter.htm'>nákup</a>."]="&nbsp;"
- ,["UKAŽ – zdroje PedF UK"]="UKAŽ – Library Search"
+ ,["Vyhledávač UKAŽ – pro PedF UK"]="UKAŽ – Library Search"
  ,["E-časopisy"]="E-journals"
  ,["Články v časopisech"] = "Journal Articles"
  ,[ "Plánované uzavření knihovny"]="Closing days"

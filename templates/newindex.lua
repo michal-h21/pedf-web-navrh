@@ -184,7 +184,7 @@ medium(3,
 {
             medium(12, 
             card{ div{class="tabs", 
-        tab("ukaz", T "UKAŽ – zdroje PedF UK", 
+        tab("ukaz", T "Vyhledávač UKAŽ – pro PedF UK", 
         h.form{ id="ebscohostCustomSearchBox",  action="https://cuni.primo.exlibrisgroup.com/discovery/search", onsubmit="searchPrimo()", method="get",enctype="application/x-www-form-urlencoded; charset=utf-8", target="_blank",
             h.input{ type="hidden", name="vid", value="420CKIS_INST:UKAZ"},
             h.input{ type="hidden", name="tab", value="Everything"},

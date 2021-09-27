@@ -62,8 +62,9 @@ local print_actual = building_blocks.print_actual
 local menuitem = function(title, href) return {title = title, href= href} end
 
 local mainmenu = {
-  menuitem("Domů","index.html"),
+  -- menuitem("Domů","index.html"),
   menuitem("Služby","sluzby.htm"),
+  menuitem("Rezervační boxy", "rezervacni_boxy.html"),
   menuitem("Publikační činnost", "biblio.html"),
   menuitem("Časopisy", "periodika.htm"),
   menuitem("Elektronické zdroje", "eiz.htm"),

@@ -50,6 +50,7 @@ return {
  ,["Út–Pá"] = "Tue–Fri"
  ,["Po–Čt"] = "Mon–Thu"
  ,["Po–Pá"] = "Mon–Fri"
+ ,["Čt–Pá"] = "Thu–Fri"
  ,["Pá"] = "Fri"
  ,["Studovna v Celetné"] = "Study Room Celetná"
  ,["Web knihovny"] = "Library Website"

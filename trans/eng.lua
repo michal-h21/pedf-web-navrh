@@ -104,9 +104,12 @@ return {
  ,["https://ezdroje.cuni.cz/prehled/zdroj.php?lang=cs&id=214"] = "https://ezdroje.cuni.cz/prehled/zdroj.php?lang=en&id=214"
  ,["https://ukaz.cuni.cz"] = "https://ukaz.cuni.cz/en/"
  ,["Další nástroje:"] = "Additional resources:"
+ ,["Užitečné odkazy:"] = "Useful links:"
  ,["Nejnovější aktualizace"] = "Latest updates"
  ,["aktualizace.html"] = "updates.html"
  ,["Starší"] = "Older"
  ,["Aktualizace webu"] = "Web updates"
+ ,["https://knihovna.cuni.cz/e-prihlaska/"] = "https://library.cuni.cz/e-application/"
+ ,["Registrace do knihovny"] = "Library application"
 
  }

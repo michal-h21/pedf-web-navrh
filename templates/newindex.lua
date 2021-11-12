@@ -182,6 +182,22 @@ medium(3,
   })
 },
 {
+    medium(12, card(
+          h.div{ h.b {T "Užitečné odkazy:"}, data_links(T,{
+            {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
+            {"Registrace do knihovny", "https://knihovna.cuni.cz/e-prihlaska/"},
+            {"PEZ", "https://ezdroje.cuni.cz/"},
+            {"Repozitář UK", "https://dspace.cuni.cz/?locale-attribute=cs"},
+            {"NK", "https://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
+            {"NDK", "https://ndk.cz/"},
+            {"Scopus", "https://www.scopus.com/"},
+            {"DOAJ", "https://doaj.org/"},
+            {"ERIH", "https://dbh.nsd.uib.no/publiseringskanaler/erihplus/"},
+            {"Ulrichsweb", "https://ezdroje.cuni.cz/prehled/zdroj.php?lang=cs&id=214"},
+            {"JCR", "https://jcr.clarivate.com/"},
+            {"WoS", "https://webofknowledge.com/"},
+            {"Google Scholar", "https://scholar.google.cz/"},
+          })})),--}
             medium(12, 
             card{ div{class="tabs", 
         tab("ukaz", T "Vyhledávač UKAŽ – pro PedF UK", 
@@ -265,21 +281,6 @@ medium(3,
         )
     }}),
     -- row{
-    medium(12, card(
-          h.div{ h.b {T "Další nástroje:"}, data_links(T,{
-            {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
-            {"PEZ", "https://ezdroje.cuni.cz/"},
-            {"NK", "https://aleph.nkp.cz/F/?func=file&amp;file_name=base-list"},
-            {"NDK", "https://ndk.cz/"},
-            {"Scopus", "https://www.scopus.com/"},
-            {"DOAJ", "https://doaj.org/"},
-            {"ERIH", "https://dbh.nsd.uib.no/publiseringskanaler/erihplus/"},
-            {"Ulrichsweb", "https://ezdroje.cuni.cz/prehled/zdroj.php?lang=cs&id=214"},
-            {"JCR", "https://jcr.clarivate.com/"},
-            {"WoS", "https://webofknowledge.com/"},
-            {"Google Scholar", "https://scholar.google.cz/"},
-            {"Repozitář UK", "https://dspace.cuni.cz/?locale-attribute=cs"}
-          })})),--}
     medium(12, card(
           h.div{ h.b {T "Nejnovější aktualizace"}, print_updates(T,doc.updates), "/",  h.a{href= T "aktualizace.html",  T "Starší"}}))
 },

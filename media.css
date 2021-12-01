@@ -49,7 +49,7 @@ p, li, h1, h2, h3, h4, h5, h6{max-width:70ch; line-height: calc(1ex / 0.32);}
 
 hr {width:100%;}
 /* div.logo-container {background-color:#ff677b;} */
-div.logo-container div.row{min-height:12vh;}
+div.logo-container div.row{min-height:16vh;}
 /* When page is whorter than logo width * 2 */
 @media (max-width: 514px){
   div.logo-container div.row{min-height:auto;}

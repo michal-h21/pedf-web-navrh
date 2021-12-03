@@ -110,6 +110,7 @@ address{font-style:normal;}
 address li{list-style:none;margin-left:0;list-style-position:inside;}
 address ul{margin-left:0;padding-left:0.5rem;}
 div#mapa img{max-width:none;}
+h2.news{width:100%; margin-bottom:0px;}
 
 
 ul + h2, ol + h2, p + h2 {margin-top:1.4rem;}

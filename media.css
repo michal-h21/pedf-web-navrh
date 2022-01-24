@@ -35,7 +35,10 @@ img.aktual-img{ display:none;}
 
 }
 
-p, li, h1, h2, h3, h4, h5, h6{max-width:70ch; line-height: calc(1ex / 0.32);}
+p, li, h1, h2, h3, h4, h5, h6{max-width:70ch; }
+
+/* trick from https://kittygiraudel.com/2020/05/18/using-calc-to-figure-out-optimal-line-height/ */
+html *{line-height: calc(2px + 2ex + 2px);}
 
 @media print{
   body{font-size:12pt;}

@@ -111,5 +111,8 @@ return {
  ,["Aktualizace webu"] = "Web updates"
  ,["https://knihovna.cuni.cz/e-prihlaska/"] = "https://library.cuni.cz/e-application/"
  ,["Registrace do knihovny"] = "Library application"
-
+ ,["Katalog NK"] = "National Library Catalogue"
+ ,["Národní digitální knihovna"] = "Czech National Digital Library"
+ ,["Český tisk"] = "Articles in Czech Newspapers"
+ ,["PEZ"] = "CUNI e-resources"
  }

@@ -91,6 +91,13 @@ local function meta_obsolete(data)
   end
 end
 
+local function meta_redirect(data)
+  if data.redirect then
+    local url = data.siteurl .. data.redirect
+    return string.format('<meta http-equiv="Refresh" content="0; URL=%s">', url)
+  end
+end
+
 -- function column
 local function template(data)
   local strings = data.strings
@@ -103,6 +110,7 @@ local function template(data)
       h.meta{name="viewport", content="width=device-width, initial-scale=1"},
       h.title{(T (data.title))},
       meta_obsolete(data),
+      meta_redirect(data),
       metaifexitst("og:type", "website"),
       metaifexitst("og:title", data.title),
       metaifexitst("og:description", data.description),
@@ -206,6 +214,7 @@ local function template(data)
 
         }),
         medium(4, div {
+          p{"Jsme členy knihovnických organizací <a href='https://www.skipcr.cz/'>SKIP</a> a <a href='https://sdruk.cz/'>SDRUK</a>"},
           p{"Webmaster: <a href='mailto:michal.hoftich@pedf.cuni.cz'>michal.hoftich@pedf.cuni.cz</a>"}
           ,p{a {href="prohlaseni.html", "Prohlášení o přístupnosti stránek"}}
         })

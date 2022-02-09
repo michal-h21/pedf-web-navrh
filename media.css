@@ -83,7 +83,7 @@ div.page-img img{width:100%;}
 
 .archiv-link{float:right;margin-left:auto;}
 
-table.prov_doba{margin-bottom:1rem;}
+table.prov_doba{margin-bottom:1rem;width:100%;}
 table.prov_doba caption{margin:0;padding:0;font-size:1rem; font-weight:bold; text-align:left;}
 table.prov_doba td:first-child{min-width:2em;}
 

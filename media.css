@@ -78,6 +78,10 @@ caption a, caption a:visited{
   color: white;
 }
 
+.prov_doba caption a, .prov_doba caption a:visited{
+  color: rgb(2, 119, 189);
+}
+
 div.page-img {margin-top:.5rem;}
 div.page-img img{width:100%;}
 
@@ -91,6 +95,18 @@ table.small{margin-left:0;padding-left:0.5rem;}
 table.closing{margin-top:2.2rem;}
 
 
+.searchbox label{height:1.1rem;background-color: #f4c8c1; color:black;}
+.searchbox > :checked + label{ background-color: #ca3344; color:white;}
+.searchbox > label:hover, .searchbox > label:focus {background-color: #c63040; color:white;}
+.searchbox > :checked + label:hover, .searchbox > :checked + label:focus{ background-color: #ba2334; color:white;}
+.searchbox label+div{padding:3px;}
+.searchbox label+div form{padding:3px;}
+.tabs > :checked + label + div {
+  height: auto;
+  background-color: #fdeeeb;
+}
+
+
 table.closing, table.small{
   border:none; 
 }
@@ -101,8 +117,8 @@ div.closed div:first-child{color:#d63422;}
 table.small * {padding-left: 0;}
 /* div.row h1{margin:0.5rem 0; } */
 table.small caption{
-  background-color:black;
-  color:#f5f5f5;
+  /* background-color:black; */
+  /* color:#f5f5f5; */
   font-weight:normal;
   padding-left:.5rem;
   padding-right:.5rem;

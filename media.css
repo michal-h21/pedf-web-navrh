@@ -107,11 +107,13 @@ table.closing{margin-top:2.2rem;}
   background-color: #fdeeeb;
 }
 
+
 .searchbox form["submit"], .searchbox form["image"]{
   display:inline;
-  margin: 0.15rem;
-  padding: 0.2rem 0.2rem; 
+  margin: 0.5rem;
 }
+
+.searchbox input["search"]{width:90%;max-width:12rem;}
 
 
 table.closing, table.small{

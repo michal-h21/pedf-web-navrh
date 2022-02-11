@@ -179,7 +179,7 @@ local function template(data)
             h.input{ type="hidden", name="query", id="primoQuery"},
             h.input{ type="hidden", name="pcAvailabiltyMode", value="true"},
             h.input{ type="hidden", name="mfacet", value="library,include,6986–112118530006986,1"},
-            h.input{type="search", id="primoQueryTemp", placeholder=T "Hledat knihy a články", style="max-width:12rem"},
+            h.input{type="search", id="primoQueryTemp", placeholder=T "Hledat knihy a články", style="max-width:12rem;width:95%;"},
             -- h.input{id="go", title=T "hledat", onclick="searchPrimo()", type="button", value= T "hledat" ,alt= T "hledat"},
             -- h.input{id="go", title=T "hledat", type="submit", class="small", value= T "?" ,alt= T "hledat"},
             h.input{id="go", title=T "hledat", type="image", class="small", src="/img/search.svg" ,alt= T "hledat"},
@@ -192,7 +192,7 @@ local function template(data)
           h.input{type="hidden", name="k8" , value="#444444"},
           h.input{type="hidden", name="k9" , value="#D51920"},
           h.input{type="hidden", name="kt" , value="h"},
-          h.input{type="search", name="q" , maxlength="255", style="max-width:12rem", placeholder=T "Hledat na tomto webu"},
+          h.input{type="search", name="q" , maxlength="255", style="max-width:12rem;width:95%;", placeholder=T "Hledat na tomto webu"},
           -- h.input{id="go", title=T "hledat", type="submit", class="small", value= T "?" ,alt= T "hledat"},
           h.input{id="go", title=T "hledat", type="image", class="small", src="/img/search.svg" ,alt= T "hledat"},
         }

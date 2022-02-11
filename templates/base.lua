@@ -23,9 +23,9 @@ local row = building_blocks.row
 
 local medium = building_blocks.medium
 
--- local card = building_blocks.card
+local card = building_blocks.card
 
--- local tab = building_blocks.tab
+local tab = building_blocks.tab
 -- local boxik = building_blocks.boxik
 
 
@@ -150,20 +150,10 @@ local function template(data)
     },
     h.body{
       class="container",
-      div{role="navigation",h.header {
-        -- h.a{class="logo",h.div{"Ústřední knihovna PedF UK"}},
-        -- h.menu{
-        -- h.nav{class="nav-collapse",
-        -- h.ul{
-        -- class="row",
-        h.span {class="logo", "&nbsp;"},
-        mainmenu(data.menuitems),
-        h.span{ a{href=(data.altlang or T "/index-en.html"),h.img{src=T "/img/gb.svg", alt=T "Switch to English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
-        -- }},
-      }},
       -- row {h.p {}},
       h.div {class="logo-container", row{-- nepoužívat row class="row",
       medium(9, 
+      -- medium(12, 
       {
         -- h.a{href="http://pedf.cuni.cz", h.img{src="img/logo_pedf_small.jpg"}},
         h.a{ href= T "/index.html", h.img{role="banner",style="height:90%;",alt=T "Logo knihovny", src=T "/img/logo.svg"}},
@@ -175,20 +165,51 @@ local function template(data)
         --   h.div{"PedF UK"}
         -- }
       }),
-      medium(3,{
-        h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", 
+      medium(3,
+            -- card{ 
+              div{class="tabs searchbox", 
+        tab("ukaz-sbox", T "UKAŽ", 
+        h.form{ id="ebscohostCustomSearchBox",  action="https://cuni.primo.exlibrisgroup.com/discovery/search", onsubmit="searchPrimo()", method="get",enctype="application/x-www-form-urlencoded; charset=utf-8", target="_blank",
+            h.input{ type="hidden", name="vid", value="420CKIS_INST:UKAZ"},
+            h.input{ type="hidden", name="tab", value="Everything"},
+            h.input{ type="hidden", name="search_scope", value="MyInst_and_CI"},
+            h.input{ type="hidden", name="lang", value= T "cs"},
+            h.input{ type="hidden", name="mode", value="basic"},
+            h.input{ type="hidden", name="query", id="primoQuery"},
+            h.input{ type="hidden", name="pcAvailabiltyMode", value="true"},
+            h.input{ type="hidden", name="mfacet", value="library,include,6986–112118530006986,1"},
+            h.input{type="search", id="primoQueryTemp", placeholder=T "Hledat knihy a články", style="max-width:12rem"},
+            -- h.input{id="go", title=T "hledat", onclick="searchPrimo()", type="button", value= T "hledat" ,alt= T "hledat"},
+            h.input{id="go", title=T "hledat", type="submit", class="small", value= T "hledat" ,alt= T "hledat"},
+          -- h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž.", "<br />", T "<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."},
+      },"checked"
+      ),
+      tab("web-knihovny-sbox", T "Web knihovny", 
+        h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", target="_blank", 
           h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
           h.input{type="hidden", name="k8" , value="#444444"},
           h.input{type="hidden", name="k9" , value="#D51920"},
           h.input{type="hidden", name="kt" , value="h"},
-          h.input{type="search", name="q" , maxlength="255", style="width:12rem", placeholder=T "Hledat na tomto webu"},
+          h.input{type="search", name="q" , maxlength="255", style="max-width:12rem", placeholder=T "Hledat na tomto webu"},
           h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
         }
 
         -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",
         -- style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;"}
-      })
-    }},
+      )
+    })
+  }},
+      div{role="navigation",h.header {
+        -- h.a{class="logo",h.div{"Ústřední knihovna PedF UK"}},
+        -- h.menu{
+        -- h.nav{class="nav-collapse",
+        -- h.ul{
+        -- class="row",
+        h.span {class="logo", "&nbsp;"},
+        mainmenu(data.menuitems),
+        h.span{ a{href=(data.altlang or T "/index-en.html"),h.img{src=T "/img/gb.svg", alt=T "Switch to English version", style="width:1em;"}}} -- odkaz na anglickou verzi stránek
+        -- }},
+      }},
       -- row{
         obsolete(data), -- upozornění na zastaralé stránky
         data.contents,

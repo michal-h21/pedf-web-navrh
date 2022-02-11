@@ -115,4 +115,5 @@ return {
  ,["Národní digitální knihovna"] = "Czech National Digital Library"
  ,["Český tisk"] = "Articles in Czech Newspapers"
  ,["PEZ"] = "CUNI e-resources"
+ ,["Hledat knihy a články"]= "Search books & articles"
  }

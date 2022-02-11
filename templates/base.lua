@@ -180,7 +180,7 @@ local function template(data)
             h.input{ type="hidden", name="mfacet", value="library,include,6986–112118530006986,1"},
             h.input{type="search", id="primoQueryTemp", placeholder=T "Hledat knihy a články", style="max-width:12rem"},
             -- h.input{id="go", title=T "hledat", onclick="searchPrimo()", type="button", value= T "hledat" ,alt= T "hledat"},
-            h.input{id="go", title=T "hledat", type="submit", class="small", value= T "hledat" ,alt= T "hledat"},
+            h.input{id="go", title=T "hledat", type="submit", class="small", value= T "?" ,alt= T "hledat"},
           -- h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž.", "<br />", T "<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."},
       },"checked"
       ),
@@ -191,7 +191,7 @@ local function template(data)
           h.input{type="hidden", name="k9" , value="#D51920"},
           h.input{type="hidden", name="kt" , value="h"},
           h.input{type="search", name="q" , maxlength="255", style="max-width:12rem", placeholder=T "Hledat na tomto webu"},
-          h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
+          h.input{id="go", title=T "hledat", type="submit", class="small", value= T "?" ,alt= T "hledat"},
         }
 
         -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",

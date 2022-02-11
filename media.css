@@ -106,6 +106,12 @@ table.closing{margin-top:2.2rem;}
   background-color: #fdeeeb;
 }
 
+.searchbox form["submit"]{
+  display:inline;
+  margin: 0.15rem;
+  padding: 0.2rem 0.2rem; 
+}
+
 
 table.closing, table.small{
   border:none; 

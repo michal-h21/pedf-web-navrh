@@ -95,7 +95,8 @@ table.small{margin-left:0;padding-left:0.5rem;}
 table.closing{margin-top:2.2rem;}
 
 
-.searchbox label{height:1.1rem;background-color: #f4c8c1; color:black;}
+.top-searchbox{padding:0.5rem;}
+.searchbox label{height:1.1rem;background-color: #f4c8c1; color:black;padding:0.5rem;}
 .searchbox > :checked + label{ background-color: #ca3344; color:white;}
 .searchbox > label:hover, .searchbox > label:focus {background-color: #c63040; color:white;}
 .searchbox > :checked + label:hover, .searchbox > :checked + label:focus{ background-color: #ba2334; color:white;}
@@ -106,7 +107,7 @@ table.closing{margin-top:2.2rem;}
   background-color: #fdeeeb;
 }
 
-.searchbox form["submit"]{
+.searchbox form["submit"], .searchbox form["image"]{
   display:inline;
   margin: 0.15rem;
   padding: 0.2rem 0.2rem; 

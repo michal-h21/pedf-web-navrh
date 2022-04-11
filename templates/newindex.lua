@@ -215,7 +215,7 @@ medium(3,
 {
     medium(12, card(
           h.div{ h.b {T "Užitečné odkazy:"}, data_links(T,{
-            {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
+            {"Vyhledávač UKAŽ", "https://ukaz.cuni.cz"},
             {"Registrace do knihovny", "https://knihovna.cuni.cz/e-prihlaska/"},
             {"PEZ", "https://ezdroje.cuni.cz/"},
             -- {"Repozitář UK", "https://dspace.cuni.cz/?locale-attribute=cs"},

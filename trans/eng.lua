@@ -74,6 +74,7 @@ return {
  ,["NK"] = "National Library"
  ,["Katalog (UK)"] = "Catalog (CU)"
  ,["UKAŽ (UK)" ] = "EDS (CU)"
+ ,["Vyhledávač UKAŽ" ] = "Discovery system"
  ,["Další možnosti vyhledávání:"] = "More search options:"
  ,["Zavřeno do odvolání"] = "Closed until further notice"
  ,["Červenec"] = "July"

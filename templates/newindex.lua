@@ -112,6 +112,37 @@ local function template(doc )
 ,
 medium(3,
 { 
+            -- card{ 
+            --   div{class="tabs searchbox", 
+        -- tab("ukaz-sbox", T "UKAŽ", 
+        -- h.form{ id="ebscohostCustomSearchBox",  action="https://cuni.primo.exlibrisgroup.com/discovery/search", onsubmit="searchPrimo()", method="get",enctype="application/x-www-form-urlencoded; charset=utf-8", target="_blank",
+            -- h.input{ type="hidden", name="vid", value="420CKIS_INST:UKAZ"},
+            -- h.input{ type="hidden", name="tab", value="Everything"},
+            -- h.input{ type="hidden", name="search_scope", value="MyInst_and_CI"},
+            -- h.input{ type="hidden", name="lang", value= T "cs"},
+            -- h.input{ type="hidden", name="mode", value="basic"},
+            -- h.input{ type="hidden", name="query", id="primoQuery"},
+            -- h.input{ type="hidden", name="pcAvailabiltyMode", value="true"},
+            -- h.input{ type="hidden", name="mfacet", value="library,include,6986–112118530006986,1"},
+            -- h.input{type="search", id="primoQueryTemp", placeholder=T "Hledat knihy a články", style="max-width:12rem"},
+            -- -- h.input{id="go", title=T "hledat", onclick="searchPrimo()", type="button", value= T "hledat" ,alt= T "hledat"},
+            -- h.input{id="go", title=T "hledat", type="submit", class="small", value= T "hledat" ,alt= T "hledat"},
+          -- -- h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž.", "<br />", T "<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."},
+      -- },"checked"
+      -- ),
+      -- tab("web-knihovny-sbox", T "Web knihovny", 
+        -- h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", target="_blank", 
+          -- h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
+          -- h.input{type="hidden", name="k8" , value="#444444"},
+          -- h.input{type="hidden", name="k9" , value="#D51920"},
+          -- h.input{type="hidden", name="kt" , value="h"},
+          -- h.input{type="search", name="q" , maxlength="255", style="max-width:12rem", placeholder=T "Hledat na tomto webu"},
+          -- h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
+        -- }
+
+        -- -- h.iframe{src="https://duckduckgo.com/search.html?site=knihovna.pedf.cuni.cz&prefill=Search DuckDuckGo&kl=cs-cz&kae=t&ks=s",
+        -- -- style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;"}
+      -- )}},
   card{ 
     provozni_doba( doc.prov_doba, T),
     
@@ -184,7 +215,7 @@ medium(3,
 {
     medium(12, card(
           h.div{ h.b {T "Užitečné odkazy:"}, data_links(T,{
-            {"UKAŽ (UK)", "https://ukaz.cuni.cz"},
+            {"Vyhledávač UKAŽ", "https://ukaz.cuni.cz"},
             {"Registrace do knihovny", "https://knihovna.cuni.cz/e-prihlaska/"},
             {"PEZ", "https://ezdroje.cuni.cz/"},
             -- {"Repozitář UK", "https://dspace.cuni.cz/?locale-attribute=cs"},
@@ -199,24 +230,25 @@ medium(3,
             {"WoS", "https://webofknowledge.com/"},
             -- {"Google Scholar", "https://scholar.google.cz/"},
           })})),--}
-            medium(12, 
-            card{ div{class="tabs", 
-        tab("ukaz", T "Vyhledávač UKAŽ – pro PedF UK", 
-        h.form{ id="ebscohostCustomSearchBox",  action="https://cuni.primo.exlibrisgroup.com/discovery/search", onsubmit="searchPrimo()", method="get",enctype="application/x-www-form-urlencoded; charset=utf-8", target="_blank",
-            h.input{ type="hidden", name="vid", value="420CKIS_INST:UKAZ"},
-            h.input{ type="hidden", name="tab", value="Everything"},
-            h.input{ type="hidden", name="search_scope", value="MyInst_and_CI"},
-            h.input{ type="hidden", name="lang", value= T "cs"},
-            h.input{ type="hidden", name="mode", value="basic"},
-            h.input{ type="hidden", name="query", id="primoQuery"},
-            h.input{ type="hidden", name="pcAvailabiltyMode", value="true"},
-            h.input{ type="hidden", name="mfacet", value="library,include,6986–112118530006986,1"},
-            h.input{type="text", id="primoQueryTemp", value=""},
-            -- h.input{id="go", title=T "hledat", onclick="searchPrimo()", type="button", value= T "hledat" ,alt= T "hledat"},
-            h.input{id="go", title=T "hledat", type="submit", value= T "hledat" ,alt= T "hledat"},
-          h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž.", T "<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."},
-      },"checked"
-      ),
+            -- medium(12, 
+            -- card{ 
+              -- div{class="tabs", 
+        -- tab("ukaz", T "Vyhledávač UKAŽ – pro PedF UK", 
+        -- h.form{ id="ebscohostCustomSearchBox",  action="https://cuni.primo.exlibrisgroup.com/discovery/search", onsubmit="searchPrimo()", method="get",enctype="application/x-www-form-urlencoded; charset=utf-8", target="_blank",
+            -- h.input{ type="hidden", name="vid", value="420CKIS_INST:UKAZ"},
+            -- h.input{ type="hidden", name="tab", value="Everything"},
+            -- h.input{ type="hidden", name="search_scope", value="MyInst_and_CI"},
+            -- h.input{ type="hidden", name="lang", value= T "cs"},
+            -- h.input{ type="hidden", name="mode", value="basic"},
+            -- h.input{ type="hidden", name="query", id="primoQuery"},
+            -- h.input{ type="hidden", name="pcAvailabiltyMode", value="true"},
+            -- h.input{ type="hidden", name="mfacet", value="library,include,6986–112118530006986,1"},
+            -- h.input{type="text", id="primoQueryTemp", value=""},
+            -- -- h.input{id="go", title=T "hledat", onclick="searchPrimo()", type="button", value= T "hledat" ,alt= T "hledat"},
+            -- h.input{id="go", title=T "hledat", type="submit", value= T "hledat" ,alt= T "hledat"},
+          -- h.div{class="bottom", T "<a href='https://knihovna.cuni.cz/rozcestnik/ukaz/'>Více informací</a> o vyhledávací službě Ukaž.", T "<a href='eiz.htm#upozorneni'>Podmínky pro užití el. zdrojů</a>."},
+      -- }
+      -- ),
             -- tab("aleph", T "Katalog",  h.form{action=T "https://ckis.cuni.cz/F/", method="get", target="_blank", 
             -- h.input{  name="local_base", value="pedfr", type="hidden"},
             -- h.input {name="func", value="find-e" ,type="hidden"},
@@ -270,17 +302,18 @@ medium(3,
       -- <input class="i_btn" value="]] .. T "hledat" ..[[" type="submit">
       -- ]] ..  "</p> </form>"
       -- ),
-      tab("web-knihovny", T "Web knihovny", 
-        h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", 
-          h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
-          h.input{type="hidden", name="k8" , value="#444444"},
-          h.input{type="hidden", name="k9" , value="#D51920"},
-          h.input{type="hidden", name="kt" , value="h"},
-          h.input{type="search", name="q" , maxlength="255", style="width:12rem", placeholder=T "Hledat na tomto webu"},
-          h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
-        }
-        )
-    }}),
+      -- tab("web-knihovny", T "Web knihovny", 
+      --   h.form{role="search", method="get", id="duckduckgo-search", action="https://duckduckgo.com/", 
+      --     h.input{type="hidden", name="sites" , value="knihovna.pedf.cuni.cz"},
+      --     h.input{type="hidden", name="k8" , value="#444444"},
+      --     h.input{type="hidden", name="k9" , value="#D51920"},
+      --     h.input{type="hidden", name="kt" , value="h"},
+      --     h.input{type="search", name="q" , maxlength="255", style="width:12rem", placeholder=T "Hledat na tomto webu"},
+      --     h.input{type="submit",class="small", value=T "hledat"} --style="visibility: hidden;"}
+      --   }
+      --   )
+    -- }
+  -- }),
     -- row{
     medium(12, card(
           h.div{ h.b {T "Nejnovější aktualizace"}, print_updates(T,doc.updates), "/",  h.a{href= T "aktualizace.html",  T "Starší"}}))

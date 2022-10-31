@@ -42,12 +42,13 @@ return {
  ,['<a href="vypujcni_protokol.html">Půjčovna</a>']= '<a href="reference-desk.html">Library</a>'
  ,["Studovna Celetná"] = "Study Room Celetná"
  ,['<a href="celetna.html">Studovna v Celetné</a>'] = '<a href="celetna-en.html">Study Room Celetná</a>'
- ,['<a href="studovna.html">Studovna v Rettigové</a>'] = '<a href="study-room.html">Study Room Rettigová</a>'
+ ,['<a href="studovna.html">Studovna v Rettigové</a>'] = '<a href="study-room.html">Study Room M. Rettigové</a>'
  ,["Po"] = "Mon"
  ,["Út"] = "Tue"
  ,["St"] = "Wed"
  ,["Čt"] = "Thu"
  ,["Út–Pá"] = "Tue–Fri"
+ ,["Út–Čt"] = "Tue–Thu"
  ,["Po–Čt"] = "Mon–Thu"
  ,["Po–Pá"] = "Mon–Fri"
  ,["Čt–Pá"] = "Thu–Fri"

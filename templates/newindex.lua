@@ -327,19 +327,6 @@ medium(3,
 h.script{src="js/opening.js", type="text/javascript", defer="defer"},
 h.script{ "window.onload = function(){ opening('".. T "/js/calendar.js" .."', '".. T("Dnes má knihovna zavřeno: ") .. "')};"},
   -- Hledání v UKAŽ
-  [[<script type="text/javascript">
-  function searchPrimoBase(id,temp) {
-    document.getElementById(id).value = "any,contains," + document.getElementById(temp).value.replace(/[,]/g, " ");
-    document.forms["searchForm"].submit();
-  }
-  function searchPrimo() {
-    searchPrimoBase("primoQuery","primoQueryTemp");
-  }
-  function searchClanky(){
-    searchPrimoBase("primoClanky","primoClankyTemp");
-  }
-  </script>
-  ]],
   -- [[<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.js"></script>
   -- <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.5.0/min/tiny-slider.helper.ie8.js"></script><![endif]-->
   -- ]]

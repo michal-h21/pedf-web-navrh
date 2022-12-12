@@ -257,6 +257,19 @@ local function template(data)
     -- h.script{type="text/javascript", 'var nav = responsiveNav(".nav-collapse");'}
     -- h.script{src="https://support.ebsco.com/eit/scripts/ebscohostsearch.js", type="text/javascript", defer=true}
     h.script{['data-goatcounter']="https://knihovna.pedf.cuni.cz/counter/counter.php", async=true, type="text/javascript", src="/js/count.js"},
+  [[<script type="text/javascript">
+  function searchPrimoBase(id,temp) {
+    document.getElementById(id).value = "any,contains," + document.getElementById(temp).value.replace(/[,]/g, " ");
+    document.forms["searchForm"].submit();
+  }
+  function searchPrimo() {
+    searchPrimoBase("primoQuery","primoQueryTemp");
+  }
+  function searchClanky(){
+    searchPrimoBase("primoClanky","primoClankyTemp");
+  }
+  </script>
+  ]],
   },
 }
 ))

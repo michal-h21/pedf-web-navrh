@@ -116,6 +116,7 @@ return {
  ,["Katalog NK"] = "National Library Catalogue"
  ,["Národní digitální knihovna"] = "Czech National Digital Library"
  ,["Díla nedostupná na trhu"] = "Czech National Digital Library"
+ ,["Národní digitální knihovna – DNNT"] = "Czech National Digital Library"
  ,["Český tisk"] = "Articles in Czech Newspapers"
  ,["PEZ"] = "CUNI e-resources"
  ,["Hledat knihy a články"]= "Search books & articles"

@@ -178,7 +178,8 @@ local function template(data)
             h.input{ type="hidden", name="mode", value="basic"},
             h.input{ type="hidden", name="query", id="primoQuery"},
             h.input{ type="hidden", name="pcAvailabiltyMode", value="true"},
-            h.input{ type="hidden", name="mfacet", value="library,include,6986–112118530006986,1"},
+            -- tak nakonec fakt nechceme omezovat hledání jen na pedf
+            -- h.input{ type="hidden", name="mfacet", value="library,include,6986–112118530006986,1"},
             h.input{type="search", id="primoQueryTemp", placeholder=T "Hledat knihy a články", style="max-width:12rem;width:95%;"},
             -- h.input{id="go", title=T "hledat", onclick="searchPrimo()", type="button", value= T "hledat" ,alt= T "hledat"},
             -- h.input{id="go", title=T "hledat", type="submit", class="small", value= T "?" ,alt= T "hledat"},

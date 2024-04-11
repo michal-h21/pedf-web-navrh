@@ -239,7 +239,7 @@ local function template(data)
 
         }),
         medium(4, div {
-          p{"Jsme členy knihovnických organizací <a href='https://www.skipcr.cz/'>SKIP</a> a <a href='https://sdruk.cz/'>SDRUK</a>"},
+          p{"Jsme členy knihovnických organizací <a href='https://www.skipcr.cz/'>SKIP</a> a <a href='https://sdruk.cz/'>SDRUK z. s.</a>"},
           p{"Webmaster: <a href='mailto:michal.hoftich@pedf.cuni.cz'>michal.hoftich@pedf.cuni.cz</a>"}
           ,p{a {href="prohlaseni.html", "Prohlášení o přístupnosti stránek"}}
         })

@@ -2,7 +2,7 @@
 img=$1
 new=`basename $img`
 
-convert -auto-orient -resize 900x900 $img $new
+magick convert -auto-orient -resize 900x900 $img $new
 # scp $new knihovna-new:/home/hoftich/nginx/html/img/
 cp $new backup/img/
 rm $new

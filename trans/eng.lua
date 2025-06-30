@@ -120,4 +120,6 @@ return {
  ,["Český tisk"] = "Articles in Czech Newspapers"
  ,["PEZ"] = "CUNI e-resources"
  ,["Hledat knihy a články"]= "Search books & articles"
+ ,["Po 30. 6."] = "Mon 30 Jun"
+ ,["Od 1. 7."] = "From 1 Jul"
  }

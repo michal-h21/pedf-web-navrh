@@ -64,13 +64,15 @@ local menuitem = function(title, href) return {title = title, href= href} end
 local mainmenu = {
   -- menuitem("Domů","index.html"),
   menuitem("Služby","sluzby.htm"),
-  menuitem("Rezervace knih", "rezervacni_boxy.html"),
+  -- menuitem("Rezervace knih", "rezervacni_boxy.html"),
+  menuitem("Naše prostory", "prostory.html"),
+  menuitem("Sbírky a zdroje", "sbirky.html"),
   menuitem("Publikační činnost", "biblio.html"),
-  menuitem("Časopisy", "periodika.htm"),
-  menuitem("Elektronické zdroje", "eiz.htm"),
-  menuitem("Závěrečné práce", "kvalifikacni_prace.htm"),
+  -- menuitem("Časopisy", "periodika.htm"),
+  -- menuitem("Elektronické zdroje", "eiz.htm"),
+  -- menuitem("Závěrečné práce", "kvalifikacni_prace.htm"),
   -- menuitem("Průvodce", "pruvodce.html"),
-  menuitem("Nákup publikací","objednavani_liter.htm"),
+  -- menuitem("Nákup publikací","objednavani_liter.htm"),
   menuitem("O knihovně", "informace.htm"),
 }
 

@@ -14,4 +14,4 @@ echo alt: alt text >> $filename
 echo img: img file >> $filename
 echo --- >> $filename
 
-vim $filename
+nvim $filename

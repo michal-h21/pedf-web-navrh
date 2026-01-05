@@ -122,4 +122,6 @@ return {
  ,["Hledat knihy a články"]= "Search books & articles"
  ,["Po 30. 6."] = "Mon 30 Jun"
  ,["Od 1. 7."] = "From 1 Jul"
+ ,["Místnost R136"] = "Room R136"
+ ,["Po, St"] = "Mo, We"
  }
